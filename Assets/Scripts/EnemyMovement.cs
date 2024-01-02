@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        print(_enemy.state);
+        // ReSharper disable Unity.InefficientPropertyAccess
         if (_enemy.state != EnemyState.Walk)
             return;
 
@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
 
         var a = transform.position;
         var b = GameManager.Instance.PlayerController.transform.position;
-        
+
         transform.position =
             Vector3.MoveTowards(a, _destination.position, movementSpeed * Time.deltaTime);
 

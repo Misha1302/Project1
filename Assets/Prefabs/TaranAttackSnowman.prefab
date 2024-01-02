@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6485354408184248834}
   m_Layer: 0
-  m_Name: DistanceAttackSnowman 1
+  m_Name: TaranAttackSnowman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
