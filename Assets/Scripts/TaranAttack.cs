@@ -5,55 +5,78 @@ using UnityEngine;
 public class TaranAttack : AttackBase
 {
     [SerializeField] private float speed = 1;
-    [SerializeField] private float calldown = 6;
+    [SerializeField] private float cooldown = 6;
     [SerializeField] private float maxDegrees = 10;
 
-    private bool _attack;
+    private bool _attacking;
+    private bool _coroutineRun;
     private float _direction;
 
     protected override void Start()
     {
-        Init(calldown, maxDegrees);
+        Init(0, maxDegrees);
         base.Start();
     }
 
     private void Update()
     {
-        if (_attack)
-        {
-            Attack();
+        if (enemy.state == EnemyState.Wait)
+            _attacking = false;
+
+        if (enemy.state != EnemyState.Attack)
             return;
+
+        if (!_attacking)
+        {
+            var a = transform.position;
+            var b = GameManager.Instance.PlayerController.transform.position;
+
+            if (a.Degrees(b) > maxDegrees)
+            {
+                enemy.state = EnemyState.Walk;
+                return;
+            }
+
+            flipper.FlipX = a.x < b.x;
+            _direction = flipper.FlipX ? 1 : -1;
+            _attacking = true;
         }
 
-        if (Return())
-            return;
-
-        _attack = true;
-        _direction = sp.flipX ? 1 : -1;
+        Attack();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other) => OnCollision(other);
+    private void OnCollisionStay2D(Collision2D other) => OnCollision(other);
+
+    private void OnCollision(Collision2D other)
     {
-        if (!_attack)
+        if (other.transform.TryGetComponent<GroundTag>(out _))
             return;
+
+        if (!_attacking)
+            return;
+
+        _attacking = false;
+
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        if (_coroutineRun)
+            yield break;
+
+        _coroutineRun = true;
 
         enemy.state = EnemyState.Wait;
-
-        StartCoroutine(WalkAfterCalldown());
-
-        previousTime = Time.time;
-        _attack = false;
-    }
-
-    private IEnumerator WalkAfterCalldown()
-    {
-        yield return new WaitForSeconds(calldown);
+        yield return new WaitForSeconds(cooldown);
         enemy.state = EnemyState.Walk;
+
+        _attacking = _coroutineRun = false;
     }
 
     private void Attack()
     {
-        enemy.state = EnemyState.Attack;
-        transform.Translate(Vector3.right * (_direction * speed * Time.deltaTime));
+        transform.Translate(Vector3.right * (_direction * speed * Time.deltaTime), Space.World);
     }
 }

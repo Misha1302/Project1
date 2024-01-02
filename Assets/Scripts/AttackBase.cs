@@ -1,49 +1,43 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(ObjectFlipper))]
 public abstract class AttackBase : MonoBehaviour
 {
-    private double _calldown;
+    private double _cooldown;
 
     protected Enemy enemy;
+    protected ObjectFlipper flipper;
     protected float previousTime;
-    protected SpriteRenderer sp;
-    public double MaxDegrees { get; private set; }
+    private double _maxDegrees;
 
 
     protected virtual void Start()
     {
-        sp = GetComponent<SpriteRenderer>();
+        flipper = GetComponent<ObjectFlipper>();
         previousTime = Time.time;
     }
 
-    protected void Init(double calldown, double maxDegrees)
+    protected void Init(double cooldown, double maxDegrees)
     {
-        _calldown = calldown;
-        MaxDegrees = maxDegrees;
+        _cooldown = cooldown;
+        _maxDegrees = maxDegrees;
     }
 
-    protected bool Return() => Return(out _, out _);
-
-    protected bool Return(out Vector3 a, out Vector3 b)
+    protected bool Return(out Vector3 a, out Vector3 b, out bool isRightAngle, out bool flip)
     {
-        a = b = Vector3.positiveInfinity;
+        a = GameManager.Instance.PlayerController.transform.position;
+        b = transform.position;
+        isRightAngle = a.Degrees(b) <= _maxDegrees;
+        flip = b.x < a.x;
 
         if (enemy.state != EnemyState.Attack)
             return true;
 
-        a = GameManager.Instance.PlayerController.transform.position;
-        b = transform.position;
-        sp.flipX = b.x < a.x;
-
-        if (Time.time < previousTime + _calldown)
+        if (Time.time < previousTime + _cooldown)
             return true;
 
-        if (a.Degrees(b) > MaxDegrees)
-        {
-            enemy.state = EnemyState.Walk;
+        if (!isRightAngle)
             return true;
-        }
 
         return false;
     }

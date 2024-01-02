@@ -3,19 +3,19 @@ using static Direction;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(ObjectFlipper))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 4;
     [SerializeField] private float jumpForce = 8;
     [SerializeField] private GroundChecker groundChecker;
+    private ObjectFlipper _flipper;
 
     private Rigidbody2D _rb2D;
-    private SpriteRenderer _sprite;
 
     private void Start()
     {
-        _sprite = GetComponent<SpriteRenderer>();
+        _flipper = GetComponent<ObjectFlipper>();
         _rb2D = GetComponent<Rigidbody2D>();
         GameManager.Instance.InputController.onMove.AddListener(Move);
     }
@@ -35,17 +35,17 @@ public class PlayerController : MonoBehaviour
             if (dir.Has(Left)) // if left
             {
                 vel.x = -speed;
-                _sprite.flipX = true;
+                _flipper.FlipX = true;
             }
             else if (dir.Has(Right)) // if right
             {
                 vel.x = speed;
-                _sprite.flipX = false;
+                _flipper.FlipX = false;
             }
         }
 
         // if up and isGrounded
-        if (dir.Has(Up) && groundChecker.IsGrounded)
+        if ((dir.Has(Up) && groundChecker.IsGrounded) || groundChecker.NeedToJump)
             vel.y = jumpForce;
 
         _rb2D.velocity = vel;

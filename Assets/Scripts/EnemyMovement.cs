@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(ObjectFlipper))]
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform point1;
@@ -9,13 +10,12 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform _destination;
     private Enemy _enemy;
-
-    private SpriteRenderer _sp;
-
+    private ObjectFlipper _objectFlipper;
+    
     private void Start()
     {
+        _objectFlipper = GetComponent<ObjectFlipper>();
         _destination = point2;
-        _sp = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -24,28 +24,31 @@ public class EnemyMovement : MonoBehaviour
         if (_enemy.state != EnemyState.Walk)
             return;
 
-
-        var right = _destination.position.x > transform.position.x;
-        _sp.flipX = right;
-
-
         var a = transform.position;
         var b = GameManager.Instance.PlayerController.transform.position;
+        var right = a.x < _destination.position.x;
 
-        transform.position =
-            Vector3.MoveTowards(a, _destination.position, movementSpeed * Time.deltaTime);
+        if (_enemy.InRadius(a, b) && (right ? a.x < b.x : b.x < a.x))
+        {
+            _enemy.state = EnemyState.Attack;
+            return;
+        }
 
-        _enemy.TryChangeState(right ? a.x < b.x : a.x > b.x);
+        _objectFlipper.FlipX = right;
+
+        var vel = _enemy.rb2D.velocity;
+        vel.x = Math.Sign(_destination.position.x - a.x) * movementSpeed;
+        _enemy.rb2D.velocity = vel;
 
         ChoosePoint();
     }
 
     private void ChoosePoint()
     {
-        if (!transform.position.Eq(_destination.position))
-            return;
-
-        _destination = _destination == point1 ? point2 : point1;
+        if (transform.position.x < point1.position.x || Math.Abs(transform.position.x - point1.position.x) < 0.1f)
+            _destination = point2;
+        else if (transform.position.x > point2.position.x || Math.Abs(transform.position.x - point2.position.x) < 0.1f)
+            _destination = point1;
     }
 
     public void SetEnemy(Enemy enemy)

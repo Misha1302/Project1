@@ -9,4 +9,10 @@ public static class VectorsExtensions
 
     public static bool Eq(this Vector3 a, Vector3 b) =>
         Math.Abs(a.x - b.x) < 0.1f && Math.Abs(a.y - b.y) < 0.1f && Math.Abs(a.z - b.z) < 0.1f;
+
+    public static Vector2 WithX(this Vector2 a, float x)
+    {
+        a.x = x;
+        return a;
+    }
 }
