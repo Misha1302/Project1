@@ -7,6 +7,6 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.PlayerHealth.onDamage.AddListener(h => healthBar.fillAmount = (float)(h.Value / 100f));
+        GameManager.Instance.PlayerHealth.onDamage.AddListener(h => healthBar.fillAmount = h.Value / 100f);
     }
 }

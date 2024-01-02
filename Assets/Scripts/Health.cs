@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent<Health> onDamage;
     [SerializeField] private float startValue = 100;
 
-    public double Value { get; private set; }
+    public float Value { get; private set; }
     public double PreviousDamage { get; private set; }
 
     private void Start()
@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
         Value = value;
     }
 
-    public void Damage(int damage)
+    public void Damage(float damage)
     {
         Value -= damage;
 
