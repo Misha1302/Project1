@@ -11,8 +11,9 @@ public sealed class GroundChecker : MonoBehaviour
     {
         get
         {
-            var colliders = GetColliders();
-            return colliders.Any(x => x.TryGetComponent<Head>(out _));
+            return false;
+            // var colliders = GetColliders();
+            // return colliders.Any(x => x.TryGetComponent<Head>(out _));
         }
     }
 

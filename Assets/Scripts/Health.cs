@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [HideInInspector] public UnityEvent<Health> onDamage;
     [SerializeField] private float startValue = 100;
+    public string Message { get; private set; }
 
     public float Value { get; private set; }
     public double PreviousDamage { get; private set; }
@@ -24,8 +25,16 @@ public class Health : MonoBehaviour
         Value = value;
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, string message)
     {
+        if (!enabled)
+        {
+            Debug.LogWarning("Health disabled!");
+            return;
+        }
+
+        Message = message;
+
         Value -= damage;
 
         PreviousDamage = damage;

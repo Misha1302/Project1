@@ -11,18 +11,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GroundChecker groundChecker;
     private ObjectFlipper _flipper;
 
-    private Rigidbody2D _rb2D;
+    public Rigidbody2D Rb2D { get; private set; }
 
     private void Start()
     {
         _flipper = GetComponent<ObjectFlipper>();
-        _rb2D = GetComponent<Rigidbody2D>();
+        Rb2D = GetComponent<Rigidbody2D>();
         GameManager.Instance.InputController.onMove.AddListener(Move);
+    }
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.InputController.onMove.AddListener(Move);
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.InputController.onMove.RemoveListener(Move);
     }
 
     private void Move(Direction dir)
     {
-        var vel = _rb2D.velocity;
+        var vel = Rb2D.velocity;
 
 
         // if no left and right or have left and right
@@ -48,6 +60,6 @@ public class PlayerController : MonoBehaviour
         if ((dir.Has(Up) && groundChecker.IsGrounded) || groundChecker.NeedToJump)
             vel.y = jumpForce;
 
-        _rb2D.velocity = vel;
+        Rb2D.velocity = vel;
     }
 }

@@ -8,10 +8,15 @@ public class MonoBehSingleton<T> : MonoBehaviour where T : MonoBehSingleton<T>
 
     private void Awake()
     {
-        if (Instance is not null) 
+        if (Instance is not null)
             ThrowManyInstances();
 
         Instance = (T)this;
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 
     private static void ThrowManyInstances()
