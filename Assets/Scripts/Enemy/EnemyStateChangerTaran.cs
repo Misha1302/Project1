@@ -1,6 +1,5 @@
 ﻿namespace Enemy
 {
-    using System.Linq;
     using UnityEngine;
 
     public class EnemyStateChangerTaran : EnemyStateChanger
@@ -14,10 +13,11 @@
             var startPos = transform.position;
             startPos.y -= 0.5f;
 
-            var hits = Physics2D.RaycastAll(startPos, direction, distance);
-            var isPlayer = hits.Any(x => x.transform.TryGetComponent<PlayerTag>(out _));
+            var hit = Physics2D.Raycast(startPos, direction, distance, LayerMask.GetMask("Default"));
+            if (hit == default)
+                return EnemyState.Walk;
 
-            print(string.Join(", ", hits.Select(x => x.transform.name)));
+            var isPlayer = hit.transform.TryGetComponent<PlayerTag>(out _);
 
             // ReSharper disable Unity.InefficientPropertyAccess
             Debug.DrawLine(startPos, startPos + direction * distance, Color.red);

@@ -2,6 +2,7 @@ namespace Enemy
 {
     using System;
     using System.Collections;
+    using JetBrains.Annotations;
     using UnityEngine;
 
     [RequireComponent(typeof(ObjectFlipper))]
@@ -12,7 +13,7 @@ namespace Enemy
         [SerializeField] private EnemyStateBase walk;
         [SerializeField] private EnemyStateChanger enemyStateChanger;
 
-        private EnemyStateBase _curState;
+        [CanBeNull] private EnemyStateBase _curState;
 
         public EnemyStateChanger EnemyStateChanger => enemyStateChanger;
         public ObjectFlipper ObjectFlipper { get; private set; }
@@ -22,29 +23,33 @@ namespace Enemy
         {
             Rb2D = GetComponent<Rigidbody2D>();
             ObjectFlipper = GetComponent<ObjectFlipper>();
-            ChangeState(EnemyState.Walk);
 
             // ReSharper disable Unity.NoNullPropagation
             attack?.Init(this);
             walk?.Init(this);
+
+
+            ChangeState(EnemyState.Walk);
         }
 
         private void FixedUpdate()
         {
-            print(_curState);
             _curState?.Loop();
         }
 
         public void ChangeState(EnemyState state)
         {
+            _curState?.Exit();
+
             _curState = state switch
             {
                 EnemyState.Attack => attack,
                 EnemyState.Walk => walk,
+                EnemyState.Waiting => null,
                 _ => throw new InvalidOperationException()
             };
 
-            _curState.Enter();
+            _curState?.Enter();
         }
 
         public void WaitAndReset(float seconds, Action start, Action end)
@@ -56,9 +61,9 @@ namespace Enemy
         private IEnumerator WaitAndResetCoroutine(float seconds, Action start, Action end)
         {
             start();
-            _curState = null;
+            ChangeState(EnemyState.Waiting);
             yield return new WaitForSeconds(seconds);
-            _curState = walk;
+            ChangeState(EnemyState.Walk);
             end();
         }
     }
