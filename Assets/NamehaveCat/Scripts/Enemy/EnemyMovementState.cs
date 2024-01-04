@@ -40,7 +40,7 @@
         private void TryChangeDirection()
         {
             var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayerMask.GetMask("Default"));
-            if (hit != default)
+            if (hit != default && !hit.transform.TryGetComponent<PlayerTag>(out _))
                 _dir *= -1;
         }
     }
