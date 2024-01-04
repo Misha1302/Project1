@@ -5,25 +5,9 @@
     public class EnemyMovementState : EnemyStateBase
     {
         [SerializeField] private float speed;
-        private int _dirInternal = -1;
 
-        private int Dir
-        {
-            get => _dirInternal;
-            set
-            {
-                _dirInternal = value;
-                enemy.ObjectFlipper.FlipX = _dirInternal == 1;
-            }
-        }
-
-        protected override void OnColEnter(Collision2D collision2D)
-        {
-            if (collision2D.transform.TryGetComponent<PlayerTag>(out _))
-                return;
-
-            Dir *= -1;
-        }
+        private int _dir = 1;
+        private Vector2 DirVec => Vector2.right * (_dir * speed);
 
         protected override void OnExit()
         {
@@ -31,13 +15,12 @@
 
         protected override void OnEnter()
         {
-            Dir *= -1;
         }
 
         public override void Loop()
         {
             var state = enemy.StateChanger.TryGetNewState(
-                Dir == 1
+                _dir == 1
                     ? Direction.Right
                     : Direction.Left
             );
@@ -48,7 +31,17 @@
                 return;
             }
 
-            enemy.Rb2D.velocity = enemy.Rb2D.velocity.WithX(Dir * speed);
+            TryChangeDirection();
+
+            enemy.ObjectFlipper.FlipX = _dir == 1;
+            enemy.Rb2D.velocity = enemy.Rb2D.velocity.WithX(_dir * speed);
+        }
+
+        private void TryChangeDirection()
+        {
+            var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayerMask.GetMask("Default"));
+            if (hit != default)
+                _dir *= -1;
         }
     }
 }

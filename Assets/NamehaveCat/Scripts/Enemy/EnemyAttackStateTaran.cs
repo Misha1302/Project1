@@ -10,10 +10,7 @@
 
         private int _direction;
 
-        protected override void OnColEnter(Collision2D other)
-        {
-            OnCollision(other);
-        }
+        private Vector2 DirVec => Vector2.right * (_direction * speed);
 
         protected override void OnEnter()
         {
@@ -22,30 +19,40 @@
 
         public override void Loop()
         {
-            enemy.Rb2D.velocity = Vector2.right * (_direction * speed);
+            enemy.Rb2D.velocity = DirVec;
+
+            ExitTaranIfNeed();
         }
 
-        protected override void OnExit()
+        private void ExitTaranIfNeed()
         {
+            var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayerMask.GetMask("Default"));
+            Debug.DrawLine((Vector2)transform.position, (Vector2)transform.position + DirVec, Color.red);
+            if (hit != default)
+            {
+                if (hit.transform.TryGetComponent<PlayerTag>(out _))
+                    GetComponent<FatalDamage>().Damage(hit.transform);
+
+                ExitTaran();
+            }
         }
 
-        private void OnCollision(Collision2D other)
+        private void ExitTaran()
         {
-            if (other.transform.TryGetComponent<GroundTag>(out _))
-                return;
-
             var damage = GetComponent<FatalDamage>();
             enemy.WaitAndReset(cooldown, () =>
             {
                 ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
                 enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-                print(damage.enabled);
             }, () =>
             {
                 damage.enabled = true;
                 enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-                print(damage.enabled);
             });
+        }
+
+        protected override void OnExit()
+        {
         }
     }
 }

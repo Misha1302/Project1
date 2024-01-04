@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
+    using System;
     using UnityEngine;
 
     public class EnemyStateChangerTaran : EnemyStateChanger
@@ -8,6 +9,9 @@
 
         public override EnemyState TryGetNewState(Direction dir)
         {
+            if ((dir & Direction.Left) == 0 && (dir & Direction.Right) == 0)
+                throw new ArgumentException("Dir must be left or right");
+
             // if raycasted to player
             var direction = (dir & Direction.Left) != 0 ? Vector3.left : Vector3.right;
             var startPos = transform.position;

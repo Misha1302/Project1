@@ -13,6 +13,7 @@ namespace NamehaveCat.Scripts.Enemy
         [SerializeField] private EnemyStateBase walk;
         [SerializeField] private EnemyStateChanger stateChanger;
         [SerializeField] private EnemyHead head;
+        [SerializeField] private float colliderRadius = 1.5f;
 
         [CanBeNull] private EnemyStateBase _stateBeh;
 
@@ -20,6 +21,8 @@ namespace NamehaveCat.Scripts.Enemy
         public ObjectFlipper ObjectFlipper { get; private set; }
         public Rigidbody2D Rb2D { get; private set; }
         public EnemyState State { get; private set; }
+
+        public float ColliderRadius => colliderRadius;
 
         private void Start()
         {
@@ -30,6 +33,7 @@ namespace NamehaveCat.Scripts.Enemy
             attack?.Init(this);
             walk?.Init(this);
             head?.Init(this);
+            stateChanger?.Init(this);
 
 
             ChangeState(EnemyState.Walk);

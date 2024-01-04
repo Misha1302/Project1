@@ -31,7 +31,16 @@ namespace NamehaveCat.Scripts.Enemy
                 return;
             }
 
-            _enemy.WaitAndReset(stunTime, null, null);
+            var found = TryGetComponent<FatalDamage>(out var damage);
+            _enemy.WaitAndReset(stunTime, () =>
+            {
+                if (found) ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
+                _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            }, () =>
+            {
+                if (found) damage.enabled = true;
+                _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            });
         }
 
         public void Init(Enemy e)

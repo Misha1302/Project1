@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -198,7 +198,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.81340814, y: 0.4469932}
       - {x: -1.5292889, y: -0.3644782}
-      - {x: -1.5483252, y: -2.178265}
+      - {x: -1.3474051, y: -2.178265}
       - {x: 1.1138649, y: -2.185489}
       - {x: 1.3391302, y: -0.45504838}
       - {x: 0.6372868, y: 0.4767493}
@@ -219,6 +219,7 @@ MonoBehaviour:
   walk: {fileID: 4613489163824528069}
   stateChanger: {fileID: 9114672834712962556}
   head: {fileID: 320816517076011274}
+  colliderRadius: 1
 --- !u!114 &4613489163824528069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d6a80de77292c4a861bdc5ece7d1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  othersToFlip:
+  - {fileID: 49087789204285095}
 --- !u!114 &2343810313413995528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,3 +402,4 @@ MonoBehaviour:
   damageOnStun: 30
   deathMessage: "\u041F\u044B\u0442\u0430\u043B\u0441\u044F \u043E\u0431\u0443\u0437\u0438\u0442\u044C
     \u0441\u0438\u0441\u0442\u0435\u043C\u0443"
+  damageWaitTime: 0.5

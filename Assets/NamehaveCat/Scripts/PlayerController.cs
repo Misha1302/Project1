@@ -1,8 +1,9 @@
-using UnityEngine;
 using static NamehaveCat.Scripts.Direction;
 
 namespace NamehaveCat.Scripts
 {
+    using UnityEngine;
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(ObjectFlipper))]
@@ -26,12 +27,14 @@ namespace NamehaveCat.Scripts
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.AddListener(Move);
+            GetComponent<Collider2D>().enabled = true;
         }
 
         private void OnDisable()
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.RemoveListener(Move);
+            GetComponent<Collider2D>().enabled = false;
         }
 
         private void Move(Direction dir)
