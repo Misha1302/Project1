@@ -3,6 +3,7 @@ namespace NamehaveCat.Scripts.Enemy
     using System;
     using System.Collections;
     using JetBrains.Annotations;
+    using NamehaveCat.Scripts.Different;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -39,7 +40,7 @@ namespace NamehaveCat.Scripts.Enemy
             stateChanger?.Init(this);
 
 
-            ChangeState(EnemyState.Walk);
+            ExecuteInNextFrame.Instance.Execute(() => ChangeState(EnemyState.Walk));
         }
 
         private void FixedUpdate()

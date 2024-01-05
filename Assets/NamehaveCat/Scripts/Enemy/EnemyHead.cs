@@ -1,5 +1,7 @@
 namespace NamehaveCat.Scripts.Enemy
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class EnemyHead : MonoBehaviour
@@ -10,7 +12,7 @@ namespace NamehaveCat.Scripts.Enemy
         [SerializeField] private float damageWaitTime = 0.5f;
 
         private Enemy _enemy;
-        private float _previousTime;
+        private float _previousTime = float.MinValue;
 
         private void OnCollisionStay2D(Collision2D other) => OnCollision(other.transform);
         private void OnTriggerStay2D(Collider2D other) => OnCollision(other.transform);

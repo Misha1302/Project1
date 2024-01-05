@@ -1,6 +1,9 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
     using System;
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class EnemyStateChangerDistance : EnemyStateChanger

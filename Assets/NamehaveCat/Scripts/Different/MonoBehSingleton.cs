@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Different
 {
+    using System;
+    using System.Linq;
+    using UnityEngine;
+
     public class MonoBehSingleton<T> : MonoBehaviour where T : MonoBehSingleton<T>
     {
         public static T Instance { get; private set; }

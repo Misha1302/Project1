@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
+    using NamehaveCat.Scripts.Direction;
     using UnityEngine;
 
     public abstract class EnemyStateChanger : MonoBehaviour

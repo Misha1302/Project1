@@ -1,6 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
     using System;
+    using NamehaveCat.Scripts.Different;
 
     public class ExecuteInNextFrame : MonoBehSingleton<ExecuteInNextFrame>
     {

@@ -1,5 +1,8 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class EnemyMovementState : EnemyStateBase

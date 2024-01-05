@@ -1,11 +1,12 @@
-using System;
-using System.Collections;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Player
 {
+    using System;
+    using System.Collections;
+    using NamehaveCat.Scripts.Different;
+    using TMPro;
+    using UnityEngine;
+    using UnityEngine.UI;
+
     public class PlayerDeath : MonoBehaviour
     {
         [SerializeField] private Image panel;

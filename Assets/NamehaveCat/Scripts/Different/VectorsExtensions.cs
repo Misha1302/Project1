@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Different
 {
+    using System;
+    using UnityEngine;
+
     public static class VectorsExtensions
     {
         // toDegrees(asin(a / c))

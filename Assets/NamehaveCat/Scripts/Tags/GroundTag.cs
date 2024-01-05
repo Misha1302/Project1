@@ -1,7 +1,7 @@
-using UnityEngine;
-
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Tags
 {
+    using UnityEngine;
+
     public class GroundTag : MonoBehaviour
     {
         // Start is called before the first frame update

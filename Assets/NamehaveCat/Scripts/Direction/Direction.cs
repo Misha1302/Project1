@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Direction
 {
+    using System;
+
     [Flags]
     public enum Direction
     {

@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
+    using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]

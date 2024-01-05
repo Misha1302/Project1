@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Velocipedi
 {
+    using UnityEngine;
+    using UnityEngine.Events;
+    using UnityEngine.EventSystems;
+    using UnityEngine.UI;
+
     public class RButton : Button
     {
         [HideInInspector] public UnityEvent onPressed = new();

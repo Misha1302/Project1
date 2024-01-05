@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Different
 {
+    using System;
+    using UnityEngine;
+    using UnityEngine.Events;
+
     public class Health : MonoBehaviour
     {
         [HideInInspector] public UnityEvent<Health> onDamage;

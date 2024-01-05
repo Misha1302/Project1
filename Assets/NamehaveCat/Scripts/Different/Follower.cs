@@ -1,7 +1,7 @@
-using UnityEngine;
-
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Different
 {
+    using UnityEngine;
+
     public class Follower : MonoBehaviour
     {
         [SerializeField] private Transform follow;

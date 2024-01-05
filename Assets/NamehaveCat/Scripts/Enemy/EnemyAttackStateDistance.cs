@@ -1,5 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Direction;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase

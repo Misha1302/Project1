@@ -1,6 +1,8 @@
 ﻿namespace NamehaveCat.Scripts.Enemy
 {
     using System;
+    using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class EnemyStateChangerTaran : EnemyStateChanger

@@ -1,7 +1,9 @@
-using static NamehaveCat.Scripts.Direction;
+using static NamehaveCat.Scripts.Direction.Direction;
 
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Player
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Direction;
     using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody2D))]
@@ -71,13 +73,5 @@ namespace NamehaveCat.Scripts
 
             Rb2D.velocity = vel;
         }
-
-/*
-        private static IEnumerator InvokeAfter(Action action, float f)
-        {
-            yield return new WaitForSeconds(f);
-            action();
-        }
-*/
     }
 }

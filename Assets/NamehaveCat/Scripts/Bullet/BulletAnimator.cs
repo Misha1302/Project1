@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Bullet
 {
+    using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]

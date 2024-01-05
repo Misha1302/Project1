@@ -1,5 +1,6 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Different
 {
+    using NamehaveCat.Scripts.Player;
     using UnityEngine;
 
     public class GameManager : MonoBehSingleton<GameManager>

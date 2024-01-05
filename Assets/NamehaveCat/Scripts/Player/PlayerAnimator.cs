@@ -1,5 +1,7 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Player
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Direction;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]

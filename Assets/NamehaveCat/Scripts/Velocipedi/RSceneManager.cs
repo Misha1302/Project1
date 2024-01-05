@@ -1,7 +1,7 @@
-﻿using UnityEngine.SceneManagement;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Velocipedi
 {
+    using UnityEngine.SceneManagement;
+
     public static class RSceneManager
     {
         public static void Reload() =>
