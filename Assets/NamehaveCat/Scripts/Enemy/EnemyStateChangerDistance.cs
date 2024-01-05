@@ -15,7 +15,7 @@
 
             var rightDist = Math.Abs(a.x - b.x) <= distance;
             var rightAngle = a.Degrees(b) <= maxDegrees;
-            var rightDirection = (dir & Direction.Left) != 0 ? b.x < a.x : a.x < b.x;
+            var rightDirection = dir.Has(Direction.Left) ? b.x < a.x : a.x < b.x;
             var isPlayer = RaycastPlayer(b - a);
 
             return rightDist && rightAngle && rightDirection && isPlayer ? EnemyState.Attack : EnemyState.Walk;

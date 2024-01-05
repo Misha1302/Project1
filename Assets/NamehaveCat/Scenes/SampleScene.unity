@@ -2653,8 +2653,8 @@ Transform:
   m_GameObject: {fileID: 1279318655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.699, z: 0}
-  m_LocalScale: {x: 2, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.08, y: -1.52, z: 0}
+  m_LocalScale: {x: 2.2166, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1428505628}
@@ -2703,7 +2703,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.079664975, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2714,7 +2714,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3565958, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1279318659
 MonoBehaviour:
@@ -3221,17 +3221,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.7202233, y: -1.093252}
-      - {x: 0.9505737, y: -1.6140947}
-      - {x: -1.2109762, y: -1.5969175}
-      - {x: -1.6637293, y: -1.1463838}
-      - {x: -1.7044988, y: 1.3487796}
-      - {x: -1.1242934, y: 1.3207763}
-      - {x: -1.1187804, y: 0.18347514}
-      - {x: -0.03683889, y: 0.19546044}
-      - {x: 0.017033143, y: 1.4950396}
-      - {x: 1.7247043, y: 1.5103624}
-      - {x: 1.7213321, y: -1.0770986}
+    - - {x: 1.285343, y: -1.0845058}
+      - {x: 0.9412989, y: -1.4471483}
+      - {x: -1.0069307, y: -1.4299711}
+      - {x: -1.3205618, y: -1.1185592}
+      - {x: -1.2871327, y: 1.2931308}
+      - {x: -1.0129957, y: 1.3115016}
+      - {x: -1.0167572, y: 0.11855149}
+      - {x: 0.12083274, y: 0.121262014}
+      - {x: 0.12833081, y: 1.2446197}
+      - {x: 1.2723879, y: 1.2598975}
   m_UseDelaunayMesh: 0
 --- !u!114 &1428505632
 MonoBehaviour:
@@ -3802,8 +3801,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2ae06dbf64a54f41a4e2e517bfa4796, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 496d7a1f909f3ba4aaf3de410ad8996e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
