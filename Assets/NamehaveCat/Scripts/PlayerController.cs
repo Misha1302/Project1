@@ -71,5 +71,13 @@ namespace NamehaveCat.Scripts
 
             Rb2D.velocity = vel;
         }
+
+/*
+        private static IEnumerator InvokeAfter(Action action, float f)
+        {
+            yield return new WaitForSeconds(f);
+            action();
+        }
+*/
     }
 }

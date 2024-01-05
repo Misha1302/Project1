@@ -6,7 +6,7 @@
     public class InputController : MonoBehaviour
     {
         [HideInInspector] public UnityEvent<Direction> onMove = new();
-
+        
         [SerializeField] private KeyCode keyLeft;
         [SerializeField] private KeyCode keyRight;
         [SerializeField] private KeyCode keyUp;

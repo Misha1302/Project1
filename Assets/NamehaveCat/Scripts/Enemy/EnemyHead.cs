@@ -14,9 +14,12 @@ namespace NamehaveCat.Scripts.Enemy
 
         private void OnCollisionStay2D(Collision2D other) => OnCollision(other.transform);
         private void OnTriggerStay2D(Collider2D other) => OnCollision(other.transform);
+        private void OnCollisionEnter2D(Collision2D other) => OnCollision(other.transform);
+        private void OnTriggerEnter2D(Collider2D other) => OnCollision(other.transform);
 
         private void OnCollision(Component other)
         {
+            print(other.name);
             if (!other.TryGetComponent<PlayerPawsTag>(out _))
                 return;
 

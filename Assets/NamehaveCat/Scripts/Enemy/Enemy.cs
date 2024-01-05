@@ -4,6 +4,7 @@ namespace NamehaveCat.Scripts.Enemy
     using System.Collections;
     using JetBrains.Annotations;
     using UnityEngine;
+    using UnityEngine.Events;
 
     [RequireComponent(typeof(ObjectFlipper))]
     [RequireComponent(typeof(Rigidbody2D))]
@@ -13,7 +14,9 @@ namespace NamehaveCat.Scripts.Enemy
         [SerializeField] private EnemyStateBase walk;
         [SerializeField] private EnemyStateChanger stateChanger;
         [SerializeField] private EnemyHead head;
-        [SerializeField] private float colliderRadius = 1.5f;
+        [SerializeField] private float colliderRadius = 1f;
+
+        [HideInInspector] public UnityEvent<Enemy> onStateChanged = new();
 
         [CanBeNull] private EnemyStateBase _stateBeh;
 
@@ -58,6 +61,7 @@ namespace NamehaveCat.Scripts.Enemy
             };
 
             _stateBeh?.Enter();
+            onStateChanged?.Invoke(this);
         }
 
         public void WaitAndReset(float seconds, Action start, Action end)
