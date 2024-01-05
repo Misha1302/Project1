@@ -10,8 +10,8 @@
         [SerializeField] private Health playerHealth;
 
         public UiManager UiManager => uiManager;
-        public PlayerController PlayerController => playerController.enabled ? playerController : null;
-        public InputController InputController => inputController.enabled ? inputController : null;
-        public Health PlayerHealth => playerHealth.enabled ? playerHealth : null;
+        public PlayerController PlayerController => playerController;
+        public InputController InputController => inputController;
+        public Health PlayerHealth => playerHealth;
     }
 }

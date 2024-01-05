@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-
-namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts
 {
+    using UnityEngine;
+    using UnityEngine.Events;
+
     public class InputController : MonoBehaviour
     {
-
         [HideInInspector] public UnityEvent<Direction> onMove = new();
 
         [SerializeField] private KeyCode keyLeft;
@@ -18,13 +17,6 @@ namespace NamehaveCat.Scripts
 
         private Direction _dir;
 
-        private void Start()
-        {
-            btnLeft.onPressed.AddListener(() => _dir |= Direction.Left);
-            btnRight.onPressed.AddListener(() => _dir |= Direction.Right);
-            btnUp.onPressed.AddListener(() => _dir |= Direction.Up);
-        }
-
         private void Update()
         {
             if (Input.GetKey(keyLeft)) _dir |= Direction.Left;
@@ -33,6 +25,20 @@ namespace NamehaveCat.Scripts
 
             onMove.Invoke(_dir);
             _dir = 0;
+        }
+
+        private void OnEnable()
+        {
+            btnLeft.onPressed.AddListener(() => _dir |= Direction.Left);
+            btnRight.onPressed.AddListener(() => _dir |= Direction.Right);
+            btnUp.onPressed.AddListener(() => _dir |= Direction.Up);
+        }
+
+        private void OnDisable()
+        {
+            btnLeft.onPressed.RemoveListener(() => _dir |= Direction.Left);
+            btnRight.onPressed.RemoveListener(() => _dir |= Direction.Right);
+            btnUp.onPressed.RemoveListener(() => _dir |= Direction.Up);
         }
     }
 }

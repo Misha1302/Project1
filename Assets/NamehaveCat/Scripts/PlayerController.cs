@@ -12,7 +12,9 @@ namespace NamehaveCat.Scripts
         [SerializeField] private float speed = 4;
         [SerializeField] private float jumpForce = 8;
         [SerializeField] private GroundChecker groundChecker;
+
         private ObjectFlipper _flipper;
+        public GroundChecker GroundChecker => groundChecker;
 
         public Rigidbody2D Rb2D { get; private set; }
 
@@ -28,6 +30,7 @@ namespace NamehaveCat.Scripts
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.AddListener(Move);
             GetComponent<Collider2D>().enabled = true;
+            if (Rb2D != null) Rb2D.WakeUp();
         }
 
         private void OnDisable()
@@ -35,6 +38,7 @@ namespace NamehaveCat.Scripts
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.RemoveListener(Move);
             GetComponent<Collider2D>().enabled = false;
+            Rb2D.Sleep();
         }
 
         private void Move(Direction dir)
@@ -62,7 +66,7 @@ namespace NamehaveCat.Scripts
             }
 
             // if up and isGrounded
-            if ((dir.Has(Up) && groundChecker.IsGrounded) || groundChecker.NeedToJump)
+            if (dir.Has(Up) && groundChecker.IsGrounded)
                 vel.y = jumpForce;
 
             Rb2D.velocity = vel;

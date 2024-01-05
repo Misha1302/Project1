@@ -33,7 +33,7 @@ namespace NamehaveCat.Scripts
             });
         }
 
-        private IEnumerator InvokeAfter(Action action, float deathAnimationsTotalTime)
+        private static IEnumerator InvokeAfter(Action action, float deathAnimationsTotalTime)
         {
             yield return new WaitForSeconds(deathAnimationsTotalTime);
             action();
@@ -41,7 +41,7 @@ namespace NamehaveCat.Scripts
 
         private static void KillPlayer(Animator player)
         {
-            player.SetTrigger(AnimatorHelper.Death);
+            player.SetBool(AnimatorHelper.Death, true);
 
             GameManager.Instance.PlayerController.enabled = false;
             GameManager.Instance.PlayerHealth.enabled = false;
