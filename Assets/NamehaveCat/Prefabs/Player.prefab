@@ -100,7 +100,6 @@ GameObject:
   - component: {fileID: 3272506504392688688}
   - component: {fileID: 2699199015822349854}
   - component: {fileID: 5441297330785802387}
-  - component: {fileID: 6406007236130768000}
   - component: {fileID: 6594001258065085078}
   m_Layer: 0
   m_Name: Player
@@ -242,8 +241,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.285343, y: -1.0845058}
+      - {x: 1.0938869, y: -1.2641859}
       - {x: 0.9412989, y: -1.4471483}
       - {x: -1.0069307, y: -1.4299711}
+      - {x: -1.129545, y: -1.2592587}
       - {x: -1.3205618, y: -1.1185592}
       - {x: -1.2871327, y: 1.2931308}
       - {x: -1.0129957, y: 1.3115016}
@@ -285,21 +286,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6406007236130768000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6122262628995318397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ae9e2bb7579834e8c4df8b37580a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  messageText: {fileID: 0}
-  format: '{0}...'
 --- !u!114 &6594001258065085078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 8396304561558080338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -1.52, z: 0}
+  m_LocalPosition: {x: -0.08, y: -1.288, z: 0}
   m_LocalScale: {x: 2.2166, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
