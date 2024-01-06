@@ -8,9 +8,13 @@
     public class EnemyStateChangerTaran : EnemyStateChanger
     {
         [SerializeField] private float distance;
+        [SerializeField] private float cooldown = 5.5f;
 
         public override EnemyState TryGetNewState(Direction dir)
         {
+            if (Time.time < StateChangeTime + cooldown)
+                return EnemyState.Walk;
+
             if (!dir.Has(Direction.Left) && !dir.Has(Direction.Right))
                 throw new ArgumentException("Dir must be left or right");
 
