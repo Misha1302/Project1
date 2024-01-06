@@ -6,12 +6,13 @@
     public abstract class EnemyStateChanger : MonoBehaviour
     {
         private bool _attack;
-        protected float StateAttackChangedTime { get; private set; }
+        protected float StateAttackChangedTime { get; private set; } = float.MinValue;
 
         public void Init(Enemy e)
         {
             e.onStateChanged.AddListener(_ =>
             {
+                // remake
                 if (_attack) StateAttackChangedTime = Time.time;
                 _attack = e.State == EnemyState.Attack;
             });

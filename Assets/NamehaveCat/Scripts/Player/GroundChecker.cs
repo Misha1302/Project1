@@ -1,16 +1,23 @@
 ﻿namespace NamehaveCat.Scripts.Player
 {
+    using System;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     [RequireComponent(typeof(BoxCollider2D))]
     public sealed class GroundChecker : MonoBehaviour
     {
-        private BoxCollider2D _mainCollider;
         public bool IsGrounded => GetIsGrounded();
 
         private void Start()
         {
-            _mainCollider = GetComponent<BoxCollider2D>();
+            if (GetComponent<BoxCollider2D>().size != Vector2.one)
+                throw new InvalidOperationException();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawCube(transform.position, transform.lossyScale);
         }
 
         private bool GetIsGrounded()
@@ -19,7 +26,7 @@
 
             var isGrounded = false;
             foreach (var t in colliders)
-                if (!t.transform.CompareTag("Player"))
+                if (!t.TryGetComponent<PlayerTag>(out _))
                 {
                     isGrounded = true;
                     break;
@@ -28,16 +35,8 @@
             return isGrounded;
         }
 
-        private Collider2D[] GetColliders()
-        {
-            var colliderBounds = _mainCollider.bounds;
-            var colliderRadius = _mainCollider.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
-            var groundCheckPos =
-                colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
-
-            // ReSharper disable once Unity.PreferNonAllocApi
-            var colliders = Physics2D.OverlapCircleAll(groundCheckPos, colliderRadius);
-            return colliders;
-        }
+        // ReSharper disable once Unity.PreferNonAllocApi
+        private Collider2D[] GetColliders() =>
+            Physics2D.OverlapBoxAll(transform.position, transform.lossyScale, 0);
     }
 }
