@@ -1501,7 +1501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &578895406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 699093422}
   - component: {fileID: 699093421}
   m_Layer: 5
-  m_Name: Message
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,8 +1638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u043C\u0435\u0440 \u043E\u0442 \u0441\u0442\u043E\u043B\u044C \u0441\u0438\u043B\u044C\u043D\u044B\u0445
-    \u043E\u0431\u044C\u044F\u0442\u0438\u0439"
+  m_text: "\u0423\u043C\u0435\u0440 \u043E\u0442 XXX..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1648,7 +1647,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 255
   m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
