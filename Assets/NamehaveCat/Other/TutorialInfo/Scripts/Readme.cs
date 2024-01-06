@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
-
-namespace NamehaveCat.TutorialInfo.Scripts
+﻿namespace NamehaveCat.Other.TutorialInfo.Scripts
 {
+    using System;
+    using UnityEngine;
+
     public class Readme : ScriptableObject
     {
         public Texture2D icon;

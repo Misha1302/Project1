@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed35d41be8ad4896841b41c71f666014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 6.5
   cooldown: 5
   startTime: 0.685
 --- !u!114 &9114672834712962556
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 5
+  cooldown: 5.5
 --- !u!114 &6625105075574402797
 MonoBehaviour:
   m_ObjectHideFlags: 0
