@@ -5,11 +5,16 @@
 
     public abstract class EnemyStateChanger : MonoBehaviour
     {
-        protected float StateChangeTime { get; private set; } = float.MinValue;
+        private bool _attack;
+        protected float StateAttackChangedTime { get; private set; }
 
         public void Init(Enemy e)
         {
-            e.onStateChanged.AddListener(_ => StateChangeTime = Time.time);
+            e.onStateChanged.AddListener(_ =>
+            {
+                if (_attack) StateAttackChangedTime = Time.time;
+                _attack = e.State == EnemyState.Attack;
+            });
         }
 
         public abstract EnemyState TryGetNewState(Direction dir);

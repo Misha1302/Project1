@@ -12,7 +12,7 @@
 
         public override EnemyState TryGetNewState(Direction dir)
         {
-            if (Time.time < StateChangeTime + cooldown)
+            if (Time.time < StateAttackChangedTime + cooldown)
                 return EnemyState.Walk;
 
             if (!dir.Has(Direction.Left) && !dir.Has(Direction.Right))

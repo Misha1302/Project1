@@ -2,6 +2,7 @@
 {
     public enum EnemyState
     {
+        Invalid,
         Walk,
         Attack,
         Waiting
