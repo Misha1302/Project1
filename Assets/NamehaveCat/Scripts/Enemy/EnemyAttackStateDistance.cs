@@ -41,6 +41,7 @@
             sb.position = position;
             sb.velocity = direction;
             sb.GetComponent<ObjectFlipper>().FlipX = right;
+            Destroy(sb, 60);
 
             enemy.ObjectFlipper.FlipX = right;
         }

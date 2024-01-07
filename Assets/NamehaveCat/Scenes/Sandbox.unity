@@ -4159,7 +4159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: speed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: height
@@ -4167,7 +4167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: duration
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: downSpeed
