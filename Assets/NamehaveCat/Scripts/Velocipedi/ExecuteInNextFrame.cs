@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Velocipedi
 {
     using System;
     using NamehaveCat.Scripts.Different;

@@ -5,6 +5,7 @@
     using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Enemy;
     using NamehaveCat.Scripts.Extensions;
+    using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
 
     // The main feature is to jump with different heights depending on the duration of pressing the button

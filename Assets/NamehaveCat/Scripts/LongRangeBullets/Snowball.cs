@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.LongRangeBullets
 {
     using JetBrains.Annotations;
     using NamehaveCat.Scripts.Different;

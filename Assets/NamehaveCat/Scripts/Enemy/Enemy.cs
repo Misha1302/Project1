@@ -4,6 +4,7 @@ namespace NamehaveCat.Scripts.Enemy
     using System.Collections;
     using JetBrains.Annotations;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
     using UnityEngine.Events;
 

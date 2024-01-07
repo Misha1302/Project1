@@ -1,7 +1,7 @@
-using UnityEngine;
-
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Velocipedi
 {
+    using UnityEngine;
+
     public class EnableOnlyInBuild : MonoBehaviour
     {
         private void Awake()

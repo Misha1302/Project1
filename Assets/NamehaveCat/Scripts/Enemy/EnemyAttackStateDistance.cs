@@ -2,6 +2,7 @@
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.LongRangeBullets;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase
