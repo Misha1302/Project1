@@ -56,7 +56,7 @@
         private void ResetBuffer()
         {
             _buffer = standardBuffer;
-            GameManager.Instance.InputController.upAxisStartTime = Time.time;
+            GameManager.Instance.InputController.ResetUpAxis();
         }
 
         public void TryJump(bool isGrounded)

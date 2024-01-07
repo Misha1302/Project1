@@ -14,7 +14,7 @@
 
         private Direction _dir;
 
-        public float upAxisStartTime;
+        private float _upAxisStartTime;
 
         private void Start()
         {
@@ -22,8 +22,8 @@
             GameManager.Instance.UiManager.BtnRight.onPressed.AddListener(() => _dir |= Direction.Right);
             GameManager.Instance.UiManager.BtnUp.onPressed.AddListener(() => _dir |= Direction.Up);
 
-            GameManager.Instance.UiManager.BtnUp.onStart.AddListener(() => upAxisStartTime = Time.time);
-            GameManager.Instance.UiManager.BtnUp.onEnd.AddListener(() => upAxisStartTime = 0);
+            GameManager.Instance.UiManager.BtnUp.onStart.AddListener(() => _upAxisStartTime = Time.time);
+            GameManager.Instance.UiManager.BtnUp.onEnd.AddListener(() => _upAxisStartTime = 0);
         }
 
         private void Update()
@@ -32,8 +32,8 @@
             if (Input.GetKey(keyRight)) _dir |= Direction.Right;
             if (Input.GetKey(keyUp)) _dir |= Direction.Up;
 
-            if (Input.GetKeyDown(keyUp)) upAxisStartTime = Time.time;
-            if (Input.GetKeyUp(keyUp)) upAxisStartTime = 0;
+            if (Input.GetKeyDown(keyUp)) _upAxisStartTime = Time.time;
+            if (Input.GetKeyUp(keyUp)) _upAxisStartTime = 0;
 
             onMove.Invoke(_dir);
             _dir = 0;
@@ -46,6 +46,8 @@
             GameManager.Instance.UiManager.BtnUp.onPressed.RemoveAllListeners();
         }
 
-        public float UpAxis(float scale) => upAxisStartTime != 0 ? scale - (Time.time - upAxisStartTime) : 0;
+        public float UpAxis(float scale) => _upAxisStartTime != 0 ? scale - (Time.time - _upAxisStartTime) : 0;
+
+        public void ResetUpAxis() => _upAxisStartTime = Time.time;
     }
 }
