@@ -8,7 +8,7 @@
     {
         [SerializeField] private float snowballSpeed;
         [SerializeField] private float cooldown;
-        [SerializeField] private Rigidbody2D snowball;
+        [SerializeField] private Snowball snowball;
 
         private float _previousTime = float.NegativeInfinity;
 
@@ -37,11 +37,11 @@
 
             var sb = Instantiate(snowball);
 
-            sb.excludeLayers = LayerMask.GetMask("Enemy");
-            sb.position = position;
-            sb.velocity = direction;
-            sb.GetComponent<ObjectFlipper>().FlipX = right;
-            Destroy(sb, 60);
+            sb.Rb2D.excludeLayers = LayerMask.GetMask("Enemy");
+            sb.Rb2D.position = position;
+            sb.Rb2D.velocity = direction;
+            sb.Flipper.FlipX = right;
+            Destroy(sb.gameObject, 60);
 
             enemy.ObjectFlipper.FlipX = right;
         }

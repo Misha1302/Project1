@@ -186,6 +186,9 @@ MonoBehaviour:
   stateChanger: {fileID: 3910826091006479628}
   head: {fileID: 2445576019845730281}
   colliderRadius: 1
+  onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4179031880854916486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballSpeed: 6
   cooldown: 1
-  snowball: {fileID: -7492542611763336387, guid: ccf3a52aa243b9f42b2a77754a164d8f, type: 3}
+  snowball: {fileID: -5429221494352452711, guid: ccf3a52aa243b9f42b2a77754a164d8f, type: 3}
 --- !u!114 &3910826091006479628
 MonoBehaviour:
   m_ObjectHideFlags: 0
