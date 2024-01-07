@@ -1,5 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using NamehaveCat.Scripts.Direction;
     using UnityEngine;
     using UnityEngine.Events;
@@ -8,46 +10,40 @@
     {
         [HideInInspector] public UnityEvent<Direction> onMove = new();
 
-        [SerializeField] private KeyCode keyLeft;
-        [SerializeField] private KeyCode keyRight;
-        [SerializeField] private KeyCode keyUp;
+        [SerializeField] private KeyCode[] keysLeft = { KeyCode.A, KeyCode.LeftArrow };
+        [SerializeField] private KeyCode[] keysRight = { KeyCode.D, KeyCode.RightArrow };
+        [SerializeField] private KeyCode[] keysUp = { KeyCode.Space, KeyCode.UpArrow };
+
+        public readonly Dictionary<Direction, Axis> axes = new();
 
         private Direction _dir;
 
-        private float _upAxisStartTime;
-
         private void Start()
         {
-            GameManager.Instance.UiManager.BtnLeft.onPressed.AddListener(() => _dir |= Direction.Left);
-            GameManager.Instance.UiManager.BtnRight.onPressed.AddListener(() => _dir |= Direction.Right);
-            GameManager.Instance.UiManager.BtnUp.onPressed.AddListener(() => _dir |= Direction.Up);
+            InstantiateAxes();
 
-            GameManager.Instance.UiManager.BtnUp.onStart.AddListener(() => _upAxisStartTime = Time.time);
-            GameManager.Instance.UiManager.BtnUp.onEnd.AddListener(() => _upAxisStartTime = 0);
+            axes[Direction.Left].onPressed.AddListener(() => _dir |= Direction.Left);
+            axes[Direction.Right].onPressed.AddListener(() => _dir |= Direction.Right);
+            axes[Direction.Up].onPressed.AddListener(() => _dir |= Direction.Up);
         }
 
         private void Update()
         {
-            if (Input.GetKey(keyLeft)) _dir |= Direction.Left;
-            if (Input.GetKey(keyRight)) _dir |= Direction.Right;
-            if (Input.GetKey(keyUp)) _dir |= Direction.Up;
-
-            if (Input.GetKeyDown(keyUp)) _upAxisStartTime = Time.time;
-            if (Input.GetKeyUp(keyUp)) _upAxisStartTime = 0;
-
             onMove.Invoke(_dir);
-            _dir = 0;
+            _dir = Direction.None;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.UiManager.BtnLeft.onPressed.RemoveAllListeners();
-            GameManager.Instance.UiManager.BtnRight.onPressed.RemoveAllListeners();
-            GameManager.Instance.UiManager.BtnUp.onPressed.RemoveAllListeners();
+            foreach (var (_, axis) in axes.Where(axis => axis.Value != null)) 
+                axis.enabled = false;
         }
 
-        public float UpAxis(float scale) => _upAxisStartTime != 0 ? scale - (Time.time - _upAxisStartTime) : 0;
-
-        public void ResetUpAxis() => _upAxisStartTime = Time.time;
+        private void InstantiateAxes()
+        {
+            axes.Add(Direction.Left, Axis.CreateInstance(GameManager.Instance.UiManager.BtnLeft, keysLeft));
+            axes.Add(Direction.Right, Axis.CreateInstance(GameManager.Instance.UiManager.BtnRight, keysRight));
+            axes.Add(Direction.Up, Axis.CreateInstance(GameManager.Instance.UiManager.BtnUp, keysUp));
+        }
     }
 }

@@ -2313,6 +2313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1123416878}
   - component: {fileID: 1123416877}
+  - component: {fileID: 1123416879}
   m_Layer: 0
   m_Name: '[Music]'
   m_TagString: Untagged
@@ -2431,6 +2432,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 789141290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1123416879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123416876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c39e03b15a6411468f03ce0fc3c8e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1131812761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,10 +3004,9 @@ MonoBehaviour:
   onMove:
     m_PersistentCalls:
       m_Calls: []
-  keyLeft: 97
-  keyRight: 100
-  keyUp: 32
-  upAxisStartTime: 0
+  keysLeft: 6100000014010000
+  keysRight: 6400000013010000
+  keysUp: 2000000011010000
 --- !u!4 &1455767859
 Transform:
   m_ObjectHideFlags: 0
@@ -4146,12 +4158,24 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
-      propertyPath: downSpeed
+      propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: height
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: duration
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: downSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: standardBuffer
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

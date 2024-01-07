@@ -4,6 +4,7 @@ namespace NamehaveCat.Scripts.Player
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody2D))]

@@ -2,6 +2,7 @@
 {
     using System;
     using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Different
+﻿namespace NamehaveCat.Scripts.Extensions
 {
     using System;
     using UnityEngine;
