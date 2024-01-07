@@ -8,6 +8,8 @@
     public class RButton : Button
     {
         [HideInInspector] public UnityEvent onPressed = new();
+        [HideInInspector] public UnityEvent onStart = new();
+        [HideInInspector] public UnityEvent onEnd = new();
 
         private bool _pressed;
 
@@ -21,12 +23,14 @@
         {
             _pressed = true;
             base.OnPointerDown(eventData);
+            onStart.Invoke();
         }
 
         public override void OnPointerUp(PointerEventData eventData)
         {
             _pressed = false;
             base.OnPointerUp(eventData);
+            onEnd.Invoke();
         }
     }
 }

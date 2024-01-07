@@ -9,19 +9,21 @@ namespace NamehaveCat.Scripts.Player
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(ObjectFlipper))]
+    [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float speed = 4;
-        [SerializeField] private float jumpForce = 8;
         [SerializeField] private GroundChecker groundChecker;
 
         private ObjectFlipper _flipper;
+        private PlayerJumper _playerJumper;
         public GroundChecker GroundChecker => groundChecker;
 
         public Rigidbody2D Rb2D { get; private set; }
 
         private void Start()
         {
+            _playerJumper = GetComponent<PlayerJumper>();
             _flipper = GetComponent<ObjectFlipper>();
             Rb2D = GetComponent<Rigidbody2D>();
             GameManager.Instance.InputController.onMove.AddListener(Move);
@@ -47,7 +49,6 @@ namespace NamehaveCat.Scripts.Player
         {
             var vel = Rb2D.velocity;
 
-
             // if no left and right or have left and right
             if ((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right)))
             {
@@ -67,9 +68,9 @@ namespace NamehaveCat.Scripts.Player
                 }
             }
 
-            // if up and isGrounded
-            if (dir.Has(Up) && groundChecker.IsGrounded)
-                vel.y = jumpForce;
+            // if up 
+            if (dir.Has(Up))
+                _playerJumper.TryJump(groundChecker.IsGrounded);
 
             Rb2D.velocity = vel;
         }

@@ -1902,6 +1902,12 @@ MonoBehaviour:
   onPressed:
     m_PersistentCalls:
       m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &870097122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,6 +2295,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1123416876
@@ -2982,6 +2994,7 @@ MonoBehaviour:
   keyLeft: 97
   keyRight: 100
   keyUp: 32
+  upAxisStartTime: 0
 --- !u!4 &1455767859
 Transform:
   m_ObjectHideFlags: 0
@@ -3546,6 +3559,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1798373694 stripped
@@ -4125,6 +4144,14 @@ PrefabInstance:
     - target: {fileID: 6122262628995318397, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: downSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: standardBuffer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
