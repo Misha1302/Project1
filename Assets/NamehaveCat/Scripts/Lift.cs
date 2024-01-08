@@ -1,5 +1,7 @@
 namespace NamehaveCat.Scripts
 {
+    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class Lift : MonoBehaviour
@@ -9,12 +11,18 @@ namespace NamehaveCat.Scripts
         [SerializeField] private Transform bottom;
 
         private LiftDirection _direction;
+        private bool _havePlayer;
 
         private Vector3 Destination => _direction == LiftDirection.Top ? top.position : bottom.position;
 
         private void Update()
         {
-            transform.Translate(Destination * (Time.deltaTime * speed));
+            var vec = Destination * (Time.deltaTime * speed);
+
+            transform.Translate(vec);
+            if (_havePlayer)
+                GameManager.Instance.PlayerController.transform.Translate(vec);
+
             TryChangeDirection();
         }
 
@@ -33,6 +41,15 @@ namespace NamehaveCat.Scripts
         {
             Top,
             Bottom
+        }
+
+        private void OnCollisionEnter2D(Collision2D other) =>
+            _havePlayer = _havePlayer || other.transform.TryGetComponent<PlayerTag>(out _);
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (other.transform.TryGetComponent<PlayerTag>(out _))
+                _havePlayer = false;
         }
     }
 }
