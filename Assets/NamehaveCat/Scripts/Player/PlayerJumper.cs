@@ -3,6 +3,7 @@
     using System;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
 
@@ -65,9 +66,8 @@
 
         private void Jump()
         {
-            var vel = GameManager.Instance.PlayerController.Rb2D.velocity;
-            vel.y = speed;
-            GameManager.Instance.PlayerController.Rb2D.velocity = vel;
+            var rb = GameManager.Instance.PlayerController.Rb2D;
+            rb.velocity = rb.velocity.WithY(speed);
         }
     }
 }

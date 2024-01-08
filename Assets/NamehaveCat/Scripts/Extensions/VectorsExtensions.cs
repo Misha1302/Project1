@@ -17,5 +17,11 @@
             a.x = x;
             return a;
         }
+
+        public static Vector2 WithY(this Vector2 a, float y)
+        {
+            a.y = y;
+            return a;
+        }
     }
 }

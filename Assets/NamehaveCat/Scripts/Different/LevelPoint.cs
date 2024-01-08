@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Different
 {
     using NamehaveCat.Scripts.Tags;
     using NamehaveCat.Scripts.Velocipedi;
