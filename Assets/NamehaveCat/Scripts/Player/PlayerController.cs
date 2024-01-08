@@ -14,9 +14,9 @@ namespace NamehaveCat.Scripts.Player
     [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float force = 4.5f;
-        [SerializeField] private float forceInFly = 3f;
-        [SerializeField] private float maxSpeed = 4.5f;
+        [SerializeField] private float force = 40f;
+        [SerializeField] private float forceInFly = 8f;
+        [SerializeField] private float maxSpeed = 4f;
         [SerializeField] private GroundChecker groundChecker;
 
         private ObjectFlipper _flipper;
@@ -62,12 +62,12 @@ namespace NamehaveCat.Scripts.Player
             {
                 if (dir.Has(Left)) // if left
                 {
-                    Rb2D.AddForce(Vector2.left * Speed);
+                    Rb2D.AddForce(Vector2.left * Speed * Time.deltaTime);
                     _flipper.FlipX = true;
                 }
                 else if (dir.Has(Right)) // if right
                 {
-                    Rb2D.AddForce(Vector2.right * Speed);
+                    Rb2D.AddForce(Vector2.right * Speed * Time.deltaTime);
                     _flipper.FlipX = false;
                 }
             }

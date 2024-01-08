@@ -7,7 +7,9 @@
     [RequireComponent(typeof(BoxCollider2D))]
     public sealed class GroundChecker : MonoBehaviour
     {
+        private readonly Collider2D[] _results = new Collider2D[128];
         public bool IsGrounded => GetIsGrounded();
+
 
         private void Start()
         {
@@ -25,8 +27,10 @@
             var colliders = GetColliders();
 
             var isGrounded = false;
-            foreach (var t in colliders)
-                if (!t.TryGetComponent<PlayerTag>(out _))
+            // ReSharper disable once ForCanBeConvertedToForeach
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            for (var index = 0; index < colliders.Count; index++)
+                if (!colliders[index].TryGetComponent<PlayerTag>(out _))
                 {
                     isGrounded = true;
                     break;
@@ -35,8 +39,10 @@
             return isGrounded;
         }
 
-        // ReSharper disable once Unity.PreferNonAllocApi
-        private Collider2D[] GetColliders() =>
-            Physics2D.OverlapBoxAll(transform.position, transform.lossyScale, 0);
+        private ArraySegment<Collider2D> GetColliders()
+        {
+            var len = Physics2D.OverlapBoxNonAlloc(transform.position, transform.lossyScale, 0, _results);
+            return new ArraySegment<Collider2D>(_results, 0, len);
+        }
     }
 }

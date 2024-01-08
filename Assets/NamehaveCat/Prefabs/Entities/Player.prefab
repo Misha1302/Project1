@@ -101,9 +101,10 @@ GameObject:
   - component: {fileID: 2699199015822349854}
   - component: {fileID: 5441297330785802387}
   - component: {fileID: 6594001258065085078}
+  - component: {fileID: 7284732418751983883}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6268fc2b012efc46a4e683f6b655141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  jumpForce: 9.6
+  force: 45
+  forceInFly: 15
+  maxSpeed: 4.5
   groundChecker: {fileID: 3600268821193076198}
 --- !u!114 &6660776101089277347
 MonoBehaviour:
@@ -298,6 +300,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649df03680fa6b546bd7331fa91bb7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7284732418751983883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122262628995318397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084b8082a1614ada86be7cb6ae94c510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  standardBuffer: 1
 --- !u!1 &8396304561558080338
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +329,7 @@ GameObject:
   - component: {fileID: 1827529378194616601}
   m_Layer: 0
   m_Name: Paws
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
