@@ -21,6 +21,9 @@
 
         public void Execute(Action func)
         {
+            if (_len < 0 || _len >= _funcs.Length)
+                Thrower.Throw(new IndexOutOfRangeException("Too many functions to execute in the next frame"));
+
             _funcs[_len] = func;
             _len++;
         }
