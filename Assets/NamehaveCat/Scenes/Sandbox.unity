@@ -207,6 +207,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &63664180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3600268821193076198, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+  m_PrefabInstance: {fileID: 2185278331519291942}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fde7acd9284446a2bdf3c2c2382d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &68563292
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,6 +4283,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6766944220390659629, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: force
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766944220390659629, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766944220390659629, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: forceInFly
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766944220390659629, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: speedInFly
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766944220390659629, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
+      propertyPath: groundChecker
+      value: 
+      objectReference: {fileID: 63664180}
     - target: {fileID: 7284732418751983883, guid: 456a8e8eed9f4ce4bae1169106a1f221, type: 3}
       propertyPath: speed
       value: 10

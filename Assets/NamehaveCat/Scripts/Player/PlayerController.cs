@@ -2,6 +2,7 @@ using static NamehaveCat.Scripts.Direction.Direction;
 
 namespace NamehaveCat.Scripts.Player
 {
+    using System;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
@@ -13,7 +14,9 @@ namespace NamehaveCat.Scripts.Player
     [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float speed = 4;
+        [SerializeField] private float force = 4.5f;
+        [SerializeField] private float forceInFly = 3f;
+        [SerializeField] private float maxSpeed = 4.5f;
         [SerializeField] private GroundChecker groundChecker;
 
         private ObjectFlipper _flipper;
@@ -21,6 +24,8 @@ namespace NamehaveCat.Scripts.Player
         public GroundChecker GroundChecker => groundChecker;
 
         public Rigidbody2D Rb2D { get; private set; }
+
+        private float Speed => groundChecker.IsGrounded ? force : forceInFly;
 
         private void Start()
         {
@@ -48,32 +53,36 @@ namespace NamehaveCat.Scripts.Player
 
         private void Move(Direction dir)
         {
-            var vel = Rb2D.velocity;
-
-            // if no left and right or have left and right
-            if ((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right)))
+            // if (no left and right) OR (have left and right) AND (is grounded)
+            if (((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right))) && groundChecker.IsGrounded)
             {
-                vel.x = 0;
+                Rb2D.velocity = Rb2D.velocity.WithX(0);
             }
             else // if left or right
             {
                 if (dir.Has(Left)) // if left
                 {
-                    vel.x = -speed;
+                    Rb2D.AddForce(Vector2.left * Speed);
                     _flipper.FlipX = true;
                 }
                 else if (dir.Has(Right)) // if right
                 {
-                    vel.x = speed;
+                    Rb2D.AddForce(Vector2.right * Speed);
                     _flipper.FlipX = false;
                 }
             }
 
+            LimitSpeed();
+
+
             // if up 
             if (dir.Has(Up))
                 _playerJumper.TryJump(groundChecker.IsGrounded);
+        }
 
-            Rb2D.velocity = vel;
+        private void LimitSpeed()
+        {
+            Rb2D.velocity = Rb2D.velocity.WithX(Math.Clamp(Rb2D.velocity.x, -maxSpeed, maxSpeed));
         }
     }
 }
