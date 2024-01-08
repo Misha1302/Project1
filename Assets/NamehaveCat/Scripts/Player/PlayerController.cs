@@ -14,8 +14,8 @@ namespace NamehaveCat.Scripts.Player
     [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float force = 40f;
-        [SerializeField] private float forceInFly = 8f;
+        [SerializeField] private float force = 4_000f;
+        [SerializeField] private float forceInFly = 1_000f;
         [SerializeField] private float maxSpeed = 4f;
         [SerializeField] private GroundChecker groundChecker;
 

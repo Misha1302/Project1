@@ -9,7 +9,7 @@
     // The main feature is to jump with different heights depending on the duration of pressing the button
     public class PlayerJumper : MonoBehaviour
     {
-        [SerializeField] private float speed = 9.6f;
+        [SerializeField] private float speed = 9f;
         [SerializeField] private int standardBuffer = 1;
 
         private int _buffer;
