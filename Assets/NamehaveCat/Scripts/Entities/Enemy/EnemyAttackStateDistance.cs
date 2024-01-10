@@ -1,8 +1,8 @@
-﻿namespace NamehaveCat.Scripts.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
-    using NamehaveCat.Scripts.LongRangeBullets;
+    using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase

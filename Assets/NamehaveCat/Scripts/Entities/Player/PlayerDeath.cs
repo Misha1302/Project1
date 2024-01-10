@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Player
+namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
     using System.Collections;

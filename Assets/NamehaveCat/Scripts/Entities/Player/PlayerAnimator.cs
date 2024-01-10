@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Player
+namespace NamehaveCat.Scripts.Entities.Player
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;

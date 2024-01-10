@@ -1,6 +1,5 @@
 namespace NamehaveCat.Scripts.Different
 {
-    using System;
     using UnityEngine;
 
     public class FatalDamage : MonoBehaviour
@@ -9,6 +8,9 @@ namespace NamehaveCat.Scripts.Different
 
         private void OnCollisionEnter2D(Collision2D other) => Damage(other.transform);
         private void OnCollisionStay2D(Collision2D other) => Damage(other.transform);
+
+        private void OnTriggerEnter2D(Collider2D other) => Damage(other.transform);
+        private void OnTriggerStay2D(Collider2D other) => Damage(other.transform);
 
         public void Damage(Transform t)
         {

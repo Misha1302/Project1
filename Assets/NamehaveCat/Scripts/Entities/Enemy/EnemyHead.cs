@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Enemy
+namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Tags;

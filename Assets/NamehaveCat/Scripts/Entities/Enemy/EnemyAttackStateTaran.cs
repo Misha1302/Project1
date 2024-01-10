@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using System;
     using NamehaveCat.Scripts.Different;

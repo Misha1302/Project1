@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Lift
 {
     using NamehaveCat.Scripts.Different;
     using UnityEngine;

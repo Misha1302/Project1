@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Player
+﻿namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
     using NamehaveCat.Scripts.Different;
@@ -33,7 +33,7 @@
         private void Start()
         {
             // execute in next frame 'cause GameManager initializing in Awake, InputController in Start, PlayerJumper in next frame
-            ExecuteInNextFrame.Instance.Execute(ResetBuffer);
+            // ExecuteInNextFrame.Instance.Execute(ResetBuffer);
             ExecuteInNextFrame.Instance.Execute(() =>
                 GameManager.Instance.InputController.axes[Direction.Up].onEnd.AddListener(() => _isJumping = false));
         }
@@ -66,8 +66,11 @@
 
         private void Jump()
         {
-            var rb = GameManager.Instance.PlayerController.Rb2D;
-            rb.velocity = rb.velocity.WithY(speed);
+            ExecuteInNextFrame.Instance.Execute(() =>
+            {
+                var rb = GameManager.Instance.PlayerController.Rb2D;
+                rb.velocity = rb.velocity.WithY(speed);
+            });
         }
     }
 }

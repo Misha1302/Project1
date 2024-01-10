@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.LongRangeBullets
+﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using NamehaveCat.Scripts.Different;
     using UnityEngine;
