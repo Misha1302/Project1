@@ -1,6 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using System;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
@@ -24,7 +25,7 @@
             var startPos = transform.position;
             startPos.y -= 0.5f;
 
-            var hit = Physics2D.Raycast(startPos, direction, distance, LayerMask.GetMask("Default"));
+            var hit = Physics2D.Raycast(startPos, direction, distance, LayersManager.ExceptEnemy);
             if (hit == default)
                 return EnemyState.Walk;
 

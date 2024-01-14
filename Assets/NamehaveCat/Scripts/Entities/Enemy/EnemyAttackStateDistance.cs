@@ -38,7 +38,7 @@
 
             var sb = Instantiate(snowball);
 
-            sb.Rb2D.excludeLayers = LayerMask.GetMask("Enemy");
+            sb.Rb2D.excludeLayers = LayersManager.Enemy;
             sb.Rb2D.position = position;
             sb.Rb2D.velocity = direction;
             sb.Flipper.FlipX = right;

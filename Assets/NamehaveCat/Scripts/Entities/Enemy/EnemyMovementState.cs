@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
@@ -10,8 +11,9 @@
         [SerializeField] private float speed;
 
         private int _dir = 1;
-        private Vector2 DirVec => Vector2.right * (_dir * speed);
 
+        private Vector2 DirVec => Vector2.right * (_dir * speed);
+        
         protected override void OnExit()
         {
         }
@@ -42,7 +44,7 @@
 
         private void TryChangeDirection()
         {
-            var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayerMask.GetMask("Default"));
+            var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
             if (hit != default && !hit.transform.TryGetComponent<PlayerTag>(out _))
                 _dir *= -1;
         }

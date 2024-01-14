@@ -1,6 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -9,7 +10,6 @@
     {
         private readonly Collider2D[] _results = new Collider2D[128];
         public bool IsGrounded => GetIsGrounded();
-
 
         private void Start()
         {
@@ -41,7 +41,8 @@
 
         private ArraySegment<Collider2D> GetColliders()
         {
-            var len = Physics2D.OverlapBoxNonAlloc(transform.position, transform.lossyScale, 0, _results);
+            var len = Physics2D.OverlapBoxNonAlloc(transform.position, transform.lossyScale, 0, _results,
+                LayersManager.ExceptNotAGround);
             return new ArraySegment<Collider2D>(_results, 0, len);
         }
     }

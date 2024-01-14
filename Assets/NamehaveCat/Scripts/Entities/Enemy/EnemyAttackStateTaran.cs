@@ -35,7 +35,7 @@
         {
             var position = transform.position;
 
-            var hit = Physics2D.Raycast(position, DirVec, enemy.ColliderRadius, LayerMask.GetMask("Default"));
+            var hit = Physics2D.Raycast(position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
             Debug.DrawLine((Vector2)position, (Vector2)position + DirVec, Color.red);
             if (hit != default)
             {

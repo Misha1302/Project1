@@ -27,7 +27,7 @@
 
         private bool RaycastPlayer(Vector2 dir)
         {
-            var hit = Physics2D.Raycast(transform.position, dir, distance, LayerMask.GetMask("Default"));
+            var hit = Physics2D.Raycast(transform.position, dir, distance, LayersManager.ExceptEnemy);
             return hit != default && hit.transform.TryGetComponent<PlayerTag>(out _);
         }
     }
