@@ -1,7 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;

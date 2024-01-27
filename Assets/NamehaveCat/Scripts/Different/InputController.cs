@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using NamehaveCat.Scripts.Direction;
     using UnityEngine;
     using UnityEngine.Events;
 

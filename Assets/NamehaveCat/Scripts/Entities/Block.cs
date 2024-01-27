@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Entities
 {
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;

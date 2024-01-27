@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Entities
 {
     using System.Collections;
     using NamehaveCat.Scripts.Tags;
@@ -17,7 +17,7 @@ namespace NamehaveCat.Scripts
             _rb = GetComponentInChildren<Rigidbody2D>();
 
             _rb.constraints |= RigidbodyConstraints2D.FreezePositionY; // set freeze y
-            _rb.constraints |= RigidbodyConstraints2D.FreezeRotation; // freeze freeze rot
+            _rb.constraints |= RigidbodyConstraints2D.FreezeRotation; // set freeze rot
         }
 
         private void OnTriggerEnter2D(Collider2D other)

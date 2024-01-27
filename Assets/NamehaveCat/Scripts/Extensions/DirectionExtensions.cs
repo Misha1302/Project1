@@ -1,6 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Extensions
 {
-    using NamehaveCat.Scripts.Direction;
+    using NamehaveCat.Scripts.Different;
 
     public static class DirectionExtensions
     {

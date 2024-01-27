@@ -1,11 +1,12 @@
 namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using NamehaveCat.Scripts.Tags;
     using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
 
-    public class EnemyHead : MonoBehaviour
+    public class EnemyHead : DamageableBase
     {
         [SerializeField] private float stunTime;
         [SerializeField] private float damageOnStun;
