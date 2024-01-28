@@ -23,7 +23,6 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 
         private void OnCollision(Component other)
         {
-            print(other.name);
             if (!other.TryGetComponent<PlayerPawsTag>(out _))
                 return;
 
