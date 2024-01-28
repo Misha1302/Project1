@@ -9,10 +9,19 @@ namespace NamehaveCat.Scripts
         [SerializeField] private Button restart;
         [SerializeField] private Button settingsBtn;
         [SerializeField] private GameObject settingsPanel;
+        [SerializeField] private Pause pause;
 
         private void Start()
         {
-            settingsBtn.onClick.AddListener(() => settingsPanel.SetActive(!settingsPanel.activeSelf));
+            settingsBtn.onClick.AddListener(() =>
+            {
+                if (!settingsPanel.activeSelf)
+                    pause.MPause();
+                else pause.MRelease();
+                
+                settingsPanel.SetActive(!settingsPanel.activeSelf);
+            });
+
             restart.onClick.AddListener(RSceneManager.Reload);
         }
     }

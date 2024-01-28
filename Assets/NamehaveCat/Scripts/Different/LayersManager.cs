@@ -8,10 +8,14 @@
         public static readonly LayerMask Enemy;
         public static readonly LayerMask ExceptNotAGround;
         public static readonly LayerMask ExceptEnemy;
+        public static readonly LayerMask NotAGround;
+        public static readonly LayerMask IgnoreRaycast;
 
         static LayersManager()
         {
             Enemy = Mask("Enemy");
+            NotAGround = Mask("NotAGround");
+            IgnoreRaycast = Mask("Ignore Raycast");
             ExceptNotAGround = ExceptMask("NotAGround");
             ExceptEnemy = ExceptMask("Enemy");
         }

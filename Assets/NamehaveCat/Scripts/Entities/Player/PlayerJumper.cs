@@ -40,7 +40,6 @@
         private void ResetBuffer()
         {
             _buffer = StandardBuffer;
-            GameManager.Instance.InputController.axes[Direction.Up].ResetAxis();
         }
 
         public void TryJump(bool isGrounded)

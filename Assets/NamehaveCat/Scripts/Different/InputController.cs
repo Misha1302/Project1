@@ -38,6 +38,12 @@
                 axis.enabled = false;
         }
 
+        private void OnEnable()
+        {
+            foreach (var (_, axis) in axes.Where(axis => axis.Value != null)) 
+                axis.enabled = true;
+        }
+
         private void InstantiateAxes()
         {
             axes.Add(Direction.Left, Axis.CreateInstance(GameManager.Instance.UiManager.BtnLeft, keysLeft));

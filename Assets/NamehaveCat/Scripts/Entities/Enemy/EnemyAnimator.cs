@@ -4,20 +4,19 @@
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]
-    public class EnemyAnimator : MonoBehaviour
+    public class EnemyAnimator : AnimatorBase
     {
         [SerializeField] private Enemy enemy;
-        private Animator _animator;
 
-        private void Start()
+        protected override void Start()
         {
-            _animator = GetComponent<Animator>();
+            base.Start();
 
             enemy.onStateChanged.AddListener(_ =>
             {
-                _animator.SetBool(AnimatorHelper.Attack, enemy.State == EnemyState.Attack);
-                _animator.SetBool(AnimatorHelper.Walk, enemy.State == EnemyState.Walk);
-                _animator.SetBool(AnimatorHelper.Unconscious, enemy.State == EnemyState.Waiting);
+                animator.SetBool(AnimatorHelper.Attack, enemy.State == EnemyState.Attack);
+                animator.SetBool(AnimatorHelper.Walk, enemy.State == EnemyState.Walk);
+                animator.SetBool(AnimatorHelper.Unconscious, enemy.State == EnemyState.Waiting);
             });
         }
     }

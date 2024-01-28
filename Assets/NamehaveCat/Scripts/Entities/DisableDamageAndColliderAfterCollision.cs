@@ -1,5 +1,6 @@
 namespace NamehaveCat.Scripts.Entities
 {
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -11,7 +12,7 @@ namespace NamehaveCat.Scripts.Entities
         [SerializeField] private float delay = 0.1f;
         private float _time;
 
-        private void Start()
+        private void OnEnable()
         {
             _time = Time.time;
         }
@@ -21,7 +22,7 @@ namespace NamehaveCat.Scripts.Entities
 
         private void OnCol(Component tr)
         {
-            if (tr.GetComponent<PlayerTag>())
+            if (tr.TryGetComponent<PlayerTag>(out _) || tr.gameObject.layer == LayersManager.NotAGround || tr.gameObject.layer == LayersManager.IgnoreRaycast)
                 return;
 
             if (Time.time - _time < delay)

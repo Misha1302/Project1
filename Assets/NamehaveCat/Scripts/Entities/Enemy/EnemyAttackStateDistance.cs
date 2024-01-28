@@ -37,10 +37,11 @@
 
             var sb = Instantiate(snowball);
 
-            sb.Rb2D.excludeLayers = LayersManager.Enemy;
-            sb.Rb2D.position = position;
-            sb.Rb2D.velocity = direction;
-            sb.Flipper.FlipX = right;
+            sb.Set(LayersManager.Enemy, position, direction, right);
+            // sb.Rb2D.excludeLayers = LayersManager.Enemy;
+            // sb.Rb2D.position = position;
+            // sb.Rb2D.velocity = direction;
+            // sb.Flipper.FlipX = right;
             Destroy(sb.gameObject, 60);
 
             enemy.ObjectFlipper.FlipX = right;
