@@ -1,6 +1,5 @@
 namespace NamehaveCat.Scripts.Different
 {
-    using System;
     using UnityEngine;
 
     public class DontDestroyOnLoad : MonoBehaviour
@@ -15,8 +14,7 @@ namespace NamehaveCat.Scripts.Different
                 return;
             }
 
-            if (transform.parent != null)
-                throw new InvalidOperationException();
+            transform.parent = null;
 
             _created = true;
             DontDestroyOnLoad(gameObject);

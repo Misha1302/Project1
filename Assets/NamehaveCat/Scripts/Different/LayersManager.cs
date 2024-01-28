@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
+    using System.Linq;
     using UnityEngine;
 
     public static class LayersManager
@@ -19,6 +20,6 @@
             LayerMask.GetMask(names);
 
         private static LayerMask ExceptMask(params string[] names) =>
-            ~LayerMask.GetMask(names);
+            ~LayerMask.GetMask(names.Append("Ignore Raycast").ToArray());
     }
 }
