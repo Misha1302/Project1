@@ -1,7 +1,6 @@
 namespace NamehaveCat.Scripts.Lift
 {
-    using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Tags;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class Lift : MonoBehaviour
@@ -9,9 +8,9 @@ namespace NamehaveCat.Scripts.Lift
         [SerializeField] private float speed;
         [SerializeField] private Transform top;
         [SerializeField] private Transform bottom;
+        private readonly HashSet<Rigidbody2D> _rbs = new();
 
         private LiftDirection _direction;
-        private bool _havePlayer;
 
         private Vector3 Destination => _direction == LiftDirection.Top ? top.position : bottom.position;
 
@@ -20,8 +19,9 @@ namespace NamehaveCat.Scripts.Lift
             var vec = Destination * (Time.deltaTime * speed);
 
             transform.Translate(vec);
-            if (_havePlayer)
-                GameManager.Instance.PlayerController.transform.Translate(vec);
+
+            foreach (var rb in _rbs)
+                rb.transform.Translate(vec);
 
             TryChangeDirection();
         }
@@ -43,13 +43,16 @@ namespace NamehaveCat.Scripts.Lift
             Bottom
         }
 
-        private void OnCollisionEnter2D(Collision2D other) =>
-            _havePlayer = _havePlayer || other.transform.TryGetComponent<PlayerTag>(out _);
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.transform.TryGetComponent<Rigidbody2D>(out var rb))
+                _rbs.Add(rb);
+        }
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.transform.TryGetComponent<PlayerTag>(out _))
-                _havePlayer = false;
+            if (other.transform.TryGetComponent<Rigidbody2D>(out var rb))
+                _rbs.Remove(rb);
         }
     }
 }

@@ -1,10 +1,9 @@
-using static NamehaveCat.Scripts.Direction.Direction;
+using static NamehaveCat.Scripts.Different.Direction;
 
 namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 

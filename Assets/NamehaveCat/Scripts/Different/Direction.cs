@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Direction
+﻿namespace NamehaveCat.Scripts.Different
 {
     using System;
 

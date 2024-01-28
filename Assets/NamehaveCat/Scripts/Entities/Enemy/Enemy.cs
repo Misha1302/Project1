@@ -59,7 +59,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
                 EnemyState.Attack => attack,
                 EnemyState.Walk => walk,
                 EnemyState.Waiting => null,
-                _ => throw new InvalidOperationException()
+                _ => Thrower.Throw<EnemyStateBase>(new InvalidOperationException())
             };
 
             _stateBeh?.Enter();

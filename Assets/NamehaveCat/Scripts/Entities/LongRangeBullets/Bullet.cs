@@ -3,7 +3,7 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
     using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
-    public class Bullet : MonoBehaviour
+    public class Bullet : DamageableBase
     {
         [SerializeField] private float damage = -1;
         [SerializeField] private string message;

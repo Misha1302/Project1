@@ -1,7 +1,6 @@
 namespace NamehaveCat.Scripts.Entities.Player
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 

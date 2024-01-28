@@ -1,8 +1,9 @@
 namespace NamehaveCat.Scripts.Different
 {
+    using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using UnityEngine;
 
-    public class FatalDamage : MonoBehaviour
+    public class FatalDamage : DamageableBase
     {
         [SerializeField] private string message;
 

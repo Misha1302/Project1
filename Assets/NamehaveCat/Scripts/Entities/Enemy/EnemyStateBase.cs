@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
+    using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
     public abstract class EnemyStateBase : MonoBehaviour
@@ -9,7 +10,7 @@
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!_enter || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (!_enter || other.gameObject.layer == LayersManager.Enemy) // enemy
                 return;
 
             OnColEnter(other);
@@ -17,7 +18,7 @@
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (other.gameObject.layer == LayersManager.Enemy) // enemy
                 return;
 
             OnColStay(other);

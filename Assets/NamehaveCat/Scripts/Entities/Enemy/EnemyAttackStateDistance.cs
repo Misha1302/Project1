@@ -1,7 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Direction;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using UnityEngine;
 
@@ -38,7 +37,7 @@
 
             var sb = Instantiate(snowball);
 
-            sb.Rb2D.excludeLayers = LayerMask.GetMask("Enemy");
+            sb.Rb2D.excludeLayers = LayersManager.Enemy;
             sb.Rb2D.position = position;
             sb.Rb2D.velocity = direction;
             sb.Flipper.FlipX = right;
