@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Lift
+namespace NamehaveCat.Scripts.Machinery
 {
     using System.Collections.Generic;
     using UnityEngine;
