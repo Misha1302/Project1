@@ -6,8 +6,11 @@
 
     public class UiManager : MonoBehaviour
     {
+        [Header("Images")]
         [SerializeField] private Image healthBar;
+        [SerializeField] private RawImage settingsFrameImage;
 
+        [Header("Buttons")]
         [SerializeField] private RButton btnLeft;
         [SerializeField] private RButton btnRight;
         [SerializeField] private RButton btnUp;
@@ -15,6 +18,7 @@
         public RButton BtnLeft => btnLeft;
         public RButton BtnRight => btnRight;
         public RButton BtnUp => btnUp;
+        public RawImage SettingsFrameImage => settingsFrameImage;
 
         private void Start()
         {

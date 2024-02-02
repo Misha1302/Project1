@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 7235069469822152463}
   - component: {fileID: 5814471362616430707}
   - component: {fileID: 8694340294288631267}
-  - component: {fileID: 301730895589970648}
+  - component: {fileID: 3017652298262277476}
   m_Layer: 5
   m_Name: SettingsBtn
   m_TagString: Untagged
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &301730895589970648
+--- !u!114 &3017652298262277476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2944885888597628911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e5422531e94f898878b209368cb73c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -487,15 +487,6 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8694340294288631267}
   m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onPressed:
-    m_PersistentCalls:
-      m_Calls: []
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &3170405958764513619
@@ -1142,7 +1133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5174803270427967408}
   - component: {fileID: 1891519277126957894}
-  - component: {fileID: 371101014794636163}
+  - component: {fileID: 6279063940801757537}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -1178,7 +1169,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5196541566643869322}
   m_CullTransparentMesh: 1
---- !u!114 &371101014794636163
+--- !u!114 &6279063940801757537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1187,27 +1178,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5196541566643869322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0.7610062, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &6109395384250116122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4297302637796839925}
   - component: {fileID: 8485299327083876165}
+  - component: {fileID: 5512559404735845896}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -1601,8 +1590,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restart: {fileID: 6439682287441364408}
-  settingsBtn: {fileID: 301730895589970648}
+  settingsBtn: {fileID: 3017652298262277476}
   settingsPanel: {fileID: 5196541566643869322}
+  pause: {fileID: 5512559404735845896}
+  cameraScreen: {fileID: 0}
+--- !u!114 &5512559404735845896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6978045438280149648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e2741ea66ad354497f11f0f31f88d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToActive:
+  - {fileID: 2944885888597628911}
+  - {fileID: 5196541566643869322}
+  - {fileID: 6978045438280149648}
+  - {fileID: 8707940005833775665}
+  - {fileID: 6339967552079072069}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2157749147110796362}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8707940005833775665
 GameObject:
   m_ObjectHideFlags: 0
