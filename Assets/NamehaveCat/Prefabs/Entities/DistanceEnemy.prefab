@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 8
   maxDegrees: 30
+  offset: -0.5
 --- !u!95 &7367249710201825247
 Animator:
   serializedVersion: 5
