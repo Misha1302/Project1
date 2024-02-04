@@ -14,7 +14,7 @@ namespace NamehaveCat.Scripts.Entities
 
         private void OnEnable()
         {
-            _time = Time.time;
+            _time = GameManager.Instance.Time.CurTime;
         }
 
         private void OnCollisionEnter2D(Collision2D col) => OnCol(col.transform);
@@ -22,10 +22,11 @@ namespace NamehaveCat.Scripts.Entities
 
         private void OnCol(Component tr)
         {
-            if (tr.TryGetComponent<PlayerTag>(out _) || tr.gameObject.layer == LayersManager.NotAGround || tr.gameObject.layer == LayersManager.IgnoreRaycast)
+            if (tr.TryGetComponent<PlayerTag>(out _) || tr.gameObject.layer == LayersManager.NotAGround ||
+                tr.gameObject.layer == LayersManager.IgnoreRaycast)
                 return;
 
-            if (Time.time - _time < delay)
+            if (GameManager.Instance.Time.CurTime - _time < delay)
                 return;
 
             foreach (var c in GetComponentsInChildren<DamageableBase>())

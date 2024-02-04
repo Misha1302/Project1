@@ -21,12 +21,12 @@
         protected override void OnEnter()
         {
             _direction = Math.Sign(GameManager.Instance.PlayerController.transform.position.x - transform.position.x);
-            _time = Time.time;
+            _time = GameManager.Instance.Time.CurTime;
         }
 
         public override void Loop()
         {
-            enemy.Rb2D.velocity = Time.time > _time + startTime ? DirVec : Vector2.zero;
+            enemy.Rb2D.velocity = GameManager.Instance.Time.CurTime > _time + startTime ? DirVec : Vector2.zero;
 
             ExitTaranIfNeed();
         }

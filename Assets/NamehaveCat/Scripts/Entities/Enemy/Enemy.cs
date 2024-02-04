@@ -68,15 +68,23 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 
         public void WaitAndReset(float seconds, Action start, Action end)
         {
-            StopAllCoroutines();
-            StartCoroutine(WaitAndResetCoroutine(seconds, start, end));
+            const string coroutineName = "WaitAndResetCoroutine";
+
+            CoroutineManager.Instance.StopCoroutines(coroutineName);
+
+            CoroutineManager.Instance.StartCoroutine(
+                WaitAndResetCoroutine(seconds, start, end),
+                coroutineName
+            );
         }
 
         private IEnumerator WaitAndResetCoroutine(float seconds, [CanBeNull] Action start, [CanBeNull] Action end)
         {
             start?.Invoke();
             ChangeState(EnemyState.Waiting);
-            yield return new WaitForSeconds(seconds);
+
+            yield return new MWaitForSeconds(seconds);
+
             ChangeState(EnemyState.Walk);
             end?.Invoke();
         }

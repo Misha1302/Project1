@@ -30,10 +30,10 @@
                 return;
             }
 
-            if (Time.time < _previousTime + cooldown)
+            if (GameManager.Instance.Time.CurTime < _previousTime + cooldown)
                 return;
 
-            _previousTime = Time.time;
+            _previousTime = GameManager.Instance.Time.CurTime;
 
             var sb = Instantiate(snowball);
 

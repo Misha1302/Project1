@@ -26,6 +26,12 @@
             onStart.Invoke();
         }
 
+        protected override void OnDisable()
+        {
+            _pressed = false;
+            base.OnDisable();
+        }
+
         public override void OnPointerUp(PointerEventData eventData)
         {
             _pressed = false;

@@ -1,5 +1,6 @@
 namespace NamehaveCat.Scripts
 {
+    using System;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
@@ -17,6 +18,9 @@ namespace NamehaveCat.Scripts
         {
             settingsBtn.onClick.AddListener(() =>
             {
+                if (!StateManager.CanPause)
+                    return;
+
                 if (!settingsPanel.activeSelf)
                 {
                     GameManager.Instance.UiManager.SettingsFrameImage.texture = cameraScreen.TakeScreen();
@@ -24,7 +28,8 @@ namespace NamehaveCat.Scripts
                 }
                 else
                 {
-                    pause.MRelease();
+                    if (pause.IsPause)
+                        pause.MRelease();
                 }
 
                 settingsPanel.SetActive(!settingsPanel.activeSelf);

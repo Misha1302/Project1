@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DontPauseTag : MonoBehaviour
+﻿namespace NamehaveCat.Scripts.Tags
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    using UnityEngine;
 
-    // Update is called once per frame
-    void Update()
+    public class DontPauseTag : MonoBehaviour, IDontPauseTag
     {
-        
     }
 }

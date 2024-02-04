@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8397098316269226445}
   - component: {fileID: 6068454459543963263}
   - component: {fileID: -5175273074914119200}
-  m_Layer: 0
+  - component: {fileID: 4704577533772888340}
+  m_Layer: 7
   m_Name: LevelPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,3 +135,15 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
+--- !u!114 &4704577533772888340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068780174547593372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa55178973b11924d8ce671b01e40547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

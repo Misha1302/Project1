@@ -2,6 +2,7 @@ namespace NamehaveCat.Scripts.Entities
 {
     using System.Collections;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Entities.Enemy;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -30,13 +31,13 @@ namespace NamehaveCat.Scripts.Entities
             if (!other.transform.TryGetComponent<PlayerTag>(out _))
                 return;
 
-            GameManager.Instance.StartCoroutine(WaitAndThrow());
+            CoroutineManager.Instance.StartCoroutine(WaitAndThrow());
             enabled = false;
         }
 
         private IEnumerator WaitAndThrow()
         {
-            yield return new WaitForSeconds(waitingTime);
+            yield return new MWaitForSeconds(waitingTime);
 
             _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY; // remove freeze y
             _rb.velocity = startVel;

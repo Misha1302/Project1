@@ -26,10 +26,10 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             if (!other.TryGetComponent<PlayerPawsTag>(out _))
                 return;
 
-            if (_previousTime + damageWaitTime > Time.time)
+            if (_previousTime + damageWaitTime > GameManager.Instance.Time.CurTime)
                 return;
 
-            _previousTime = Time.time;
+            _previousTime = GameManager.Instance.Time.CurTime;
 
             if (_enemy.State == EnemyState.Waiting)
             {

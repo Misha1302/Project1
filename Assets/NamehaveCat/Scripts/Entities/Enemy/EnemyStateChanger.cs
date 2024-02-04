@@ -13,7 +13,7 @@
             e.onStateChanged.AddListener(_ =>
             {
                 // remake
-                if (_attack) StateAttackChangedTime = Time.time;
+                if (_attack) StateAttackChangedTime = GameManager.Instance.Time.CurTime;
                 _attack = e.State == EnemyState.Attack;
             });
         }

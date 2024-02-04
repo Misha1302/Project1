@@ -15,6 +15,9 @@ namespace NamehaveCat.Scripts.Machinery
         {
             if (tr.TryGetComponent<Rigidbody2D>(out var rb))
                 rb.velocity = rb.velocity.WithY(speed * (1 + (rb.gravityScale - 1) / 2));
+
+            if (TryGetComponent(out TrampolineAnimator animator))
+                animator.Play();
         }
     }
 }
