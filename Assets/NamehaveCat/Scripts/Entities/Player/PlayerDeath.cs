@@ -4,6 +4,7 @@ namespace NamehaveCat.Scripts.Entities.Player
     using System.Collections;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy;
+    using NamehaveCat.Scripts.Helpers;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;

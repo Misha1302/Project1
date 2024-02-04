@@ -1,6 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
-    using NamehaveCat.Scripts.Velocipedi;
+    using NamehaveCat.Scripts.Helpers;
 
     public static class Death
     {

@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.UI
 {
     using System.Linq;
     using NamehaveCat.Scripts.Tags;

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Velocipedi
+﻿namespace NamehaveCat.Scripts.Helpers
 {
     using UnityEngine;
     using UnityEngine.Events;

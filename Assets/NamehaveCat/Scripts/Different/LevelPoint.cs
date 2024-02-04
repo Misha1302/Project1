@@ -1,7 +1,7 @@
 namespace NamehaveCat.Scripts.Different
 {
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
-    using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
 
     public class LevelPoint : MonoBehaviour

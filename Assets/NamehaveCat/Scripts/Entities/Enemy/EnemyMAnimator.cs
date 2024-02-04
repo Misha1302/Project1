@@ -1,10 +1,11 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]
-    public class EnemyAnimator : AnimatorBase
+    public class EnemyMAnimator : MAnimator
     {
         [SerializeField] private Enemy enemy;
 
@@ -14,9 +15,9 @@
 
             enemy.onStateChanged.AddListener(_ =>
             {
-                animator.SetBool(AnimatorHelper.Attack, enemy.State == EnemyState.Attack);
-                animator.SetBool(AnimatorHelper.Walk, enemy.State == EnemyState.Walk);
-                animator.SetBool(AnimatorHelper.Unconscious, enemy.State == EnemyState.Waiting);
+                Animator.SetBool(AnimatorHelper.Attack, enemy.State == EnemyState.Attack);
+                Animator.SetBool(AnimatorHelper.Walk, enemy.State == EnemyState.Walk);
+                Animator.SetBool(AnimatorHelper.Unconscious, enemy.State == EnemyState.Waiting);
             });
         }
     }

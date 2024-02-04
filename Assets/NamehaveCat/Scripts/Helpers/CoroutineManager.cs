@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Helpers
 {
     using System.Collections;
     using System.Collections.Generic;

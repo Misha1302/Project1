@@ -1,6 +1,7 @@
 namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class Bullet : DamageableBase
@@ -17,7 +18,10 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
             if (health != null)
                 health.Damage(damage, message);
 
-            if(TryGetComponent<BulletAnimator>(out var anim))
+            if (other.TryGetComponent<IgnoreCollisionTag>(out _))
+                return;
+
+            if (TryGetComponent<BulletMAnimator>(out var anim))
                 anim.DestroyBullet();
             else Destroy(gameObject);
         }

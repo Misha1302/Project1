@@ -3,7 +3,7 @@
     using System;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
-    using NamehaveCat.Scripts.Velocipedi;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     // The main feature is to jump with different heights depending on the duration of pressing the button

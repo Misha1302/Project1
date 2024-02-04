@@ -1,6 +1,8 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
     using NamehaveCat.Scripts.Entities.Player;
+    using NamehaveCat.Scripts.MImplementations;
+    using NamehaveCat.Scripts.UI;
     using UnityEngine;
 
     public class GameManager : MonoBehSingleton<GameManager>

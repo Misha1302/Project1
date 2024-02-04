@@ -3,11 +3,13 @@
     using System.Collections;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy;
+    using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class BulletAnimator : AnimatorBase
+    public class BulletMAnimator : MAnimator
     {
         private Animator _animator;
         private Rigidbody2D _rb2D;

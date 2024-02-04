@@ -1,8 +1,7 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.UI
 {
-    using System;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Velocipedi;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -16,24 +15,7 @@ namespace NamehaveCat.Scripts
 
         private void Start()
         {
-            settingsBtn.onClick.AddListener(() =>
-            {
-                if (!StateManager.CanPause)
-                    return;
-
-                if (!settingsPanel.activeSelf)
-                {
-                    GameManager.Instance.UiManager.SettingsFrameImage.texture = cameraScreen.TakeScreen();
-                    pause.MPause();
-                }
-                else
-                {
-                    if (pause.IsPause)
-                        pause.MRelease();
-                }
-
-                settingsPanel.SetActive(!settingsPanel.activeSelf);
-            });
+            settingsBtn.onClick.AddListener(PauseOrRelease);
 
             restart.onClick.AddListener(RSceneManager.Reload);
         }
@@ -42,6 +24,25 @@ namespace NamehaveCat.Scripts
         {
             if (cameraScreen == null)
                 cameraScreen = FindObjectOfType<CameraScreen>();
+        }
+
+        private void PauseOrRelease()
+        {
+            if (!StateManager.CanPause) 
+                return;
+
+            if (!settingsPanel.activeSelf)
+            {
+                GameManager.Instance.UiManager.SettingsFrameImage.texture = cameraScreen.TakeScreen();
+                pause.MPause();
+            }
+            else
+            {
+                if (pause.IsPause) 
+                    pause.MRelease();
+            }
+
+            settingsPanel.SetActive(!settingsPanel.activeSelf);
         }
     }
 }

@@ -2,8 +2,8 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
-    using NamehaveCat.Scripts.Velocipedi;
     using UnityEngine;
 
     public class EnemyHead : DamageableBase

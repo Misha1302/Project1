@@ -3,6 +3,7 @@ namespace NamehaveCat.Scripts.Entities
     using System.Collections;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
