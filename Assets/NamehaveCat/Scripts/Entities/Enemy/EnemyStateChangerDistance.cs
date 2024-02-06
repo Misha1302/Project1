@@ -21,20 +21,24 @@
             var rightAngle = a.Degrees(b) <= maxDegrees;
             var trueDirection = dir.Has(Direction.Left) ? b.x < a.x : a.x < b.x;
             var isPlayer = RaycastPlayer(b - a);
-            
-            DrawLines(a, b);
+
+            DrawLines(a, dir.Has(Direction.Left));
 
             return rightDist && rightAngle && trueDirection && isPlayer ? EnemyState.Attack : EnemyState.Walk;
         }
 
-        private static void DrawLines(Vector3 a, Vector3 b)
+        private static void DrawLines(Vector3 enemyCenterPoint, bool left)
         {
-            Debug.DrawLine(a, a + new Vector3(4, 1), Color.red);
-            Debug.DrawLine(a, a + new Vector3(4, -1), Color.red);
-            Debug.DrawLine(a, a + new Vector3(-4, 1), Color.red);
-            Debug.DrawLine(a, a + new Vector3(-4, -1), Color.red);
-            Debug.DrawLine(a, a + new Vector3(0.1f, 0.1f), Color.red);
-            Debug.DrawLine(b, b + new Vector3(0.1f, 0.1f), Color.red);
+            if (left)
+            {
+                Debug.DrawLine(enemyCenterPoint, enemyCenterPoint + new Vector3(-4, 1), Color.red);
+                Debug.DrawLine(enemyCenterPoint, enemyCenterPoint + new Vector3(-4, -1), Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(enemyCenterPoint, enemyCenterPoint + new Vector3(4, 1), Color.red);
+                Debug.DrawLine(enemyCenterPoint, enemyCenterPoint + new Vector3(4, -1), Color.red);
+            }
         }
 
         private bool RaycastPlayer(Vector2 dir)

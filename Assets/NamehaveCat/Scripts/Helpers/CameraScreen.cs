@@ -37,6 +37,8 @@ namespace NamehaveCat.Scripts.Helpers
 
         private void CopyCameraState()
         {
+            // ReSharper disable Unity.InefficientPropertyAccess
+
             _thisCamera.cameraType = cameraCopy.cameraType;
             _thisCamera.backgroundColor = cameraCopy.backgroundColor;
             _thisCamera.orthographic = cameraCopy.orthographic;

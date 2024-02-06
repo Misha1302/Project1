@@ -4,9 +4,11 @@
 
     public static class AnimatorHelper
     {
-        // ReSharper disable once ConvertToConstant.Global
+        // ReSharper disable ConvertToConstant.Local
+        private static readonly float _waitTime = 1f + 30f / 60f;
+
         // 3 seconds and 30 frames = equals 3.5 seconds
-        public static readonly float DeathAnimationsTotalTime = 3f + 60f / 30f;
+        public static readonly float DeathAnimationsTotalTime = 3f + 30f / 60f + _waitTime;
 
         public static readonly int Death = Animator.StringToHash("Death");
         public static readonly int Walk = Animator.StringToHash("Walk");

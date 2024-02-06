@@ -1,17 +1,19 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
     using System;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
 
     public class Health : MonoBehaviour
     {
-        [HideInInspector] public UnityEvent<Health> onDamage;
         [SerializeField] private float startValue = 100;
+
+        [HideInInspector] public UnityEvent<Health> onDamage;
+
         public string Message { get; private set; }
 
         public float Value { get; private set; }
-        public double PreviousDamage { get; private set; }
 
         private void Start()
         {
@@ -19,34 +21,40 @@
                 InitHealth(startValue);
         }
 
-        public void InitHealth(float value)
+        private void InitHealth(float value)
         {
             if (value <= 0)
-                throw new ArgumentOutOfRangeException(nameof(value));
+                Thrower.Throw(new ArgumentOutOfRangeException(nameof(value)));
 
             Value = value;
         }
 
         public void Damage(float damage, string message)
         {
+            if (!Validate(message))
+                return;
+
+            Message = message;
+            Value -= damage;
+
+            onDamage.Invoke(this);
+        }
+
+        private bool Validate(string message)
+        {
             if (string.IsNullOrWhiteSpace(message))
             {
                 Debug.LogWarning($"Message is {(message == null ? "null" : "whitespace")}");
-                return;
+                return false;
             }
 
             if (!enabled)
             {
                 Debug.LogWarning("Health disabled!");
-                return;
+                return false;
             }
 
-            Message = message;
-
-            Value -= damage;
-
-            PreviousDamage = damage;
-            onDamage.Invoke(this);
+            return true;
         }
     }
 }

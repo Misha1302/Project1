@@ -13,11 +13,12 @@ namespace NamehaveCat.Scripts.Entities.Player
     [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float force = 4_000f;
+        [SerializeField] private float force = 8000f / 3f; // 2666.66666
         [SerializeField] private float forceInFly = 1_000f;
         [SerializeField] private float maxSpeed = 4f;
         [SerializeField] private GroundChecker groundChecker;
 
+        private Collider2D _collider;
         private ObjectFlipper _flipper;
         private PlayerJumper _playerJumper;
         public GroundChecker GroundChecker => groundChecker;
@@ -28,9 +29,6 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Start()
         {
-            _playerJumper = GetComponent<PlayerJumper>();
-            _flipper = GetComponent<ObjectFlipper>();
-            Rb2D = GetComponent<Rigidbody2D>();
             GameManager.Instance.InputController.onMove.AddListener(Move);
         }
 
@@ -38,21 +36,48 @@ namespace NamehaveCat.Scripts.Entities.Player
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.AddListener(Move);
-            GetComponent<Collider2D>().enabled = true;
-            if (Rb2D != null) Rb2D.WakeUp();
+
+            Init();
+
+            _collider.enabled = true;
+
+            Rb2D.WakeUp();
         }
 
         private void OnDisable()
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.InputController.onMove.RemoveListener(Move);
-            GetComponent<Collider2D>().enabled = false;
+
+            _collider.enabled = false;
             Rb2D.Sleep();
+        }
+
+        private void Init()
+        {
+            if (_collider == null) _collider = GetComponent<Collider2D>();
+            if (Rb2D == null) Rb2D = GetComponent<Rigidbody2D>();
+            if (_playerJumper == null) _playerJumper = GetComponent<PlayerJumper>();
+            if (_flipper == null) _flipper = GetComponent<ObjectFlipper>();
         }
 
         private void Move(Direction dir)
         {
-            // if (no left and right) OR (have left and right) AND (is grounded)
+            Horizontal(dir);
+            Vertical(dir);
+            LimitHorizontal();
+        }
+
+        private void Vertical(Direction dir)
+        {
+            // if up 
+            if (dir.Has(Up))
+                _playerJumper.TryJump(groundChecker.IsGrounded);
+        }
+
+        private void Horizontal(Direction dir)
+        {
+            // if ((no left and right) OR (have left and right)) AND (is grounded)
             if (((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right))) && groundChecker.IsGrounded)
             {
                 Rb2D.velocity = Rb2D.velocity.WithX(0);
@@ -61,25 +86,18 @@ namespace NamehaveCat.Scripts.Entities.Player
             {
                 if (dir.Has(Left)) // if left
                 {
-                    Rb2D.AddForce(Vector2.left * Speed * Time.deltaTime);
+                    Rb2D.AddForce(Vector2.left * (Speed * Time.deltaTime));
                     _flipper.FlipX = true;
                 }
                 else if (dir.Has(Right)) // if right
                 {
-                    Rb2D.AddForce(Vector2.right * Speed * Time.deltaTime);
+                    Rb2D.AddForce(Vector2.right * (Speed * Time.deltaTime));
                     _flipper.FlipX = false;
                 }
             }
-
-            LimitSpeed();
-
-
-            // if up 
-            if (dir.Has(Up))
-                _playerJumper.TryJump(groundChecker.IsGrounded);
         }
 
-        private void LimitSpeed()
+        private void LimitHorizontal()
         {
             Rb2D.velocity = Rb2D.velocity.WithX(Math.Clamp(Rb2D.velocity.x, -maxSpeed, maxSpeed));
         }

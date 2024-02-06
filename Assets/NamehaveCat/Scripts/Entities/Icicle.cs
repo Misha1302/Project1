@@ -1,9 +1,8 @@
 namespace NamehaveCat.Scripts.Entities
 {
     using System.Collections;
-    using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Entities.Enemy;
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -19,9 +18,7 @@ namespace NamehaveCat.Scripts.Entities
         {
             _rb = GetComponentInChildren<Rigidbody2D>();
 
-            _rb.constraints |= RigidbodyConstraints2D.FreezePositionY; // set freeze y
-            _rb.constraints |= RigidbodyConstraints2D.FreezePositionX; // set freeze y
-            _rb.constraints |= RigidbodyConstraints2D.FreezeRotation; // set freeze rot
+            Freeze();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,12 +33,26 @@ namespace NamehaveCat.Scripts.Entities
             enabled = false;
         }
 
+        private void Freeze()
+        {
+            var constraints = _rb.constraints;
+            constraints |= RigidbodyConstraints2D.FreezePositionY; // set freeze y
+            constraints |= RigidbodyConstraints2D.FreezePositionX; // set freeze y
+            constraints |= RigidbodyConstraints2D.FreezeRotation; // set freeze rot
+            _rb.constraints = constraints;
+        }
+
         private IEnumerator WaitAndThrow()
         {
             yield return new MWaitForSeconds(waitingTime);
 
-            _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY; // remove freeze y
+            UnfreezePosY();
             _rb.velocity = startVel;
+        }
+
+        private void UnfreezePosY()
+        {
+            _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY; // remove freeze y
         }
     }
 }

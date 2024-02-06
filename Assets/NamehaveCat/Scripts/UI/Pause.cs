@@ -33,11 +33,10 @@ namespace NamehaveCat.Scripts.UI
         public void MRelease()
         {
             IsPause = false;
+
             foreach (var pair in _objects)
-            {
                 if (pair.obj != null)
                     pair.obj.SetActive(pair.activeSelf);
-            }
 
             onRelease.Invoke();
         }

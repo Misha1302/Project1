@@ -1,9 +1,6 @@
 namespace NamehaveCat.Scripts.Entities.Player
 {
-    using System;
-    using System.Collections;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Entities.Enemy;
     using NamehaveCat.Scripts.Helpers;
     using TMPro;
     using UnityEngine;
@@ -24,7 +21,8 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void OnDamageHandler(Health health)
         {
-            if (health.Value > 0) return;
+            if (health.Value > 0)
+                return;
 
             panel.gameObject.SetActive(true); // enable death panel
             messageText.text = string.Format(format, health.Message); // set death text
@@ -35,15 +33,7 @@ namespace NamehaveCat.Scripts.Entities.Player
             KillPlayer(GameManager.Instance.PlayerController.transform.GetComponent<Animator>());
 
             // load next scene after X seconds
-            CoroutineManager.Instance.StartCoroutine(
-                InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime)
-            );
-        }
-
-        private static IEnumerator InvokeAfter(Action action, float deathAnimationsTotalTime)
-        {
-            yield return new MWaitForSeconds(deathAnimationsTotalTime);
-            action();
+            CoroutineManager.Instance.InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime);
         }
 
         private void KillPlayer(Animator player)

@@ -15,7 +15,9 @@ namespace NamehaveCat.Scripts.Different
 
         public void Damage(Transform t)
         {
-            if (!enabled) return;
+            if (!enabled)
+                return;
+
             var health = t.GetComponentInParent<Health>();
             if (health != null)
                 health.Damage(float.MaxValue, message);

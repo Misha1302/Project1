@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     [DefaultExecutionOrder(-1)]
@@ -11,7 +12,7 @@
 
         protected virtual void Awake()
         {
-            if (Instance is not null)
+            if (Instance != null)
                 ThrowManyInstances();
 
             Instance = (T)this;
@@ -24,8 +25,10 @@
 
         private static void ThrowManyInstances()
         {
-            throw new InvalidOperationException(
-                $"There are many singletons! ({string.Join(", ", FindObjectsOfType<MonoBehSingleton<T>>().Select(x => x.name))})"
+            Thrower.Throw(
+                new InvalidOperationException(
+                    $"There are many singletons! ({string.Join(", ", FindObjectsOfType<MonoBehSingleton<T>>().Select(x => x.name))})"
+                )
             );
         }
     }

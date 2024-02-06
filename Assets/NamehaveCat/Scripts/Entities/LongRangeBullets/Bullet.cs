@@ -12,7 +12,7 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
         private void OnCollisionEnter2D(Collision2D other) => TryDamage(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => TryDamage(other.transform);
 
-        public void TryDamage(Component other)
+        private void TryDamage(Component other)
         {
             var health = other.GetComponentInParent<Health>();
             if (health != null)

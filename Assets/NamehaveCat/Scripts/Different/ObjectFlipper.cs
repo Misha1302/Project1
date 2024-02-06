@@ -12,7 +12,6 @@ namespace NamehaveCat.Scripts.Different
 
         public bool FlipX
         {
-            get => _flipX;
             set
             {
                 _flipX = value;

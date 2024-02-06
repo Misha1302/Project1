@@ -21,12 +21,11 @@ namespace NamehaveCat.Scripts.Entities
 
         private void FixedUpdate()
         {
-            var size = Physics2D.BoxCastNonAlloc(transform.position, scale, 0, Vector2.zero, _results);
+            var len = Physics2D.BoxCastNonAlloc(transform.position, scale, 0, Vector2.zero, _results);
 
             var anyPlayer = false;
 
-            // print(string.Join(", ", _results[..size].Select(x => x.transform.name)));
-            for (var i = 0; i < size; i++)
+            for (var i = 0; i < len; i++)
             {
                 if (!_results[i].transform.TryGetComponent<PlayerTag>(out _))
                     continue;

@@ -1,43 +1,58 @@
 ﻿namespace NamehaveCat.Scripts.Helpers
 {
+    using System;
     using System.Collections;
-    using System.Collections.Generic;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class CoroutineManager : MonoBehSingleton<CoroutineManager>, IDontPauseTag
     {
-        private readonly Dictionary<string, List<IEnumerator>> _dict = new();
-
-        private IEnumerator _coroutinesToWait;
-
         private MonoBehaviourInstance _alwaysEnabled;
+        private CoroutineRepository _coroutineRepository;
 
         private void Start()
         {
             _alwaysEnabled = new GameObject()
                 .AddComponent<DontPauseTag>().gameObject
                 .AddComponent<MonoBehaviourInstance>();
+
+            _coroutineRepository = new CoroutineRepository();
         }
 
         public void StartCoroutine(IEnumerator coroutine, string coroutineName = "Nameless")
         {
-            if (!_dict.ContainsKey(coroutineName))
-                _dict.Add(coroutineName, new List<IEnumerator>());
-
-            (_dict[coroutineName] ??= new List<IEnumerator>()).Add(coroutine);
-
-            _alwaysEnabled.StartCoroutine(coroutine);
+            _alwaysEnabled.StartCoroutine(AddStartStopRemoveCoroutine(coroutine, coroutineName));
         }
 
-        public void StopCoroutines(string coroutineName)
+        public void StopCoroutines(string groupName)
         {
-            if (!_dict.TryGetValue(coroutineName, out var list))
+            if (!_coroutineRepository.TryGetCoroutines(groupName, out var list))
                 return;
 
-            list.ForEach(StopCoroutine);
-            _dict[coroutineName] = new List<IEnumerator>();
+            list.ForEach(_alwaysEnabled.StopCoroutine);
+            _coroutineRepository.RemoveAllCoroutines(groupName);
+        }
+
+        public void InvokeAfter(Action action, float timeToWait)
+        {
+            StartCoroutine(InvokeAfterCoroutine(action, timeToWait));
+        }
+
+        private static IEnumerator InvokeAfterCoroutine(Action action, float timeToWait)
+        {
+            yield return new MWaitForSeconds(timeToWait);
+            action();
+        }
+
+        private IEnumerator AddStartStopRemoveCoroutine(IEnumerator coroutine, string coroutineName)
+        {
+            _coroutineRepository.AddCoroutine(coroutine, coroutineName);
+
+            yield return coroutine;
+
+            _coroutineRepository.RemoveCoroutine(coroutine, coroutineName);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.MImplementations
 {
     using NamehaveCat.Scripts.Different;
     using UnityEngine;

@@ -7,7 +7,7 @@ namespace NamehaveCat.Scripts.Different
         [SerializeField] private Transform follow;
         [SerializeField] private Vector3 offset;
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             transform.position = follow.position + offset;
         }

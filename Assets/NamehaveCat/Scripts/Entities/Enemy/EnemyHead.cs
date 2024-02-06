@@ -15,11 +15,11 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 
         private Enemy _enemy;
         private float _previousTime = float.MinValue;
+        private void OnCollisionEnter2D(Collision2D other) => OnCollision(other.transform);
 
         private void OnCollisionStay2D(Collision2D other) => OnCollision(other.transform);
-        private void OnTriggerStay2D(Collider2D other) => OnCollision(other.transform);
-        private void OnCollisionEnter2D(Collision2D other) => OnCollision(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => OnCollision(other.transform);
+        private void OnTriggerStay2D(Collider2D other) => OnCollision(other.transform);
 
         private void OnCollision(Component other)
         {
@@ -38,15 +38,18 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             }
 
             var found = TryGetComponent<FatalDamage>(out var damage);
-            _enemy.WaitAndReset(stunTime, () =>
-            {
-                if (found) ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
-                _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            }, () =>
-            {
-                if (found) damage.enabled = true;
-                _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-            });
+            _enemy.WaitAndReset(
+                stunTime,
+                () =>
+                {
+                    if (found) ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
+                    _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+                }, () =>
+                {
+                    if (found) damage.enabled = true;
+                    _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
+            );
         }
 
         public void Init(Enemy e)

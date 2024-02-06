@@ -5,6 +5,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
     using JetBrains.Annotations;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -12,13 +13,16 @@ namespace NamehaveCat.Scripts.Entities.Enemy
     [RequireComponent(typeof(Rigidbody2D))]
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private EnemyStateBase attack;
-        [SerializeField] private EnemyStateBase walk;
-        [SerializeField] private EnemyStateChanger stateChanger;
+        [SerializeField] [CanBeNull] private EnemyStateBase attack;
+        [SerializeField] [CanBeNull] private EnemyStateBase walk;
+        [SerializeField] [CanBeNull] private EnemyStateChanger stateChanger;
+
         [SerializeField] private EnemyHead head;
         [SerializeField] private float colliderRadius = 1f;
 
         [HideInInspector] public UnityEvent<Enemy> onStateChanged = new();
+
+        private readonly string _coroutineName = $"WaitAndResetCoroutine{Guid.NewGuid()}";
 
         [CanBeNull] private EnemyStateBase _stateBeh;
 
@@ -34,24 +38,22 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             Rb2D = GetComponent<Rigidbody2D>();
             ObjectFlipper = GetComponent<ObjectFlipper>();
 
-            // ReSharper disable Unity.NoNullPropagation
-            attack?.Init(this);
-            walk?.Init(this);
-            head?.Init(this);
-            stateChanger?.Init(this);
-
+            if (attack != null) attack.Init(this);
+            if (walk != null) walk.Init(this);
+            if (head != null) head.Init(this);
+            if (stateChanger != null) stateChanger.Init(this);
 
             ExecuteInNextFrame.Instance.Execute(() => ChangeState(EnemyState.Walk));
         }
 
         private void FixedUpdate()
         {
-            _stateBeh?.Loop();
+            if (_stateBeh != null) _stateBeh.Loop();
         }
 
         public void ChangeState(EnemyState state)
         {
-            _stateBeh?.Exit();
+            if (_stateBeh != null) _stateBeh.Exit();
 
             State = state;
             _stateBeh = state switch
@@ -62,19 +64,17 @@ namespace NamehaveCat.Scripts.Entities.Enemy
                 _ => Thrower.Throw<EnemyStateBase>(new InvalidOperationException())
             };
 
-            _stateBeh?.Enter();
+            if (_stateBeh != null) _stateBeh.Enter();
             onStateChanged?.Invoke(this);
         }
 
         public void WaitAndReset(float seconds, Action start, Action end)
         {
-            const string coroutineName = "WaitAndResetCoroutine";
-
-            CoroutineManager.Instance.StopCoroutines(coroutineName);
+            CoroutineManager.Instance.StopCoroutines(_coroutineName);
 
             CoroutineManager.Instance.StartCoroutine(
                 WaitAndResetCoroutine(seconds, start, end),
-                coroutineName
+                _coroutineName
             );
         }
 
@@ -83,7 +83,9 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             start?.Invoke();
             ChangeState(EnemyState.Waiting);
 
+            print(1);
             yield return new MWaitForSeconds(seconds);
+            print(2);
 
             ChangeState(EnemyState.Walk);
             end?.Invoke();

@@ -7,9 +7,9 @@
 
     public class RButton : Button
     {
-        [HideInInspector] public UnityEvent onPressed = new();
-        [HideInInspector] public UnityEvent onStart = new();
-        [HideInInspector] public UnityEvent onEnd = new();
+        public readonly UnityEvent onEnd = new();
+        public readonly UnityEvent onPressed = new();
+        public readonly UnityEvent onStart = new();
 
         private bool _pressed;
 
@@ -19,17 +19,25 @@
                 onPressed.Invoke();
         }
 
+        protected override void OnDisable()
+        {
+            _pressed = false;
+            base.OnDisable();
+        }
+
+        public override void OnPointerExit(PointerEventData eventData) => OnPointerUp(eventData);
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            if (Input.touchCount != 0 || Input.GetMouseButton(0))
+                OnPointerDown(eventData);
+        }
+
         public override void OnPointerDown(PointerEventData eventData)
         {
             _pressed = true;
             base.OnPointerDown(eventData);
             onStart.Invoke();
-        }
-
-        protected override void OnDisable()
-        {
-            _pressed = false;
-            base.OnDisable();
         }
 
         public override void OnPointerUp(PointerEventData eventData)

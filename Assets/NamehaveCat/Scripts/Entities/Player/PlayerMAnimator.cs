@@ -18,7 +18,7 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Update()
         {
-            Animator.SetBool(AnimatorHelper.Jump, !GameManager.Instance.PlayerController.GroundChecker.IsGrounded);
+            Animator.SetBool(AnimatorHelper.Jump, StateManager.IsFlying);
         }
 
         private void AnimateWalk(Direction dir)

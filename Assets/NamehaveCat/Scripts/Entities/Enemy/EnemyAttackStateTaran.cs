@@ -18,7 +18,9 @@
 
         private Vector2 DirVec => Vector2.right * (_direction * speed);
 
-        protected override void OnEnter()
+        private bool CanMove => GameManager.Instance.Time.CurTime > _time + startTime;
+
+        public override void Enter()
         {
             _direction = Math.Sign(GameManager.Instance.PlayerController.transform.position.x - transform.position.x);
             _time = GameManager.Instance.Time.CurTime;
@@ -26,7 +28,7 @@
 
         public override void Loop()
         {
-            enemy.Rb2D.velocity = GameManager.Instance.Time.CurTime > _time + startTime ? DirVec : Vector2.zero;
+            enemy.Rb2D.velocity = CanMove ? DirVec : Vector2.zero;
 
             ExitTaranIfNeed();
         }
@@ -36,31 +38,37 @@
             var position = transform.position;
 
             var hit = Physics2D.Raycast(position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
-            Debug.DrawLine((Vector2)position, (Vector2)position + DirVec, Color.red);
-            if (hit != default)
-            {
-                if (hit.transform.TryGetComponent<PlayerTag>(out _))
-                    GetComponent<FatalDamage>().Damage(hit.transform);
+            Debug.DrawLine(position, (Vector2)position + DirVec, Color.red);
 
-                ExitTaran();
-            }
+            if (hit == default)
+                return;
+
+            if (hit.transform.TryGetComponent<PlayerTag>(out _))
+                GetComponent<FatalDamage>().Damage(hit.transform);
+
+            ExitTaran();
         }
 
         private void ExitTaran()
         {
             var damage = GetComponent<FatalDamage>();
-            enemy.WaitAndReset(cooldown, () =>
-            {
-                ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
-                enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            }, () =>
-            {
-                damage.enabled = true;
-                enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-            });
+
+            enemy.WaitAndReset(
+                cooldown,
+                () =>
+                {
+                    ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
+                    enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+                },
+                () =>
+                {
+                    damage.enabled = true;
+                    enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
+            );
         }
 
-        protected override void OnExit()
+        public override void Exit()
         {
         }
     }

@@ -5,6 +5,6 @@
     public static class Thrower
     {
         public static T Throw<T>(Exception e) => throw e;
-        public static object Throw(Exception e) => Throw<object>(e);
+        public static void Throw(Exception e) => Throw<object>(e);
     }
 }

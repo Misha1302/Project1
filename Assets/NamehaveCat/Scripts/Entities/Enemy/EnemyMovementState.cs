@@ -12,12 +12,12 @@
         private int _dir = 1;
 
         private Vector2 DirVec => Vector2.right * (_dir * speed);
-        
-        protected override void OnExit()
+
+        public override void Exit()
         {
         }
 
-        protected override void OnEnter()
+        public override void Enter()
         {
         }
 

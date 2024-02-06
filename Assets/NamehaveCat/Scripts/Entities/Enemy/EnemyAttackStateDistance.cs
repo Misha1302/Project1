@@ -2,6 +2,7 @@
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase
@@ -12,7 +13,7 @@
 
         private float _previousTime = float.NegativeInfinity;
 
-        protected override void OnEnter()
+        public override void Enter()
         {
         }
 
@@ -38,16 +39,17 @@
             var sb = Instantiate(snowball);
 
             sb.Set(LayersManager.Enemy, position, direction, right);
-            // sb.Rb2D.excludeLayers = LayersManager.Enemy;
-            // sb.Rb2D.position = position;
-            // sb.Rb2D.velocity = direction;
-            // sb.Flipper.FlipX = right;
-            Destroy(sb.gameObject, 60);
+
+            CoroutineManager.Instance.InvokeAfter(() =>
+            {
+                if (sb != null)
+                    Destroy(sb.gameObject);
+            }, 60);
 
             enemy.ObjectFlipper.FlipX = right;
         }
 
-        protected override void OnExit()
+        public override void Exit()
         {
         }
     }

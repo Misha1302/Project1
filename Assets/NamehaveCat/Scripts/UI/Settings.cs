@@ -28,7 +28,7 @@ namespace NamehaveCat.Scripts.UI
 
         private void PauseOrRelease()
         {
-            if (!StateManager.CanPause) 
+            if (!StateManager.CanPause)
                 return;
 
             if (!settingsPanel.activeSelf)
@@ -38,7 +38,7 @@ namespace NamehaveCat.Scripts.UI
             }
             else
             {
-                if (pause.IsPause) 
+                if (pause.IsPause)
                     pause.MRelease();
             }
 

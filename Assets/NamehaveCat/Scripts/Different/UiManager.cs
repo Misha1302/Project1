@@ -8,10 +8,12 @@
     {
         [Header("Images")]
         [SerializeField] private Image healthBar;
+
         [SerializeField] private RawImage settingsFrameImage;
 
         [Header("Buttons")]
         [SerializeField] private RButton btnLeft;
+
         [SerializeField] private RButton btnRight;
         [SerializeField] private RButton btnUp;
 

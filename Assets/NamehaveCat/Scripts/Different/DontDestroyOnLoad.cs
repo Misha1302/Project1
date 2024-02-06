@@ -1,14 +1,16 @@
 namespace NamehaveCat.Scripts.Different
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     public class DontDestroyOnLoad : MonoBehaviour
     {
-        private static bool _created;
+        private static readonly List<GameObject> _createdObjects = new();
 
         private void Start()
         {
-            if (_created)
+            if (_createdObjects.Any(x => x.name == name))
             {
                 Destroy(gameObject);
                 return;
@@ -16,7 +18,7 @@ namespace NamehaveCat.Scripts.Different
 
             transform.parent = null;
 
-            _created = true;
+            _createdObjects.Add(gameObject);
             DontDestroyOnLoad(gameObject);
         }
     }

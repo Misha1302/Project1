@@ -1,8 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
-    using System.Collections;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Entities.Enemy;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
@@ -32,13 +30,7 @@
             _rb2D.velocity = Vector2.zero;
             _rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
 
-            CoroutineManager.Instance.StartCoroutine(DestroyAfter5Seconds());
-
-            IEnumerator DestroyAfter5Seconds()
-            {
-                yield return new MWaitForSeconds(5f);
-                Destroy(gameObject);
-            }
+            CoroutineManager.Instance.InvokeAfter(() => Destroy(gameObject), 5);
         }
     }
 }

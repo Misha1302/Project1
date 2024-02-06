@@ -1,7 +1,6 @@
 namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using System;
-    using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
     [RequireComponent(typeof(SpriteRenderer))]

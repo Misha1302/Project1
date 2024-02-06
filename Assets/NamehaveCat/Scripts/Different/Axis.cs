@@ -23,7 +23,7 @@
         public static Axis CreateInstance(RButton button, KeyCode[] keys) =>
             new GameObject().AddComponent<Axis>().Init(button, keys);
 
-        public Axis Init(RButton button, KeyCode[] keys)
+        private Axis Init(RButton button, KeyCode[] keys)
         {
             _keys = keys;
 
@@ -34,20 +34,8 @@
             return this;
         }
 
-
-        private void OnEnd()
-        {
-            onEnd.Invoke();
-        }
-
-        private void OnPressed()
-        {
-            onPressed.Invoke();
-        }
-
-        private void OnStart()
-        {
-            onStart.Invoke();
-        }
+        private void OnEnd() => onEnd.Invoke();
+        private void OnPressed() => onPressed.Invoke();
+        private void OnStart() => onStart.Invoke();
     }
 }
