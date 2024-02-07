@@ -6,7 +6,7 @@
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
-    public class EnemyStateChangerDistance : EnemyStateChanger
+    public class EnemyStateChangerDistance : EnemyStateChangerBase
     {
         [SerializeField] private float distance = 5;
         [SerializeField] private float maxDegrees = 30;

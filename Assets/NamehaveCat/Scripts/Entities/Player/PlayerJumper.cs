@@ -31,12 +31,8 @@
 
         private void Start()
         {
-            // execute in next frame 'cause GameManager initializing in Awake, InputController in Start, PlayerJumper in next frame
-            // ExecuteInNextFrame.Instance.Execute(ResetBuffer);
-            GameManager.Instance.ExecutorInNextFrame.Execute(() =>
-                GameManager.Instance.InputController.Axes[Direction.Up]
-                    .onEnd.AddListener(() => _isJumping = false)
-            );
+            GameManager.Instance.InputController.Axes[Direction.Up]
+                .onEnd.AddListener(() => _isJumping = false);
         }
 
         private void ResetBuffer()

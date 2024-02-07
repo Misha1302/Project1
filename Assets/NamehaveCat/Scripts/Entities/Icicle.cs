@@ -1,8 +1,7 @@
 namespace NamehaveCat.Scripts.Entities
 {
-    using System.Collections;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.MImplementations;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -23,36 +22,34 @@ namespace NamehaveCat.Scripts.Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!enabled)
+            if (!CanThrowIcicle(other))
                 return;
 
-            if (!other.transform.TryGetComponent<PlayerTag>(out _))
-                return;
+            GameManager.Instance.CoroutineManager.InvokeAfter(ThrowIcicle, waitingTime);
 
-            GameManager.Instance.CoroutineManager.StartCoroutine(WaitAndThrow());
             enabled = false;
         }
 
-        private void Freeze()
-        {
-            var constraints = _rb.constraints;
-            constraints |= RigidbodyConstraints2D.FreezePositionY; // set freeze y
-            constraints |= RigidbodyConstraints2D.FreezePositionX; // set freeze y
-            constraints |= RigidbodyConstraints2D.FreezeRotation; // set freeze rot
-            _rb.constraints = constraints;
-        }
+        private bool CanThrowIcicle(Component other) =>
+            other.transform.TryGetComponent<PlayerTag>(out _) && enabled;
 
-        private IEnumerator WaitAndThrow()
+        private void ThrowIcicle()
         {
-            yield return new MWaitForSeconds(waitingTime);
-
             UnfreezePosY();
             _rb.velocity = startVel;
         }
 
+        private void Freeze()
+        {
+            _rb.constraints = _rb.constraints
+                .Add(RigidbodyConstraints2D.FreezePositionY)
+                .Add(RigidbodyConstraints2D.FreezePositionX)
+                .Add(RigidbodyConstraints2D.FreezeRotation);
+        }
+
         private void UnfreezePosY()
         {
-            _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY; // remove freeze y
+            _rb.constraints = _rb.constraints.Remove(RigidbodyConstraints2D.FreezePositionY);
         }
     }
 }

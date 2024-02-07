@@ -37,7 +37,7 @@
             var position = transform.position;
 
             var hit = Physics2D.Raycast(position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
-            Debug.DrawLine(position, (Vector2)position + DirVec, Color.red);
+            Debug.DrawLine(position, position + (Vector3)DirVec, Color.red);
 
             if (hit == default)
                 return;
@@ -56,7 +56,7 @@
                 cooldown,
                 () =>
                 {
-                    GameManager.Instance.ExecutorInNextFrame.Execute(() => damage.enabled = false);
+                    damage.enabled = false;
                     enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 },
                 () =>

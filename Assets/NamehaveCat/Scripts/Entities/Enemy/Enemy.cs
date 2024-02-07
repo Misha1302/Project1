@@ -15,18 +15,16 @@ namespace NamehaveCat.Scripts.Entities.Enemy
     {
         [SerializeField] [CanBeNull] private EnemyStateBase attack;
         [SerializeField] [CanBeNull] private EnemyStateBase walk;
-        [SerializeField] [CanBeNull] private EnemyStateChanger stateChanger;
-
         [SerializeField] private EnemyHead head;
         [SerializeField] private float colliderRadius = 1f;
+        [SerializeField] [CanBeNull] private EnemyStateChangerBase stateChanger;
 
         [HideInInspector] public UnityEvent<Enemy> onStateChanged = new();
-
         private readonly string _coroutineName = $"WaitAndResetCoroutine{Guid.NewGuid()}";
-
         [CanBeNull] private EnemyStateBase _stateBeh;
 
-        public EnemyStateChanger StateChanger => stateChanger;
+
+        public EnemyStateChangerBase StateChanger => stateChanger;
         public ObjectFlipper ObjectFlipper { get; private set; }
         public Rigidbody2D Rb2D { get; private set; }
         public EnemyState State { get; private set; }
@@ -41,7 +39,6 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             if (attack != null) attack.Init(this);
             if (walk != null) walk.Init(this);
             if (head != null) head.Init(this);
-            if (stateChanger != null) stateChanger.Init(this);
 
             GameManager.Instance.ExecutorInNextFrame.Execute(() => ChangeState(EnemyState.Walk));
         }

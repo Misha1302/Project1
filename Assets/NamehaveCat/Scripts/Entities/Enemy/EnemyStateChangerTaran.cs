@@ -7,22 +7,18 @@
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
-    public class EnemyStateChangerTaran : EnemyStateChanger
+    public class EnemyStateChangerTaran : EnemyStateChangerBase
     {
         [SerializeField] private float distance = 5;
-        [SerializeField] private float cooldown = 5.5f;
         [SerializeField] private float offset = -0.5f;
 
         public override EnemyState TryGetNewState(Direction dir)
         {
-            if (GameManager.Instance.Time.CurTime < StateExitTimes[EnemyState.Attack] + cooldown)
-                return EnemyState.Walk;
-
             Validate(dir);
 
             var direction = dir.Has(Direction.Left) ? Vector3.left : Vector3.right;
             var startPos = transform.position;
-            startPos.y -= offset;
+            startPos.y += offset;
 
             // ReSharper disable Unity.InefficientPropertyAccess
             Debug.DrawLine(startPos, startPos + direction * distance, Color.red);

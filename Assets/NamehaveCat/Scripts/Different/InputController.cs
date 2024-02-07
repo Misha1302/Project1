@@ -22,7 +22,7 @@
         private Direction _dir;
         public IReadOnlyDictionary<Direction, Axis> Axes => _axes;
 
-        private void Start()
+        private void Awake()
         {
             InstantiateAxes();
 
