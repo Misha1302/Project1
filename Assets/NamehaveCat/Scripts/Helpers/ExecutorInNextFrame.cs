@@ -1,9 +1,9 @@
 ﻿namespace NamehaveCat.Scripts.Helpers
 {
     using System;
-    using NamehaveCat.Scripts.Different;
+    using UnityEngine;
 
-    public class ExecuteInNextFrame : MonoBehSingleton<ExecuteInNextFrame>
+    public class ExecutorInNextFrame : MonoBehaviour
     {
         private readonly Action[] _funcs = new Action[1024];
         private int _len;

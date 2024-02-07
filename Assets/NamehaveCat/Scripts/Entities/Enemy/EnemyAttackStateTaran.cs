@@ -2,7 +2,6 @@
 {
     using System;
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -57,7 +56,7 @@
                 cooldown,
                 () =>
                 {
-                    ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
+                    GameManager.Instance.ExecutorInNextFrame.Execute(() => damage.enabled = false);
                     enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 },
                 () =>

@@ -2,7 +2,6 @@
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
-    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase
@@ -40,7 +39,7 @@
 
             sb.Set(LayersManager.Enemy, position, direction, right);
 
-            CoroutineManager.Instance.InvokeAfter(() =>
+            GameManager.Instance.CoroutineManager.InvokeAfter(() =>
             {
                 if (sb != null)
                     Destroy(sb.gameObject);

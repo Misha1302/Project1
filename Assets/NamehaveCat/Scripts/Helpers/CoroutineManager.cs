@@ -2,12 +2,11 @@
 {
     using System;
     using System.Collections;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
-    public class CoroutineManager : MonoBehSingleton<CoroutineManager>, IDontPauseTag
+    public class CoroutineManager : MonoBehaviour, IDontPauseTag
     {
         private MonoBehaviourInstance _alwaysEnabled;
         private CoroutineRepository _coroutineRepository;

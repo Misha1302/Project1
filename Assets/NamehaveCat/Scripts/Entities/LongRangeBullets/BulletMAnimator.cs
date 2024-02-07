@@ -1,7 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 
@@ -30,7 +29,7 @@
             _rb2D.velocity = Vector2.zero;
             _rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
 
-            CoroutineManager.Instance.InvokeAfter(() => Destroy(gameObject), 5);
+            GameManager.Instance.CoroutineManager.InvokeAfter(() => Destroy(gameObject), 5);
         }
     }
 }

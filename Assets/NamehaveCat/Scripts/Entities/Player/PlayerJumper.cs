@@ -33,7 +33,7 @@
         {
             // execute in next frame 'cause GameManager initializing in Awake, InputController in Start, PlayerJumper in next frame
             // ExecuteInNextFrame.Instance.Execute(ResetBuffer);
-            ExecuteInNextFrame.Instance.Execute(() =>
+            GameManager.Instance.ExecutorInNextFrame.Execute(() =>
                 GameManager.Instance.InputController.Axes[Direction.Up]
                     .onEnd.AddListener(() => _isJumping = false)
             );
@@ -66,7 +66,7 @@
 
         private void Jump()
         {
-            ExecuteInNextFrame.Instance.Execute(() =>
+            GameManager.Instance.ExecutorInNextFrame.Execute(() =>
             {
                 var rb = GameManager.Instance.PlayerController.Rb2D;
                 rb.velocity = rb.velocity.WithY(speed);

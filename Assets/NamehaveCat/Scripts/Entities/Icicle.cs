@@ -1,7 +1,7 @@
 namespace NamehaveCat.Scripts.Entities
 {
     using System.Collections;
-    using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -29,7 +29,7 @@ namespace NamehaveCat.Scripts.Entities
             if (!other.transform.TryGetComponent<PlayerTag>(out _))
                 return;
 
-            CoroutineManager.Instance.StartCoroutine(WaitAndThrow());
+            GameManager.Instance.CoroutineManager.StartCoroutine(WaitAndThrow());
             enabled = false;
         }
 

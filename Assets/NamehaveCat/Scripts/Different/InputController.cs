@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -12,6 +13,10 @@
         [SerializeField] private KeyCode[] keysLeft = { KeyCode.A, KeyCode.LeftArrow };
         [SerializeField] private KeyCode[] keysRight = { KeyCode.D, KeyCode.RightArrow };
         [SerializeField] private KeyCode[] keysUp = { KeyCode.Space, KeyCode.UpArrow };
+
+        [SerializeField] private RButton btnLeft;
+        [SerializeField] private RButton btnRight;
+        [SerializeField] private RButton btnUp;
 
         private readonly Dictionary<Direction, Axis> _axes = new();
         private Direction _dir;
@@ -47,11 +52,9 @@
 
         private void InstantiateAxes()
         {
-            var ui = GameManager.Instance.UiManager;
-
-            _axes.Add(Direction.Left, Axis.CreateInstance(ui.BtnLeft, keysLeft));
-            _axes.Add(Direction.Right, Axis.CreateInstance(ui.BtnRight, keysRight));
-            _axes.Add(Direction.Up, Axis.CreateInstance(ui.BtnUp, keysUp));
+            _axes.Add(Direction.Left, Axis.CreateInstance(btnLeft, keysLeft));
+            _axes.Add(Direction.Right, Axis.CreateInstance(btnRight, keysRight));
+            _axes.Add(Direction.Up, Axis.CreateInstance(btnUp, keysUp));
         }
     }
 }

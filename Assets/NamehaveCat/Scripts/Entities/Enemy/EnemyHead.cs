@@ -2,7 +2,6 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
-    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -42,7 +41,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
                 stunTime,
                 () =>
                 {
-                    if (found) ExecuteInNextFrame.Instance.Execute(() => damage.enabled = false);
+                    if (found) GameManager.Instance.ExecutorInNextFrame.Execute(() => damage.enabled = false);
                     _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
                 }, () =>
                 {

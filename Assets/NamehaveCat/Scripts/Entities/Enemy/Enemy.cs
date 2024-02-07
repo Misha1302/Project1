@@ -43,7 +43,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             if (head != null) head.Init(this);
             if (stateChanger != null) stateChanger.Init(this);
 
-            ExecuteInNextFrame.Instance.Execute(() => ChangeState(EnemyState.Walk));
+            GameManager.Instance.ExecutorInNextFrame.Execute(() => ChangeState(EnemyState.Walk));
         }
 
         private void FixedUpdate()
@@ -70,9 +70,9 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 
         public void WaitAndReset(float seconds, Action start, Action end)
         {
-            CoroutineManager.Instance.StopCoroutines(_coroutineName);
+            GameManager.Instance.CoroutineManager.StopCoroutines(_coroutineName);
 
-            CoroutineManager.Instance.StartCoroutine(
+            GameManager.Instance.CoroutineManager.StartCoroutine(
                 WaitAndResetCoroutine(seconds, start, end),
                 _coroutineName
             );
@@ -83,9 +83,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             start?.Invoke();
             ChangeState(EnemyState.Waiting);
 
-            print(1);
             yield return new MWaitForSeconds(seconds);
-            print(2);
 
             ChangeState(EnemyState.Walk);
             end?.Invoke();

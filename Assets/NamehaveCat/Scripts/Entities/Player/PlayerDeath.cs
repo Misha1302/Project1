@@ -1,7 +1,6 @@
 namespace NamehaveCat.Scripts.Entities.Player
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Helpers;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
@@ -33,7 +32,7 @@ namespace NamehaveCat.Scripts.Entities.Player
             KillPlayer(GameManager.Instance.PlayerController.transform.GetComponent<Animator>());
 
             // load next scene after X seconds
-            CoroutineManager.Instance.InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime);
+            GameManager.Instance.CoroutineManager.InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime);
         }
 
         private void KillPlayer(Animator player)

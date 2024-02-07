@@ -10,20 +10,13 @@ namespace NamehaveCat.Scripts.UI
         [SerializeField] private Button restart;
         [SerializeField] private Button settingsBtn;
         [SerializeField] private GameObject settingsPanel;
-        [SerializeField] private Pause pause;
-        [SerializeField] private CameraScreen cameraScreen;
+        [SerializeField] private RawImage settingsFrameImage;
 
         private void Start()
         {
             settingsBtn.onClick.AddListener(PauseOrRelease);
 
             restart.onClick.AddListener(RSceneManager.Reload);
-        }
-
-        private void OnValidate()
-        {
-            if (cameraScreen == null)
-                cameraScreen = FindObjectOfType<CameraScreen>();
         }
 
         private void PauseOrRelease()
@@ -33,13 +26,13 @@ namespace NamehaveCat.Scripts.UI
 
             if (!settingsPanel.activeSelf)
             {
-                GameManager.Instance.UiManager.SettingsFrameImage.texture = cameraScreen.TakeScreen();
-                pause.MPause();
+                settingsFrameImage.texture = GameManager.Instance.CameraScreen.TakeScreen();
+                GameManager.Instance.Pause.MPause();
             }
             else
             {
-                if (pause.IsPause)
-                    pause.MRelease();
+                if (GameManager.Instance.Pause.IsPause)
+                    GameManager.Instance.Pause.MRelease();
             }
 
             settingsPanel.SetActive(!settingsPanel.activeSelf);
