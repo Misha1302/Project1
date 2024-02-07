@@ -8,7 +8,7 @@
 
         private void FixedUpdate()
         {
-            CurTime += Time.fixedTime;
+            CurTime += Time.fixedDeltaTime;
         }
     }
 }
