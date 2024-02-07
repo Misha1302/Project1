@@ -199,6 +199,30 @@ PrefabInstance:
       propertyPath: btnRight
       value: 
       objectReference: {fileID: 115875937472696020}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysUp.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysUp.Array.data[1]
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysLeft.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysLeft.Array.data[1]
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysRight.Array.data[0]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542235936617503127, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
+      propertyPath: keysRight.Array.data[1]
+      value: 62
+      objectReference: {fileID: 0}
     - target: {fileID: 6078337045924495990, guid: ded61bf75a7ccae42a2ca355568ddace, type: 3}
       propertyPath: panel
       value: 
@@ -382,13 +406,17 @@ PrefabInstance:
       propertyPath: settingsFrameImage
       value: 
       objectReference: {fileID: 2681873503458026128}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5750519092974623869, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 777285080678833468, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1330317297004479553}
+    - targetCorrespondingSourceObject: {fileID: 2157749147110796362, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8466870192806703523}
   m_SourcePrefab: {fileID: 100100000, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}
 --- !u!114 &115875937472696020 stripped
 MonoBehaviour:
@@ -450,6 +478,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e2741ea66ad354497f11f0f31f88d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8062999924177964987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2157749147110796362, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}
+  m_PrefabInstance: {fileID: 8220295124611097585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8466870192806703523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062999924177964987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &8336766907708751019 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 118922670827364186, guid: 192814af03472aa41b6ede98e8b2e4c2, type: 3}

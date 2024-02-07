@@ -3,6 +3,7 @@
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
+    using UnityEngine.InputSystem;
 
     public class Axis : MonoBehaviour
     {
@@ -10,20 +11,21 @@
         public readonly UnityEvent onPressed = new();
         public readonly UnityEvent onStart = new();
 
-        private KeyCode[] _keys;
+        private Key[] _keys;
 
         private void Update()
         {
             foreach (var key in _keys)
-                if (Input.GetKeyDown(key)) OnStart();
-                else if (Input.GetKey(key)) OnPressed();
-                else if (Input.GetKeyUp(key)) OnEnd();
+                if (Keyboard.current[key].wasPressedThisFrame) OnStart();
+                else if (Keyboard.current[key].isPressed) OnPressed();
+                else if (Keyboard.current[key].wasReleasedThisFrame) OnEnd();
         }
 
-        public static Axis CreateInstance(RButton button, KeyCode[] keys) =>
+
+        public static Axis CreateInstance(RButton button, Key[] keys) =>
             new GameObject().AddComponent<Axis>().Init(button, keys);
 
-        private Axis Init(RButton button, KeyCode[] keys)
+        private Axis Init(RButton button, Key[] keys)
         {
             _keys = keys;
 

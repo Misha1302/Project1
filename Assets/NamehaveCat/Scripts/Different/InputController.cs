@@ -6,14 +6,15 @@
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
+    using UnityEngine.InputSystem;
 
     public class InputController : MonoBehaviour
     {
         [HideInInspector] public UnityEvent<Direction> onPress = new();
 
-        [SerializeField] private KeyCode[] keysLeft = { KeyCode.A, KeyCode.LeftArrow };
-        [SerializeField] private KeyCode[] keysRight = { KeyCode.D, KeyCode.RightArrow };
-        [SerializeField] private KeyCode[] keysUp = { KeyCode.Space, KeyCode.UpArrow };
+        [SerializeField] private Key[] keysLeft = { Key.A, Key.LeftArrow };
+        [SerializeField] private Key[] keysRight = { Key.D, Key.RightArrow };
+        [SerializeField] private Key[] keysUp = { Key.Space, Key.UpArrow };
 
         [SerializeField] private RButton btnLeft;
         [SerializeField] private RButton btnRight;
