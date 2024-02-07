@@ -2,13 +2,14 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
 
     public class InputController : MonoBehaviour
     {
-        [HideInInspector] public UnityEvent<Direction> onMove = new();
+        [HideInInspector] public UnityEvent<Direction> onPress = new();
 
         [SerializeField] private KeyCode[] keysLeft = { KeyCode.A, KeyCode.LeftArrow };
         [SerializeField] private KeyCode[] keysRight = { KeyCode.D, KeyCode.RightArrow };
@@ -26,14 +27,14 @@
         {
             InstantiateAxes();
 
-            _axes[Direction.Left].onPressed.AddListener(() => _dir |= Direction.Left);
-            _axes[Direction.Right].onPressed.AddListener(() => _dir |= Direction.Right);
-            _axes[Direction.Up].onPressed.AddListener(() => _dir |= Direction.Up);
+            _axes[Direction.Left].onPressed.AddListener(() => _dir = _dir.Add(Direction.Left));
+            _axes[Direction.Right].onPressed.AddListener(() => _dir = _dir.Add(Direction.Right));
+            _axes[Direction.Up].onPressed.AddListener(() => _dir = _dir.Add(Direction.Up));
         }
 
         private void Update()
         {
-            onMove.Invoke(_dir);
+            onPress.Invoke(_dir);
             _dir = Direction.None;
         }
 

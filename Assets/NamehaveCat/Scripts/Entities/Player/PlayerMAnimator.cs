@@ -13,7 +13,7 @@ namespace NamehaveCat.Scripts.Entities.Player
         {
             base.Start();
 
-            GameManager.Instance.InputController.onMove.AddListener(AnimateWalk);
+            GameManager.Instance.InputController.onPress.AddListener(AnimateWalk);
         }
 
         private void Update()

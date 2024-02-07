@@ -11,7 +11,7 @@
         private MonoBehaviourInstance _alwaysEnabled;
         private CoroutineRepository _coroutineRepository;
 
-        private void Start()
+        private void Awake()
         {
             _alwaysEnabled = new GameObject()
                 .AddComponent<DontPauseTag>().gameObject

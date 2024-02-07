@@ -6,9 +6,9 @@
     {
         public float CurTime { get; private set; }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            CurTime += Time.deltaTime;
+            CurTime += Time.fixedTime;
         }
     }
 }

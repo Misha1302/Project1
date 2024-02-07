@@ -2,6 +2,7 @@
 {
     using UnityEngine;
 
+    [RequireComponent(typeof(Animator))]
     public class MAnimator : MonoBehaviour
     {
         protected Animator Animator { get; private set; }

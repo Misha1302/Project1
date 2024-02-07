@@ -29,13 +29,13 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Start()
         {
-            GameManager.Instance.InputController.onMove.AddListener(Move);
+            GameManager.Instance.InputController.onPress.AddListener(Move);
         }
 
         private void OnEnable()
         {
             if (GameManager.Instance != null)
-                GameManager.Instance.InputController.onMove.AddListener(Move);
+                GameManager.Instance.InputController.onPress.AddListener(Move);
 
             Init();
 
@@ -47,7 +47,7 @@ namespace NamehaveCat.Scripts.Entities.Player
         private void OnDisable()
         {
             if (GameManager.Instance != null)
-                GameManager.Instance.InputController.onMove.RemoveListener(Move);
+                GameManager.Instance.InputController.onPress.RemoveListener(Move);
 
             _collider.enabled = false;
             Rb2D.Sleep();
