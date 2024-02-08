@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -13,9 +14,8 @@
 
         private void Awake()
         {
-            _alwaysEnabled = new GameObject()
-                .AddComponent<DontPauseTag>().gameObject
-                .AddComponent<MonoBehaviourInstance>();
+            _alwaysEnabled =
+                GameObjectsCreator.New<DontPauseTag, MonoBehaviourInstance>("Always enabled coroutine keeper");
 
             _coroutineRepository = new CoroutineRepository();
         }

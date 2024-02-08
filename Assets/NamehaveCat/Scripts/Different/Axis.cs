@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
+    using System.Collections.Generic;
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.Events;
@@ -16,28 +17,27 @@
         private void Update()
         {
             foreach (var key in _keys)
-                if (Keyboard.current[key].wasPressedThisFrame) OnStart();
-                else if (Keyboard.current[key].isPressed) OnPressed();
-                else if (Keyboard.current[key].wasReleasedThisFrame) OnEnd();
+                if (Keyboard.current[key].wasPressedThisFrame) onStart.Invoke();
+                else if (Keyboard.current[key].isPressed) onPressed.Invoke();
+                else if (Keyboard.current[key].wasReleasedThisFrame) onEnd.Invoke();
         }
 
 
         public static Axis CreateInstance(RButton button, Key[] keys) =>
-            new GameObject().AddComponent<Axis>().Init(button, keys);
+            GameObjectsCreator.New<Axis>(MakeName(button, keys)).Init(button, keys);
+
+        private static string MakeName(Object button, IEnumerable<Key> keys) =>
+            $"Axis; Btn: {button.name}; Keys: {string.Join(",", keys)}";
 
         private Axis Init(RButton button, Key[] keys)
         {
             _keys = keys;
 
-            button.onStart.AddListener(OnStart);
-            button.onPressed.AddListener(OnPressed);
-            button.onEnd.AddListener(OnEnd);
+            button.onStart.AddListener(onStart.Invoke);
+            button.onPressed.AddListener(onPressed.Invoke);
+            button.onEnd.AddListener(onEnd.Invoke);
 
             return this;
         }
-
-        private void OnEnd() => onEnd.Invoke();
-        private void OnPressed() => onPressed.Invoke();
-        private void OnStart() => onStart.Invoke();
     }
 }
