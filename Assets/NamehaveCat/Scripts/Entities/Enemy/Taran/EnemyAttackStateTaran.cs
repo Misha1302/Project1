@@ -1,7 +1,8 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy.Taran
 {
     using System;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Entities.Enemy.Common;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

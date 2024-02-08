@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     public enum EnemyState
     {

@@ -15,7 +15,6 @@
         [SerializeField] private Pause pause;
         [SerializeField] private MTime time;
         [SerializeField] private CoroutineManager coroutineManager;
-        [SerializeField] private ExecutorInNextFrame executorInNextFrame;
         [SerializeField] private CameraScreen cameraScreen;
 
         public PlayerController PlayerController => playerController;
@@ -25,7 +24,6 @@
         public Pause Pause => pause;
         public MTime Time => time;
         public CoroutineManager CoroutineManager => coroutineManager;
-        public ExecutorInNextFrame ExecutorInNextFrame => executorInNextFrame;
         public CameraScreen CameraScreen => cameraScreen;
     }
 }

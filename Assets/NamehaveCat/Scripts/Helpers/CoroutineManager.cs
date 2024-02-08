@@ -9,6 +9,7 @@
 
     public class CoroutineManager : MonoBehaviour, IDontPauseTag
     {
+        private const string DefaultCoroutineName = "Nameless";
         private MonoBehaviourInstance _alwaysEnabled;
         private CoroutineRepository _coroutineRepository;
 
@@ -20,7 +21,7 @@
             _coroutineRepository = new CoroutineRepository();
         }
 
-        public void StartCoroutine(IEnumerator coroutine, string coroutineName = "Nameless")
+        public void StartCoroutine(IEnumerator coroutine, string coroutineName = DefaultCoroutineName)
         {
             _alwaysEnabled.StartCoroutine(AddStartStopRemoveCoroutine(coroutine, coroutineName));
         }
@@ -34,9 +35,9 @@
             _coroutineRepository.RemoveAllCoroutines(groupName);
         }
 
-        public void InvokeAfter(Action action, float timeToWait)
+        public void InvokeAfter(Action action, float timeToWait, string coroutineName = DefaultCoroutineName)
         {
-            StartCoroutine(InvokeAfterCoroutine(action, timeToWait));
+            StartCoroutine(InvokeAfterCoroutine(action, timeToWait), coroutineName);
         }
 
         private static IEnumerator InvokeAfterCoroutine(Action action, float timeToWait)

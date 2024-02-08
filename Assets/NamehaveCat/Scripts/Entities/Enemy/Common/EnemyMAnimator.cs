@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.MImplementations;
@@ -9,9 +9,9 @@
     {
         [SerializeField] private Enemy enemy;
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
 
             enemy.onStateChanged.AddListener(_ =>
             {

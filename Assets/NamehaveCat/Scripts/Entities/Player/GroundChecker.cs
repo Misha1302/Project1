@@ -10,12 +10,18 @@
     public sealed class GroundChecker : MonoBehaviour
     {
         private readonly Collider2D[] _results = new Collider2D[128];
-        public bool IsGrounded => GetIsGrounded();
+
+        public bool IsGrounded { get; private set; }
 
         private void Start()
         {
             if (GetComponent<BoxCollider2D>().size != Vector2.one)
-                Thrower.Throw(new InvalidOperationException());
+                Thrower.Throw(new InvalidOperationException("Size of box collider must be (1;1;1)"));
+        }
+
+        private void Update()
+        {
+            IsGrounded = GetIsGrounded();
         }
 
         private void OnDrawGizmos()

@@ -182,10 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb5636f311c465abf7e3fdc75149748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startValue: 100
   onDamage:
     m_PersistentCalls:
       m_Calls: []
-  startValue: 100
 --- !u!114 &5527547456218450277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ PolygonCollider2D:
     - - {x: 1.285343, y: -1.0845058}
       - {x: 1.0938869, y: -1.2641859}
       - {x: 1.008243, y: -1.3618112}
-      - {x: 0.6036406, y: -1.4432964}
+      - {x: 0.6036406, y: -1.456932}
       - {x: -0.6281885, y: -1.4569324}
       - {x: -1.1000259, y: -1.3990636}
       - {x: -1.1654935, y: -1.2605424}

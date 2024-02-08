@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
@@ -23,6 +23,22 @@
 
         public override void Loop()
         {
+            if (TryChangeState())
+                return;
+
+            ChangeDirectionIfNeed();
+
+            SetFlipAndVelocity();
+        }
+
+        private void SetFlipAndVelocity()
+        {
+            enemy.ObjectFlipper.FlipX = _dir == 1;
+            enemy.Rb2D.velocity = enemy.Rb2D.velocity.WithX(_dir * speed);
+        }
+
+        private bool TryChangeState()
+        {
             var state = enemy.StateChanger.TryGetNewState(
                 _dir == 1
                     ? Direction.Right
@@ -32,16 +48,13 @@
             if (state != EnemyState.Walk)
             {
                 enemy.ChangeState(state);
-                return;
+                return true;
             }
 
-            TryChangeDirection();
-
-            enemy.ObjectFlipper.FlipX = _dir == 1;
-            enemy.Rb2D.velocity = enemy.Rb2D.velocity.WithX(_dir * speed);
+            return false;
         }
 
-        private void TryChangeDirection()
+        private void ChangeDirectionIfNeed()
         {
             var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
             if (hit != default && !hit.transform.TryGetComponent<PlayerTag>(out _))

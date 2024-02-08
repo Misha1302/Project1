@@ -23,23 +23,30 @@ namespace NamehaveCat.Scripts.Entities.Player
             if (health.Value > 0)
                 return;
 
-            panel.gameObject.SetActive(true); // enable death panel
-            messageText.text = string.Format(format, health.Message); // set death text
-            GameManager.Instance.PlayerController.Rb2D.constraints =
-                RigidbodyConstraints2D.FreezeAll; // stopping player
+            UiUpdate(health);
 
-            // disable all player components
-            KillPlayer(GameManager.Instance.PlayerController.transform.GetComponent<Animator>());
+            DisablePlayer(GameManager.Instance.PlayerController.transform.GetComponent<Animator>());
 
-            // load next scene after X seconds
+            Die();
+        }
+
+        private static void Die()
+        {
             GameManager.Instance.CoroutineManager.InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime);
         }
 
-        private void KillPlayer(Animator player)
+        private void UiUpdate(Health health)
+        {
+            panel.gameObject.SetActive(true);
+            messageText.text = string.Format(format, health.Message);
+        }
+
+        private void DisablePlayer(Animator player)
         {
             IsDying = true;
             player.SetBool(AnimatorHelper.Death, true);
 
+            GameManager.Instance.PlayerController.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
             GameManager.Instance.PlayerController.enabled = false;
             GameManager.Instance.PlayerHealth.enabled = false;
         }

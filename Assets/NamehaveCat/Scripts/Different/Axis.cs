@@ -22,7 +22,6 @@
                 else if (Keyboard.current[key].wasReleasedThisFrame) onEnd.Invoke();
         }
 
-
         public static Axis CreateInstance(RButton button, Key[] keys) =>
             GameObjectsCreator.New<Axis>(MakeName(button, keys)).Init(button, keys);
 

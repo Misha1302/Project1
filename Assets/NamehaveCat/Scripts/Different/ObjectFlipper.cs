@@ -8,17 +8,21 @@ namespace NamehaveCat.Scripts.Different
         private static readonly Quaternion _right = Quaternion.Euler(0, 180, 0);
 
         [SerializeField] private Transform[] othersToFlip;
-        private bool _flipX;
+
+        private bool? _flipX;
 
         public bool FlipX
         {
             set
             {
+                if (_flipX == value)
+                    return;
+
                 _flipX = value;
 
-                transform.rotation = _flipX ? _right : _left;
+                transform.rotation = _flipX.Value ? _right : _left;
                 foreach (var other in othersToFlip)
-                    other.rotation = _flipX ? _right : _left;
+                    other.rotation = _flipX.Value ? _right : _left;
             }
         }
     }

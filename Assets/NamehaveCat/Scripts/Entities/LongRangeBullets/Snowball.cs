@@ -1,6 +1,7 @@
 namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using System;
+    using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 
     [RequireComponent(typeof(SpriteRenderer))]
@@ -23,26 +24,22 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
             _rb2D.velocity = _direction;
         }
 
-        public void Set(LayerMask enemy, Vector3 position, Vector3 direction, bool right)
+        public void Set(LayerMask enemy, Vector3 position, Vector3 direction)
         {
             _rb2D.excludeLayers = enemy;
             _rb2D.position = position;
             _rb2D.velocity = _direction = direction;
-            SetRotation(_rb2D.position, _rb2D.velocity, right);
+            SetRotation(_rb2D.position, _rb2D.velocity);
         }
 
-        private void SetRotation(Vector2 pos, Vector2 vel, bool right)
+        private void SetRotation(Vector2 pos, Vector2 vel)
         {
-            var point1 = pos;
-            var point2 = pos + vel;
+            var angle = pos.Degrees(pos + vel);
 
-            var ba = point2.y - point1.y;
-            var bc = Vector2.Distance(point2, point1);
-
-            var angle = MathF.Asin(ba / bc);
-
-            _rb2D.rotation = vel.x < 0 ? -angle : angle;
-            _spriteRenderer.flipX = !right;
+            // if (x, y < 0) or (x, y > 0)
+            var z = MathF.Sign(vel.x) == MathF.Sign(vel.y) ? angle : -angle;
+            _rb2D.transform.rotation = Quaternion.Euler(0, 0, z);
+            _spriteRenderer.flipX = vel.x > 0;
         }
     }
 }

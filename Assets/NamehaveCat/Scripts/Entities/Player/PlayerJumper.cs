@@ -18,6 +18,7 @@
         public int StandardBuffer
         {
             get => standardBuffer;
+            // ReSharper disable once UnusedMember.Global
             set
             {
                 if (value < 0)
@@ -40,7 +41,7 @@
             _buffer = StandardBuffer;
         }
 
-        public void TryJump(bool isGrounded)
+        public bool TryJump(bool isGrounded)
         {
             if (isGrounded)
             {
@@ -48,25 +49,23 @@
                 _isJumping = false;
             }
 
-            if (_isJumping)
-                return;
-
-            if (_buffer <= 0)
-                return;
+            if (!CanJump())
+                return false;
 
             Jump();
 
             _buffer--;
             _isJumping = true;
+
+            return true;
         }
+
+        private bool CanJump() => !_isJumping && _buffer > 0;
 
         private void Jump()
         {
-            GameManager.Instance.ExecutorInNextFrame.Execute(() =>
-            {
-                var rb = GameManager.Instance.PlayerController.Rb2D;
-                rb.velocity = rb.velocity.WithY(speed);
-            });
+            var rb = GameManager.Instance.PlayerController.Rb2D;
+            rb.velocity = rb.velocity.WithY(speed);
         }
     }
 }

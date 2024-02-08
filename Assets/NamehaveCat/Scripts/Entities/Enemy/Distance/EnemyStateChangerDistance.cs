@@ -1,7 +1,8 @@
-﻿namespace NamehaveCat.Scripts.Entities.Enemy
+﻿namespace NamehaveCat.Scripts.Entities.Enemy.Distance
 {
     using System;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Entities.Enemy.Common;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -17,14 +18,14 @@
             var a = transform.position + Vector3.up * offset;
             var b = GameManager.Instance.PlayerController.transform.position;
 
-            var rightDist = Math.Abs(a.x - b.x) <= distance;
-            var rightAngle = a.Degrees(b) <= maxDegrees;
+            var trueDist = Math.Abs(a.x - b.x) <= distance;
+            var trueAngle = a.Degrees(b) <= maxDegrees;
             var trueDirection = dir.Has(Direction.Left) ? b.x < a.x : a.x < b.x;
             var isPlayer = RaycastPlayer(b - a);
 
             DrawLines(a, dir.Has(Direction.Left));
 
-            return rightDist && rightAngle && trueDirection && isPlayer ? EnemyState.Attack : EnemyState.Walk;
+            return trueDist && trueAngle && trueDirection && isPlayer ? EnemyState.Attack : EnemyState.Walk;
         }
 
         private static void DrawLines(Vector3 enemyCenterPoint, bool left)

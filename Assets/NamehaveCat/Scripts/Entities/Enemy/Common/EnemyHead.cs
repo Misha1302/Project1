@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Entities.Enemy
+namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
@@ -14,41 +14,54 @@ namespace NamehaveCat.Scripts.Entities.Enemy
 
         private Enemy _enemy;
         private float _previousTime = float.MinValue;
-        private void OnCollisionEnter2D(Collision2D other) => OnCollision(other.transform);
 
+
+        private void OnCollisionEnter2D(Collision2D other) => OnCollision(other.transform);
         private void OnCollisionStay2D(Collision2D other) => OnCollision(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => OnCollision(other.transform);
         private void OnTriggerStay2D(Collider2D other) => OnCollision(other.transform);
 
+
         private void OnCollision(Component other)
         {
-            if (!other.TryGetComponent<PlayerPawsTag>(out _))
-                return;
-
-            if (_previousTime + damageWaitTime > GameManager.Instance.Time.CurTime)
+            if (!CanReactForCollision(other))
                 return;
 
             _previousTime = GameManager.Instance.Time.CurTime;
 
-            if (_enemy.State == EnemyState.Waiting)
-            {
-                GameManager.Instance.PlayerHealth.Damage(damageOnStun, deathMessage);
+            if (TryDamage())
                 return;
-            }
 
-            var found = TryGetComponent<FatalDamage>(out var damage);
+            Stun();
+        }
+
+        private void Stun()
+        {
             _enemy.WaitAndReset(
                 stunTime,
-                () =>
-                {
-                    if (found) GameManager.Instance.ExecutorInNextFrame.Execute(() => damage.enabled = false);
-                    _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-                }, () =>
-                {
-                    if (found) damage.enabled = true;
-                    _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-                }
+                () => _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll,
+                () => _enemy.Rb2D.constraints = RigidbodyConstraints2D.FreezeRotation
             );
+        }
+
+        private bool TryDamage()
+        {
+            if (_enemy.State != EnemyState.Waiting)
+                return false;
+
+            GameManager.Instance.PlayerHealth.Damage(damageOnStun, deathMessage);
+            return true;
+        }
+
+        private bool CanReactForCollision(Component other)
+        {
+            if (!other.TryGetComponent<PlayerPawsTag>(out _))
+                return false;
+
+            if (_previousTime + damageWaitTime > GameManager.Instance.Time.CurTime)
+                return false;
+
+            return true;
         }
 
         public void Init(Enemy e)

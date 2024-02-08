@@ -9,10 +9,8 @@ namespace NamehaveCat.Scripts.Machinery
     {
         private PhysicsButton _physicsButton;
 
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
-
             _physicsButton = GetComponent<PhysicsButton>();
         }
 

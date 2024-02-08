@@ -8,11 +8,8 @@ namespace NamehaveCat.Scripts.Entities.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerMAnimator : MAnimator
     {
-        // Start is called before the first frame update
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
-
             GameManager.Instance.InputController.onPress.AddListener(AnimateWalk);
         }
 

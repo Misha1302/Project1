@@ -1,8 +1,8 @@
 ﻿namespace NamehaveCat.Scripts.Helpers
 {
-    using UnityEngine;
     using UnityEngine.Events;
     using UnityEngine.EventSystems;
+    using UnityEngine.InputSystem;
     using UnityEngine.UI;
 
     public class RButton : Button
@@ -25,11 +25,16 @@
             base.OnDisable();
         }
 
-        public override void OnPointerExit(PointerEventData eventData) => OnPointerUp(eventData);
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+            OnPointerUp(eventData);
+        }
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            if (Input.touchCount != 0 || Input.GetMouseButton(0))
+            base.OnPointerEnter(eventData);
+            if (Touchscreen.current?.touches.Count != 0 || Mouse.current.leftButton.isPressed)
                 OnPointerDown(eventData);
         }
 

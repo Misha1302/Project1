@@ -13,7 +13,7 @@ namespace NamehaveCat.Scripts.Entities.Player
     [RequireComponent(typeof(PlayerJumper))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float force = 8000f / 3f; // 2666.66666
+        [SerializeField] private float force = 8000f / 3f; // 2666.6667
         [SerializeField] private float forceInFly = 1_000f;
         [SerializeField] private float maxSpeed = 4f;
         [SerializeField] private GroundChecker groundChecker;
@@ -70,14 +70,13 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Vertical(Direction dir)
         {
-            // if up 
             if (dir.Has(Up))
                 _playerJumper.TryJump(groundChecker.IsGrounded);
         }
 
         private void Horizontal(Direction dir)
         {
-            // if ((no left and right) OR (have left and right)) AND (is grounded)
+            // if ((no left and right) or (have left and right)) and (is grounded)
             if (((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right))) && groundChecker.IsGrounded)
             {
                 Rb2D.velocity = Rb2D.velocity.WithX(0);

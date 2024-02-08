@@ -5,11 +5,14 @@
 
     public static class VectorsExtensions
     {
-        private const double DegreesInOneRadian = 180 / Math.PI;
+        private const float DegreesInOneRadian = (float)(180f / Math.PI);
 
         // toDegrees(asin(a / c))
-        public static double Degrees(this Vector3 a, Vector3 b) =>
-            Math.Asin(Math.Abs(a.y - b.y) / Vector3.Distance(a, b)) * DegreesInOneRadian;
+        public static float Degrees(this Vector3 a, Vector3 b) =>
+            MathF.Asin(MathF.Abs(a.y - b.y) / Vector3.Distance(a, b)) * DegreesInOneRadian;
+
+        public static float Degrees(this Vector2 a, Vector2 b) =>
+            Degrees((Vector3)a, (Vector3)b);
 
         public static Vector2 WithX(this Vector2 a, float x)
         {

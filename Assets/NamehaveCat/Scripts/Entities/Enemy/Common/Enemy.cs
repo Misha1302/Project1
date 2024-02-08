@@ -1,11 +1,9 @@
-namespace NamehaveCat.Scripts.Entities.Enemy
+namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     using System;
-    using System.Collections;
     using JetBrains.Annotations;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
-    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -18,9 +16,9 @@ namespace NamehaveCat.Scripts.Entities.Enemy
         [SerializeField] private EnemyHead head;
         [SerializeField] private float colliderRadius = 1f;
         [SerializeField] [CanBeNull] private EnemyStateChangerBase stateChanger;
-
-        [HideInInspector] public UnityEvent<Enemy> onStateChanged = new();
         private readonly string _coroutineName = $"WaitAndResetCoroutine{Guid.NewGuid()}";
+
+        public readonly UnityEvent<Enemy> onStateChanged = new();
         [CanBeNull] private EnemyStateBase _stateBeh;
 
 
@@ -40,7 +38,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             if (walk != null) walk.Init(this);
             if (head != null) head.Init(this);
 
-            GameManager.Instance.ExecutorInNextFrame.Execute(() => ChangeState(EnemyState.Walk));
+            ChangeState(EnemyState.Walk);
         }
 
         private void FixedUpdate()
@@ -62,28 +60,25 @@ namespace NamehaveCat.Scripts.Entities.Enemy
             };
 
             if (_stateBeh != null) _stateBeh.Enter();
-            onStateChanged?.Invoke(this);
+            onStateChanged.Invoke(this);
         }
 
-        public void WaitAndReset(float seconds, Action start, Action end)
+        public void WaitAndReset(float seconds, [CanBeNull] Action start, [CanBeNull] Action end)
         {
             GameManager.Instance.CoroutineManager.StopCoroutines(_coroutineName);
 
-            GameManager.Instance.CoroutineManager.StartCoroutine(
-                WaitAndResetCoroutine(seconds, start, end),
-                _coroutineName
-            );
-        }
-
-        private IEnumerator WaitAndResetCoroutine(float seconds, [CanBeNull] Action start, [CanBeNull] Action end)
-        {
             start?.Invoke();
             ChangeState(EnemyState.Waiting);
 
-            yield return new MWaitForSeconds(seconds);
-
-            ChangeState(EnemyState.Walk);
-            end?.Invoke();
+            GameManager.Instance.CoroutineManager.InvokeAfter(
+                () =>
+                {
+                    ChangeState(EnemyState.Walk);
+                    end?.Invoke();
+                },
+                seconds,
+                _coroutineName
+            );
         }
     }
 }

@@ -7,7 +7,7 @@
     {
         protected Animator Animator { get; private set; }
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             Animator = GetComponent<Animator>();
             Animator.keepAnimatorStateOnDisable = true;
