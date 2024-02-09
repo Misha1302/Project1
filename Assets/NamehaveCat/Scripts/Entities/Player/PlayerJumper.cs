@@ -41,9 +41,9 @@
             _buffer = StandardBuffer;
         }
 
-        public bool TryJump(bool isGrounded)
+        public bool TryJump()
         {
-            if (isGrounded)
+            if (GameManager.Instance.PlayerController.GroundChecker.CanJump)
             {
                 ResetBuffer();
                 _isJumping = false;

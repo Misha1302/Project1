@@ -1,6 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -8,8 +9,11 @@
     [RequireComponent(typeof(BoxCollider2D))]
     public sealed class GroundChecker : MonoBehaviour
     {
+        [SerializeField] private float coyoteTime;
         private readonly Collider2D[] _results = new Collider2D[128];
 
+        private float _isGroundedLimitTime = 0.1f;
+        public bool CanJump => GameManager.Instance.Time.CurTime < _isGroundedLimitTime;
         public bool IsGrounded { get; private set; }
 
         private void Start()
@@ -21,7 +25,11 @@
         private void Update()
         {
             IsGrounded = GetIsGrounded();
+
+            if (IsGrounded)
+                _isGroundedLimitTime = GameManager.Instance.Time.CurTime + coyoteTime;
         }
+
 
         private void OnDrawGizmos()
         {

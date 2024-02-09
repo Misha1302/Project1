@@ -1965,22 +1965,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2299115018711190412, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2299115018711190412, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471984645864827287, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471984645864827287, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2863495565854579320, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.5
@@ -2020,34 +2004,6 @@ PrefabInstance:
     - target: {fileID: 2863495565854579320, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_XDamping
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_YDamping
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_ZDamping
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_DeadZoneWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_SoftZoneWidth
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_DeadZoneHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368690413205223037, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
-      propertyPath: m_SoftZoneHeight
-      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8796154753208775898, guid: 182fa8a604f08c24f925a7e0e9781d64, type: 3}
       propertyPath: m_Name

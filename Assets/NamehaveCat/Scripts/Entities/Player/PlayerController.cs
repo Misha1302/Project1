@@ -68,7 +68,7 @@ namespace NamehaveCat.Scripts.Entities.Player
         private void Vertical(Direction dir)
         {
             if (dir.Has(Up))
-                _playerJumper.TryJump(groundChecker.IsGrounded);
+                _playerJumper.TryJump();
         }
 
         private void Horizontal(Direction dir)
