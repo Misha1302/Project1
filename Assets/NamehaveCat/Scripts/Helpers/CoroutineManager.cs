@@ -2,21 +2,22 @@
 {
     using System;
     using System.Collections;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
-    public class CoroutineManager : MonoBehaviour, IDontPauseTag
+    public class CoroutineManager : MonoBehaviour
     {
         private const string DefaultCoroutineName = "Nameless";
-        private MonoBehaviourInstance _alwaysEnabled;
+        private EmptyMonoBeh _alwaysEnabled;
         private CoroutineRepository _coroutineRepository;
 
         private void Awake()
         {
+            gameObject.AddComponent<DontPauseTag>();
+
             _alwaysEnabled =
-                GameObjectsCreator.New<DontPauseTag, MonoBehaviourInstance>("Always enabled coroutine keeper");
+                GameObjectsCreator.New<DontPauseTag, EmptyMonoBeh>("AlwaysEnabledCoroutineKeeper");
 
             _coroutineRepository = new CoroutineRepository();
         }
@@ -53,6 +54,11 @@
             yield return coroutine;
 
             _coroutineRepository.RemoveCoroutine(coroutine, coroutineName);
+        }
+
+
+        private sealed class EmptyMonoBeh : MonoBehaviour
+        {
         }
     }
 }

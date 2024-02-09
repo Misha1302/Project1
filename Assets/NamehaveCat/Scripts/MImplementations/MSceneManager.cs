@@ -1,8 +1,8 @@
-﻿namespace NamehaveCat.Scripts.Helpers
+﻿namespace NamehaveCat.Scripts.MImplementations
 {
     using UnityEngine.SceneManagement;
 
-    public static class RSceneManager
+    public static class MSceneManager
     {
         public static void Reload() =>
             LoadNext(0);

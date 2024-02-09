@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    public class DontPauseTag : MonoBehaviour, IDontPauseTag
+    public class DontPauseTag : MonoBehaviour
     {
     }
 }

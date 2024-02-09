@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.Helpers
+namespace NamehaveCat.Scripts.Different
 {
     using UnityEngine;
 

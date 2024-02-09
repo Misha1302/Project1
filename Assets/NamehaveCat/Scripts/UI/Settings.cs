@@ -2,6 +2,7 @@ namespace NamehaveCat.Scripts.UI
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ namespace NamehaveCat.Scripts.UI
         {
             settingsBtn.onClick.AddListener(PauseOrRelease);
 
-            restart.onClick.AddListener(RSceneManager.Reload);
+            restart.onClick.AddListener(MSceneManager.Reload);
         }
 
         private void PauseOrRelease()

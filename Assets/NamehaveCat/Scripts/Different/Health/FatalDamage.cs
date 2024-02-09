@@ -1,6 +1,5 @@
-namespace NamehaveCat.Scripts.Different
+namespace NamehaveCat.Scripts.Different.Health
 {
-    using NamehaveCat.Scripts.Entities.LongRangeBullets;
     using UnityEngine;
 
     public class FatalDamage : DamageableBase

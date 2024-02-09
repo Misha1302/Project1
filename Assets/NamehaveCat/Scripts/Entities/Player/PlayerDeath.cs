@@ -1,6 +1,8 @@
 namespace NamehaveCat.Scripts.Entities.Player
 {
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Different.Health;
+    using NamehaveCat.Scripts.Helpers;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;

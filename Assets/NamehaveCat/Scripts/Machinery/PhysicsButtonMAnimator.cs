@@ -1,6 +1,6 @@
 namespace NamehaveCat.Scripts.Machinery
 {
-    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 

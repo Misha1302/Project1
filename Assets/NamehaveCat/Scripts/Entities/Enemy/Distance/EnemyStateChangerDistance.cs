@@ -4,6 +4,7 @@
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy.Common;
     using NamehaveCat.Scripts.Extensions;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

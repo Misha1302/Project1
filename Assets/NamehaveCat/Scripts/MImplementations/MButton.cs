@@ -1,11 +1,11 @@
-﻿namespace NamehaveCat.Scripts.Helpers
+﻿namespace NamehaveCat.Scripts.MImplementations
 {
     using UnityEngine.Events;
     using UnityEngine.EventSystems;
     using UnityEngine.InputSystem;
     using UnityEngine.UI;
 
-    public class RButton : Button
+    public class MButton : Button
     {
         public readonly UnityEvent onEnd = new();
         public readonly UnityEvent onPressed = new();

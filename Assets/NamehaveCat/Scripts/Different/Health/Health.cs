@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Different
+﻿namespace NamehaveCat.Scripts.Different.Health
 {
     using System;
     using NamehaveCat.Scripts.Helpers;

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
+﻿namespace NamehaveCat.Scripts.Different.Health
 {
     using UnityEngine;
 

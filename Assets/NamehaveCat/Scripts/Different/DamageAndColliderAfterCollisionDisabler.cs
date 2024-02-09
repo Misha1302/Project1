@@ -1,13 +1,13 @@
-namespace NamehaveCat.Scripts.Entities
+namespace NamehaveCat.Scripts.Different
 {
-    using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Entities.LongRangeBullets;
+    using NamehaveCat.Scripts.Different.Health;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     [RequireComponent(typeof(DamageableBase))]
     [RequireComponent(typeof(Collider2D))]
-    public class DisableDamageAndColliderAfterCollision : MonoBehaviour
+    public class DamageAndColliderAfterCollisionDisabler : MonoBehaviour
     {
         [SerializeField] private float delay = 0.1f;
         private float _time;
@@ -22,7 +22,8 @@ namespace NamehaveCat.Scripts.Entities
 
         private void OnCol(Component tr)
         {
-            if (tr.TryGetComponent<PlayerTag>(out _) || tr.gameObject.layer == LayersManager.NotAGround ||
+            if (tr.TryGetComponent<PlayerTag>(out _) ||
+                tr.gameObject.layer == LayersManager.NotAGround ||
                 tr.gameObject.layer == LayersManager.IgnoreRaycast)
                 return;
 

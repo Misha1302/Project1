@@ -1,7 +1,7 @@
 namespace NamehaveCat.Scripts.Entities.Enemy.Common
 {
     using NamehaveCat.Scripts.Different;
-    using NamehaveCat.Scripts.Entities.LongRangeBullets;
+    using NamehaveCat.Scripts.Different.Health;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

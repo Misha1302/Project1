@@ -22,7 +22,7 @@ namespace NamehaveCat.Scripts.UI
 
             _objects = FindObjectsOfType<GameObject>()
                 .Where(x => !objectsToActive.Contains(x))
-                .Where(x => !x.TryGetComponent<IDontPauseTag>(out _))
+                .Where(x => !x.TryGetComponent<DontPauseTag>(out _))
                 .Select(x => (x, x.activeSelf))
                 .ToArray();
 

@@ -1,5 +1,7 @@
-﻿namespace NamehaveCat.Scripts.Different
+﻿namespace NamehaveCat.Scripts.Helpers
 {
+    using NamehaveCat.Scripts.Different;
+
     public static class StateManager
     {
         public static bool CanPause => !GameManager.Instance.PlayerDeath.IsDying;

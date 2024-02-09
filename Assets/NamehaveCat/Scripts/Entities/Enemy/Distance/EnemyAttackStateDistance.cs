@@ -3,6 +3,7 @@
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy.Common;
     using NamehaveCat.Scripts.Entities.LongRangeBullets;
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     public class EnemyAttackStateDistance : EnemyStateBase

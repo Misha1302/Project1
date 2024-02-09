@@ -1,6 +1,6 @@
-namespace NamehaveCat.Scripts.Different
+namespace NamehaveCat.Scripts.Entities
 {
-    using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace NamehaveCat.Scripts.Different
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.transform.TryGetComponent<PlayerTag>(out _))
-                RSceneManager.LoadNext();
+                MSceneManager.LoadNext();
         }
     }
 }

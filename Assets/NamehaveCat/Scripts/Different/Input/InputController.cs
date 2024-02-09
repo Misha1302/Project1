@@ -1,9 +1,9 @@
-﻿namespace NamehaveCat.Scripts.Different
+﻿namespace NamehaveCat.Scripts.Different.Input
 {
     using System.Collections.Generic;
     using System.Linq;
     using NamehaveCat.Scripts.Extensions;
-    using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
     using UnityEngine.Events;
     using UnityEngine.InputSystem;
@@ -16,9 +16,9 @@
         [SerializeField] private Key[] keysRight = { Key.D, Key.RightArrow };
         [SerializeField] private Key[] keysUp = { Key.Space, Key.UpArrow };
 
-        [SerializeField] private RButton btnLeft;
-        [SerializeField] private RButton btnRight;
-        [SerializeField] private RButton btnUp;
+        [SerializeField] private MButton btnLeft;
+        [SerializeField] private MButton btnRight;
+        [SerializeField] private MButton btnUp;
 
         private readonly Dictionary<Direction, Axis> _axes = new();
         private Direction _dir;

@@ -1,6 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 

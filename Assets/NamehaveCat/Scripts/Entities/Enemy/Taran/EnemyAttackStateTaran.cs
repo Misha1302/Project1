@@ -2,7 +2,9 @@
 {
     using System;
     using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Different.Health;
     using NamehaveCat.Scripts.Entities.Enemy.Common;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

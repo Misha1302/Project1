@@ -1,10 +1,10 @@
 ﻿namespace NamehaveCat.Scripts.Different
 {
-    using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
 
     public static class Death
     {
         public static void Die() =>
-            RSceneManager.Reload();
+            MSceneManager.Reload();
     }
 }
