@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.Different.Input
+﻿namespace NamehaveCat.Scripts.Input
 {
     using System.Collections.Generic;
     using NamehaveCat.Scripts.Helpers;
@@ -7,7 +7,7 @@
     using UnityEngine.Events;
     using UnityEngine.InputSystem;
 
-    public class Axis : MonoBehaviour
+    public class InputAxis : MonoBehaviour
     {
         public readonly UnityEvent onEnd = new();
         public readonly UnityEvent onPressed = new();
@@ -23,13 +23,13 @@
                 else if (Keyboard.current[key].wasReleasedThisFrame) onEnd.Invoke();
         }
 
-        public static Axis CreateInstance(MButton button, Key[] keys) =>
-            GameObjectsCreator.New<Axis>(MakeName(button, keys)).Init(button, keys);
+        public static InputAxis CreateInstance(MButton button, Key[] keys) =>
+            GameObjectsCreator.New<InputAxis>(MakeName(button, keys)).Init(button, keys);
 
         private static string MakeName(Object button, IEnumerable<Key> keys) =>
             $"Axis; Btn: {button.name}; Keys: {string.Join(",", keys)}";
 
-        private Axis Init(MButton button, Key[] keys)
+        private InputAxis Init(MButton button, Key[] keys)
         {
             _keys = keys;
 

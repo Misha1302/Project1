@@ -1,6 +1,6 @@
 namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
-    using NamehaveCat.Scripts.Different.Health;
+    using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 

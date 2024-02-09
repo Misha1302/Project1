@@ -1,7 +1,8 @@
-﻿namespace NamehaveCat.Scripts.Different.Input
+﻿namespace NamehaveCat.Scripts.Input
 {
     using System.Collections.Generic;
     using System.Linq;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
@@ -20,9 +21,9 @@
         [SerializeField] private MButton btnRight;
         [SerializeField] private MButton btnUp;
 
-        private readonly Dictionary<Direction, Axis> _axes = new();
+        private readonly Dictionary<Direction, InputAxis> _axes = new();
         private Direction _dir;
-        public IReadOnlyDictionary<Direction, Axis> Axes => _axes;
+        public IReadOnlyDictionary<Direction, InputAxis> Axes => _axes;
 
         private void Awake()
         {
@@ -54,9 +55,9 @@
 
         private void InstantiateAxes()
         {
-            _axes.Add(Direction.Left, Axis.CreateInstance(btnLeft, keysLeft));
-            _axes.Add(Direction.Right, Axis.CreateInstance(btnRight, keysRight));
-            _axes.Add(Direction.Up, Axis.CreateInstance(btnUp, keysUp));
+            _axes.Add(Direction.Left, InputAxis.CreateInstance(btnLeft, keysLeft));
+            _axes.Add(Direction.Right, InputAxis.CreateInstance(btnRight, keysRight));
+            _axes.Add(Direction.Up, InputAxis.CreateInstance(btnUp, keysUp));
         }
     }
 }
