@@ -4,7 +4,7 @@ namespace NamehaveCat.Scripts.Health
 
     public class FatalDamage : DamageableBase
     {
-        [SerializeField] private string message;
+        [SerializeField] private DamageInfo damage = new(float.MaxValue, "", DamageType.Default);
 
         private void OnCollisionEnter2D(Collision2D other) => Damage(other.transform);
         private void OnCollisionStay2D(Collision2D other) => Damage(other.transform);
@@ -19,7 +19,7 @@ namespace NamehaveCat.Scripts.Health
 
             var health = t.GetComponentInParent<Health>();
             if (health != null)
-                health.Damage(float.MaxValue, message);
+                health.Damage(damage);
         }
     }
 }

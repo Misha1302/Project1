@@ -8,8 +8,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy.Common
     public class EnemyHead : DamageableBase
     {
         [SerializeField] private float stunTime;
-        [SerializeField] private float damageOnStun;
-        [SerializeField] private string deathMessage;
+        [SerializeField] private DamageInfo damageOnStun;
         [SerializeField] private float damageWaitTime = 0.5f;
 
         private Enemy _enemy;
@@ -49,7 +48,7 @@ namespace NamehaveCat.Scripts.Entities.Enemy.Common
             if (_enemy.State != EnemyState.Waiting)
                 return false;
 
-            GameManager.Instance.PlayerHealth.Damage(damageOnStun, deathMessage);
+            GameManager.Instance.PlayerHealth.Damage(damageOnStun);
             return true;
         }
 

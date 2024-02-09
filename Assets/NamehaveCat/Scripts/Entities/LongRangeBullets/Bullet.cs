@@ -6,8 +6,7 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 
     public class Bullet : DamageableBase
     {
-        [SerializeField] private float damage = -1;
-        [SerializeField] private string message;
+        [SerializeField] private DamageInfo damage;
 
         private void OnCollisionEnter2D(Collision2D other) => TryDamage(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => TryDamage(other.transform);
@@ -16,7 +15,7 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
         {
             var health = other.GetComponentInParent<Health>();
             if (health != null)
-                health.Damage(damage, message);
+                health.Damage(damage);
 
             if (other.TryGetComponent<IgnoreCollisionTag>(out _))
                 return;

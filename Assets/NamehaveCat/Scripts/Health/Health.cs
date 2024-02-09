@@ -11,7 +11,7 @@
 
         [HideInInspector] public UnityEvent<Health> onDamage;
 
-        public string Message { get; private set; }
+        public DamageInfo DamageInfo { get; private set; }
 
         public float Value { get; private set; }
 
@@ -29,22 +29,29 @@
             Value = value;
         }
 
-        public void Damage(float damage, string message)
+        public void Damage(DamageInfo damageInfo)
         {
-            if (!Validate(message))
+            if (!IsValid(damageInfo))
                 return;
 
-            Message = message;
-            Value -= damage;
+            DamageInfo = damageInfo;
+
+            Value -= damageInfo.Damage;
 
             onDamage.Invoke(this);
         }
 
-        private bool Validate(string message)
+        private bool IsValid(DamageInfo info)
         {
-            if (string.IsNullOrWhiteSpace(message))
+            if (string.IsNullOrWhiteSpace(info.Message))
             {
-                Debug.LogWarning($"Message is {(message == null ? "null" : "whitespace")}");
+                Debug.LogWarning($"Message is {(info.Message == null ? "null" : "whitespace")}");
+                return false;
+            }
+
+            if (info.Damage <= 0)
+            {
+                Debug.LogWarning($"Damage was eq {info.Damage}");
                 return false;
             }
 

@@ -185,12 +185,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 3405331528426498363}
   walk: {fileID: 4179031880854916486}
-  stateChanger: {fileID: 3910826091006479628}
   head: {fileID: 2445576019845730281}
   colliderRadius: 1
-  onStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  stateChanger: {fileID: 3910826091006479628}
 --- !u!114 &4179031880854916486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 5
-  damageOnStun: 30
-  deathMessage: "\u041F\u044B\u0442\u0430\u043B\u0441\u044F \u043E\u0431\u0443\u0437\u0438\u0442\u044C
-    \u0441\u0438\u0441\u0442\u0435\u043C\u0443"
+  damageOnStun:
+    damageSerialized: 15
+    messageSerialized: "\u041F\u044B\u0442\u0430\u043B\u0441\u044F \u0430\u0431\u0443\u0437\u0438\u0442\u044C
+      \u0441\u0438\u0441\u0442\u0435\u043C\u0443"
+    damageTypeSerialized: 0
   damageWaitTime: 0.5

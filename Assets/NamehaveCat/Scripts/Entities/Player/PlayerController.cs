@@ -40,8 +40,6 @@ namespace NamehaveCat.Scripts.Entities.Player
             Init();
 
             _collider.enabled = true;
-
-            Rb2D.WakeUp();
         }
 
         private void OnDisable()
@@ -50,7 +48,6 @@ namespace NamehaveCat.Scripts.Entities.Player
                 GameManager.Instance.InputController.onPress.RemoveListener(Move);
 
             _collider.enabled = false;
-            Rb2D.Sleep();
         }
 
         private void Init()
