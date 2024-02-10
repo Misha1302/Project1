@@ -5,11 +5,9 @@ namespace NamehaveCat.Scripts.Machinery
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 
-    public class PhysicsButton : MonoBehaviour
+    public class PhysicsButton : ElectricitySource
     {
         private readonly RaycastHit2D[] _results = new RaycastHit2D[128];
-
-        public bool Pressed { get; private set; }
 
         private void Start()
         {
@@ -25,12 +23,12 @@ namespace NamehaveCat.Scripts.Machinery
                     transform.position, transform.lossyScale, 0, Vector2.zero, _results
                 );
 
-                Pressed = false;
+                HasElectricity = false;
                 for (var i = 0; i < len; i++)
                     // ReSharper disable once AssignmentInConditionalExpression
                     if (_results[i].transform.TryGetComponent<Rigidbody2D>(out _))
                     {
-                        Pressed = true;
+                        HasElectricity = true;
                         break;
                     }
 
