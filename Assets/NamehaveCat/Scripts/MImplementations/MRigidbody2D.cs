@@ -8,9 +8,9 @@
     public class MRigidbody2D : MonoBehaviour
     {
         [SerializeField] public MRbConstraints2D mRbConstraints2D;
-        private Vector3 _prevPos;
 
         private readonly MRbState _state = new();
+        private Vector3 _prevPos;
 
 
         private void Start()
