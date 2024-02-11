@@ -1,31 +1,25 @@
 namespace NamehaveCat.Scripts.Entities.Player
 {
-    using Cinemachine;
+    using System.Collections;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;
     using TMPro;
     using UnityEngine;
-    using UnityEngine.UI;
 
     public class PlayerDeath : MonoBehaviour
     {
-        [SerializeField] private Image panel;
+        [SerializeField] private DeathPanel deathPanel;
+        [SerializeField] private float animationDuration = 2f;
+        [SerializeField] private float waitBeforeDie = 3.5f;
         [SerializeField] private TMP_Text messageText;
-        [SerializeField] private string format = "{0}";
-        [SerializeField] private CinemachineVirtualCamera cinemachineFollower;
+        [SerializeField] private string format = "{0}...";
 
         public bool IsDying { get; private set; }
 
         private void Start()
         {
             GameManager.Instance.PlayerHealth.onDamage.AddListener(OnDamageHandler);
-        }
-
-        private void OnValidate()
-        {
-            if (cinemachineFollower == null)
-                cinemachineFollower = FindObjectOfType<CinemachineVirtualCamera>();
         }
 
         private void OnDamageHandler(Health health)
@@ -35,20 +29,34 @@ namespace NamehaveCat.Scripts.Entities.Player
 
             UiUpdate(health);
 
+            if (health.DamageInfo.DamageType == DamageType.Default)
+                GameManager.Instance.CoroutineManager.StartCoroutine(ShadowScreen());
+
             DisablePlayer(health.DamageInfo.DamageType);
 
             Die();
         }
 
-        private static void Die()
+        private void Die()
         {
-            GameManager.Instance.CoroutineManager.InvokeAfter(Death.Die, AnimatorHelper.DeathAnimationsTotalTime);
+            GameManager.Instance.CoroutineManager.InvokeAfter(Death.Die, waitBeforeDie);
         }
 
         private void UiUpdate(Health health)
         {
-            panel.gameObject.SetActive(true);
+            deathPanel.BlockUI();
             messageText.text = string.Format(format, health.DamageInfo.Message);
+        }
+
+        private IEnumerator ShadowScreen()
+        {
+            var waitForFixedUpdate = new WaitForFixedUpdate();
+
+            while (deathPanel.Alpha < 0.99f)
+            {
+                deathPanel.Alpha += 1 / animationDuration * Time.fixedDeltaTime;
+                yield return waitForFixedUpdate;
+            }
         }
 
         private void DisablePlayer(DamageType damageType)
@@ -66,15 +74,6 @@ namespace NamehaveCat.Scripts.Entities.Player
             else
             {
                 playerAnimator.enabled = false;
-
-                var body = (CinemachineFramingTransposer)cinemachineFollower.GetCinemachineComponent(
-                    CinemachineCore.Stage.Body
-                );
-
-                body.m_UnlimitedSoftZone = true;
-                body.m_XDamping = 4;
-                body.m_YDamping = 4;
-                body.m_ZDamping = 4;
             }
 
             GameManager.Instance.PlayerController.enabled = false;
