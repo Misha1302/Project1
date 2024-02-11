@@ -1,6 +1,9 @@
 namespace NamehaveCat.Scripts.Entities
 {
+    using System.Collections;
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
+    using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -17,25 +20,32 @@ namespace NamehaveCat.Scripts.Entities
         private void Start()
         {
             _rb = GetComponentInParent<Rigidbody2D>();
+
+            GameManager.Instance.CoroutineManager.StartCoroutine(SlowUpdate());
         }
 
-        private void FixedUpdate()
+        private IEnumerator SlowUpdate()
         {
-            var len = Physics2D.BoxCastNonAlloc(transform.position, scale, 0, Vector2.zero, _results);
-
-            var anyPlayer = false;
-
-            for (var i = 0; i < len; i++)
+            while (true)
             {
-                if (!_results[i].transform.TryGetComponent<PlayerTag>(out _))
-                    continue;
+                var len = Physics2D.BoxCastNonAlloc(transform.position, scale, 0, Vector2.zero, _results);
 
-                anyPlayer = true;
-                break;
+                var anyPlayer = false;
+
+                for (var i = 0; i < len; i++)
+                {
+                    if (!_results[i].transform.TryGetComponent<PlayerTag>(out _))
+                        continue;
+
+                    anyPlayer = true;
+                    break;
+                }
+
+                if (!anyPlayer)
+                    _rb.velocity = _rb.velocity.WithX(_rb.velocity.x * slowdownSpeed);
+
+                yield return new MWaitForSeconds(0.1f);
             }
-
-            if (!anyPlayer)
-                _rb.velocity = _rb.velocity.WithX(_rb.velocity.x * slowdownSpeed);
         }
     }
 }

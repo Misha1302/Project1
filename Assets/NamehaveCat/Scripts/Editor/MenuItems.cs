@@ -6,7 +6,7 @@ namespace NamehaveCat.Scripts.Editor
     using UnityEditor;
     using UnityEngine;
 
-    public class MenuItems
+    public static class MenuItems
     {
         private const string PrefabName = "LevelBase";
 
