@@ -21,7 +21,7 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void AnimateWalk(Direction dir)
         {
-            Animator.SetBool(AnimatorHelper.Walk, dir.Has(Direction.Left) || dir.Has(Direction.Right));
+            Animator.SetBool(AnimatorHelper.Walk, dir.Has(Direction.Left) ^ dir.Has(Direction.Right));
         }
     }
 }

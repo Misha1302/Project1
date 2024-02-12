@@ -14,7 +14,7 @@
         [Pure] public static T Add<T>(this T type, T value) where T : Enum =>
             (type.AsI32() | value.AsI32()).AsEnum<T>();
 
-        [Pure] public static T Remove<T>(this Enum type, T value) where T : Enum =>
+        [Pure] public static T Remove<T>(this T type, T value) where T : Enum =>
             (type.AsI32() & ~value.AsI32()).AsEnum<T>();
 
 

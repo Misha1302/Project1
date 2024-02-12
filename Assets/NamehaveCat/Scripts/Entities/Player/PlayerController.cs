@@ -76,16 +76,19 @@ namespace NamehaveCat.Scripts.Entities.Player
             // if ((no left and right) or (have left and right)) and (is grounded)
             if (((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right))) && groundChecker.IsGrounded)
             {
-                Rb2D.velocity = Rb2D.velocity.WithX(0);
+                Rb2D.constraints = Rb2D.constraints.Add(RigidbodyConstraints2D.FreezePositionX);
             }
             else // if left or right
             {
+                Rb2D.constraints = Rb2D.constraints.Remove(RigidbodyConstraints2D.FreezePositionX);
+
                 if (dir.Has(Left)) // if left
                 {
                     Rb2D.AddForce(Vector2.left * (Speed * Time.deltaTime));
                     _flipper.FlipX = true;
                 }
-                else if (dir.Has(Right)) // if right
+
+                if (dir.Has(Right)) // if right
                 {
                     Rb2D.AddForce(Vector2.right * (Speed * Time.deltaTime));
                     _flipper.FlipX = false;

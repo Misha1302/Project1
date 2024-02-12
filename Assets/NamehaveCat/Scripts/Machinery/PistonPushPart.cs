@@ -22,7 +22,7 @@
         private void OnTriggerStay2D(Collider2D other)
         {
             if (!HasElectricity && other.TryGetComponent<PistonBlockPartTag>(out _))
-                GameManager.Instance.StartCoroutine(Push());
+                GameManager.Instance.CoroutineManager.StartCoroutine(Push());
         }
 
         private IEnumerator Push()
