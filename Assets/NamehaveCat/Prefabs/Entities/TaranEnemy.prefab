@@ -326,7 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     damageSerialized: 3.4028235e+38
-    messageSerialized: 
+    messageSerialized: "\u041F\u0440\u0438\u043D\u044F\u043B \u043E\u0431\u044A\u044F\u0442\u0438\u044F
+      \u0441\u043D\u0435\u0433\u043E\u0432\u0438\u043A\u0430"
     damageTypeSerialized: 0
 --- !u!1 &6100070823274137120
 GameObject:

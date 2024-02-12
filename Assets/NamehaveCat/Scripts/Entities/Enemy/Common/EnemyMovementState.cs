@@ -46,17 +46,17 @@
                     : Direction.Left
             );
 
-            if (state != EnemyState.Walk)
-            {
-                enemy.ChangeState(state);
-                return true;
-            }
+            if (state == EnemyState.Walk)
+                return false;
 
-            return false;
+            enemy.ChangeState(state);
+            return true;
         }
 
         private void ChangeDirectionIfNeed()
         {
+            Debug.DrawLine(transform.position, transform.position + ((Vector3)DirVec).normalized * 10, Color.blue);
+
             var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);
             if (hit != default && !hit.transform.TryGetComponent<PlayerTag>(out _))
                 _dir *= -1;
