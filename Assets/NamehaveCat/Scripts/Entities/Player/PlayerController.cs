@@ -73,15 +73,13 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Horizontal(Direction dir)
         {
-            // if ((no left and right) or (have left and right)) and (is grounded)
-            if (((!dir.Has(Left) && !dir.Has(Right)) || (dir.Has(Left) && dir.Has(Right))) && groundChecker.IsGrounded)
+            // if is grouded and ((left and right) or (not left and not right))
+            if (groundChecker.IsGrounded && dir.Has(Left) == dir.Has(Right))
             {
-                Rb2D.constraints = Rb2D.constraints.Add(RigidbodyConstraints2D.FreezePositionX);
+                Rb2D.velocity = Rb2D.velocity.WithX(0);
             }
             else // if left or right
             {
-                Rb2D.constraints = Rb2D.constraints.Remove(RigidbodyConstraints2D.FreezePositionX);
-
                 if (dir.Has(Left)) // if left
                 {
                     Rb2D.AddForce(Vector2.left * (Speed * Time.deltaTime));
