@@ -18,7 +18,7 @@
 
         public void DestroyBullet()
         {
-            Animator.SetBool(AnimatorHelper.Destroy, true);
+            Animator.SetBool(GameConstants.Destroy, true);
 
             if (TryGetComponent<Collider2D>(out var col))
                 col.enabled = false;

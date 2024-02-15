@@ -2,7 +2,8 @@
 {
     using UnityEngine;
 
-    public static class AnimatorHelper
+    // ReSharper disable ConvertToConstant.Global
+    public static class GameConstants
     {
         public static readonly int Pressed = Animator.StringToHash("Pressed");
         public static readonly int Death = Animator.StringToHash("Death");
@@ -11,5 +12,7 @@
         public static readonly int Attack = Animator.StringToHash("Attack");
         public static readonly int Jump = Animator.StringToHash("Jump");
         public static readonly int Destroy = Animator.StringToHash("Destroy");
+
+        public static readonly int MaxCollidersCount = 128;
     }
 }

@@ -73,12 +73,12 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Horizontal(Direction dir)
         {
-            // if is grouded and ((left and right) or (not left and not right))
+            // if is grounded and ((left and right) or (not left and not right))
             if (groundChecker.IsGrounded && dir.Has(Left) == dir.Has(Right))
             {
                 Rb2D.velocity = Rb2D.velocity.WithX(0);
             }
-            else // if left or right
+            else
             {
                 if (dir.Has(Left)) // if left
                 {

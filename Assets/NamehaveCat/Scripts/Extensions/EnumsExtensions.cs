@@ -18,8 +18,8 @@
             (type.AsI32() & ~value.AsI32()).AsEnum<T>();
 
 
-        private static int AsI32<T>(this T enumValue) where T : Enum => (int)(object)enumValue;
+        [Pure] private static int AsI32<T>(this T enumValue) where T : Enum => (int)(object)enumValue;
 
-        private static T AsEnum<T>(this int enumValue) where T : Enum => (T)(object)enumValue;
+        [Pure] private static T AsEnum<T>(this int enumValue) where T : Enum => (T)(object)enumValue;
     }
 }

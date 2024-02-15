@@ -1,46 +1,19 @@
 namespace NamehaveCat.Scripts.Machinery
 {
+    using NamehaveCat.Scripts.Different;
     using UnityEngine;
-    using UnityEngine.Events;
 
     [RequireComponent(typeof(StickyPlatform))]
-    public class LiftMovement : MonoBehaviour, IMovable
+    public class LiftMovement : MonoBehaviour
     {
         [SerializeField] private float speed = 1;
         [SerializeField] private Transform top;
         [SerializeField] private Transform bottom;
 
-        private LiftDirection _direction;
-
-        private Vector2 Direction => _direction == LiftDirection.Top ? Vector2.up : Vector2.down;
-
-        private void Update()
+        private void FixedUpdate()
         {
-            var vec = Direction * (Time.deltaTime * speed);
-
-            transform.Translate(vec);
-            OnMove.Invoke(vec);
-
-            ChangeDirectionIfNeed();
+            var sin = Mathf.Sin(GameManager.Instance.Time.CurTime * speed) / 2 + 0.5f;
+            transform.position = Vector2.Lerp(top.position, bottom.position, sin);
         }
-
-        private void ChangeDirectionIfNeed()
-        {
-            // ReSharper disable Unity.InefficientPropertyAccess
-            _direction = _direction switch
-            {
-                LiftDirection.Top when top.position.y < transform.position.y => LiftDirection.Bottom,
-                LiftDirection.Bottom when bottom.position.y > transform.position.y => LiftDirection.Top,
-                _ => _direction
-            };
-        }
-
-        private enum LiftDirection
-        {
-            Top,
-            Bottom
-        }
-
-        public UnityEvent<Vector2> OnMove { get; } = new();
     }
 }

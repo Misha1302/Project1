@@ -16,7 +16,7 @@ namespace NamehaveCat.Scripts.Machinery
 
         private void Update()
         {
-            Animator.SetBool(AnimatorHelper.Pressed, _physicsButton.HasElectricity);
+            Animator.SetBool(GameConstants.Pressed, _physicsButton.HasElectricity);
         }
     }
 }

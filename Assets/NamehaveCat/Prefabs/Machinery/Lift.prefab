@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7001697794503844090}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.4, z: 0}
+  m_LocalPosition: {x: -3.5, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 8310928744926321224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalPosition: {x: 2.41, y: 10.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallPlatform (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 6765063252601692193, guid: 53691186ff178a94780c137d3a08bf0b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 397636e729a4d21468ef985314981611, type: 2}
     - target: {fileID: 6765063252601692193, guid: 53691186ff178a94780c137d3a08bf0b, type: 3}
       propertyPath: m_UsedByEffector
       value: 1
@@ -162,6 +166,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5188245351046367092, guid: 53691186ff178a94780c137d3a08bf0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7868201655403916805}
+    - targetCorrespondingSourceObject: {fileID: 5188245351046367092, guid: 53691186ff178a94780c137d3a08bf0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440443982922027790}
   m_SourcePrefab: {fileID: 100100000, guid: 53691186ff178a94780c137d3a08bf0b, type: 3}
 --- !u!4 &631708278791023486 stripped
 Transform:
@@ -185,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ede53ad36d861543825dafc7ecbfc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.75
+  speed: 1
   top: {fileID: 469894689791854169}
   bottom: {fileID: 6792692593289814577}
 --- !u!251 &7868201655403916805
@@ -207,3 +214,16 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1440443982922027790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746465355993023616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ce760bec164d80986cada82308d785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 3, y: 1}

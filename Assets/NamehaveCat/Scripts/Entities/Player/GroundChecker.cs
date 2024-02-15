@@ -10,7 +10,7 @@
     public sealed class GroundChecker : MonoBehaviour
     {
         [SerializeField] private float coyoteTime;
-        private readonly Collider2D[] _results = new Collider2D[128];
+        private readonly Collider2D[] _results = new Collider2D[GameConstants.MaxCollidersCount];
 
         private float _isGroundedLimitTime = 0.1f;
         public bool CanJump => GameManager.Instance.Time.CurTime < _isGroundedLimitTime;
@@ -19,7 +19,7 @@
         private void Start()
         {
             if (GetComponent<BoxCollider2D>().size != Vector2.one)
-                Thrower.Throw(new InvalidOperationException("Size of box collider must be (1;1;1)"));
+                Thrower.Throw(new InvalidOperationException($"Size of box collider must be {Vector2.zero}"));
         }
 
         private void Update()
