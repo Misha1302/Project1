@@ -372,25 +372,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 81942231}
     m_Modifications:
-    - target: {fileID: 3025210710365355496, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7686002
+      value: 3.185
       objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3264
+      value: -2.343
       objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -428,10 +416,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trampoline
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 1.4999688
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: -2.0752347
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: 3.0959468
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: -2.2752624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 4.548105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -0.54789764
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 1.4687264
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -0.535506
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8408038805118761725, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7724017404280558958, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2143878266}
   m_SourcePrefab: {fileID: 100100000, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
 --- !u!1001 &216587551
 PrefabInstance:
@@ -1038,11 +1066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5500001
+      value: -1.136
       objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.092
+      value: 0.052
       objectReference: {fileID: 0}
     - target: {fileID: 4947324744868689993, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3591,6 +3619,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f488d17245f164abbefb08ef36d98e, type: 3}
+--- !u!1 &2143878259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7724017404280558958, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+  m_PrefabInstance: {fileID: 131856898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2143878266
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143878259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3, y: -1.35}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 10.24}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.75}
+  m_EdgeRadius: 0
 --- !u!1001 &1121476602700242332
 PrefabInstance:
   m_ObjectHideFlags: 0

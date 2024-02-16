@@ -1,21 +1,15 @@
 ﻿namespace NamehaveCat.Scripts.Machinery
 {
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
 
-    [RequireComponent(typeof(Animator))]
-    public class TrampolineAnimator : MonoBehaviour
+    [RequireComponent(typeof(Trampoline))]
+    public class TrampolineAnimator : MAnimator
     {
-        private Animator _animator;
-
         private void Start()
         {
-            _animator = GetComponent<Animator>();
-        }
-
-        public void Play()
-        {
-            _animator.SetTrigger(GameData.Jump);
+            GetComponent<Trampoline>().onCollision.AddListener(_ => Animator.SetTrigger(GameData.Jump));
         }
     }
 }
