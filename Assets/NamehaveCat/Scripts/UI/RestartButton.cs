@@ -11,7 +11,7 @@
     {
         private void Start()
         {
-            GameData.startPosition = VectorsExtensions.NaN3;
+            GameData.spawnPosition = VectorsExtensions.NaN3;
             GetComponent<Button>().onClick.AddListener(MSceneManager.Reload);
         }
     }

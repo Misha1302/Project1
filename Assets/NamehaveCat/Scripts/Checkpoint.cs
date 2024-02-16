@@ -1,15 +1,31 @@
 namespace NamehaveCat.Scripts
 {
     using System.Collections.Generic;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
+    using UnityEngine.Events;
 
     [RequireComponent(typeof(Collider2D))]
     public class Checkpoint : MonoBehaviour
     {
         private static readonly List<Checkpoint> _checkpoints = new();
 
-        public bool WasActivated { get; private set; }
+        public readonly UnityEvent<Checkpoint> activityChanged = new();
+        private bool _wasActivated;
+
+        public bool WasActivated
+        {
+            get => _wasActivated;
+            private set
+            {
+                if (_wasActivated == value)
+                    return;
+
+                _wasActivated = value;
+                activityChanged.Invoke(this);
+            }
+        }
 
         private void OnEnable()
         {
@@ -23,7 +39,8 @@ namespace NamehaveCat.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _checkpoints.ForEach(x => x.WasActivated = false);
+            _checkpoints.ForEach(x => x.WasActivated = false, this);
+
             WasActivated = WasActivated || other.TryGetComponent<PlayerTag>(out _);
         }
     }
