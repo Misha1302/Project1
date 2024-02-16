@@ -9,8 +9,9 @@
     {
         private void Start()
         {
-            if (!GameData.spawnPosition.IsNaN())
-                GameManager.Instance.PlayerController.Rb2D.position = GameData.spawnPosition;
+            print(GameData.SpawnPosition);
+            if (!GameData.SpawnPosition.IsNaN())
+                GameManager.Instance.PlayerController.Rb2D.position = GameData.SpawnPosition;
         }
     }
 }

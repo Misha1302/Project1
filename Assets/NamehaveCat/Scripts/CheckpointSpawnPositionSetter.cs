@@ -13,7 +13,8 @@
 
         private static void OnActivityChanged(Checkpoint checkpoint)
         {
-            GameData.spawnPosition = checkpoint.transform.position;
+            if (checkpoint.WasActivated)
+                GameData.SpawnPosition = checkpoint.transform.position;
         }
     }
 }

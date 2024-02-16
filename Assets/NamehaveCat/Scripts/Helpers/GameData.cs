@@ -18,6 +18,6 @@
 
         public static readonly int MaxCollidersCount = 128;
 
-        public static Vector3 spawnPosition = VectorsExtensions.NaN3;
+        public static Vector3 SpawnPosition { get; set; } = VectorsExtensions.NaN3;
     }
 }
