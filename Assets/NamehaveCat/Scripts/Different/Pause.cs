@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts.UI
+namespace NamehaveCat.Scripts.Different
 {
     using System.Linq;
     using NamehaveCat.Scripts.Tags;
@@ -11,7 +11,7 @@ namespace NamehaveCat.Scripts.UI
         [HideInInspector] public UnityEvent onPause = new();
         [HideInInspector] public UnityEvent onRelease = new();
 
-        private (GameObject obj, bool activeSelf)[] _objects;
+        private GameObject[] _objects;
         public bool IsPause { get; private set; }
 
         public void MPause()
@@ -21,13 +21,12 @@ namespace NamehaveCat.Scripts.UI
             onPause.Invoke();
 
             _objects = FindObjectsOfType<GameObject>()
-                .Where(x => !objectsToActive.Contains(x))
+                .Except(objectsToActive)
                 .Where(x => !x.TryGetComponent<DontPauseTag>(out _))
-                .Select(x => (x, x.activeSelf))
                 .ToArray();
 
             foreach (var pair in _objects)
-                pair.obj.SetActive(false);
+                pair.SetActive(false);
         }
 
         public void MRelease()
@@ -35,8 +34,8 @@ namespace NamehaveCat.Scripts.UI
             IsPause = false;
 
             foreach (var pair in _objects)
-                if (pair.obj != null)
-                    pair.obj.SetActive(pair.activeSelf);
+                if (pair != null)
+                    pair.SetActive(true);
 
             onRelease.Invoke();
         }

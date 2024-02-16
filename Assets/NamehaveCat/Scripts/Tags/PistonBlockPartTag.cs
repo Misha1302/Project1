@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class PistonBlockPartTag : MonoBehaviour
+namespace NamehaveCat.Scripts.Tags
 {
+    public class PistonBlockPartTag : MonoBehaviour
+    {
+    }
 }

@@ -1,18 +1,17 @@
-﻿namespace NamehaveCat.Scripts.Different
+﻿namespace NamehaveCat.Scripts
 {
+    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Player;
-    using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Input;
     using NamehaveCat.Scripts.MImplementations;
-    using NamehaveCat.Scripts.UI;
     using UnityEngine;
 
     public class GameManager : MonoBehSingleton<GameManager>
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private InputController inputController;
-        [SerializeField] private Health playerHealth;
+        [SerializeField] private Health.Health playerHealth;
         [SerializeField] private PlayerDeath playerDeath;
         [SerializeField] private Pause pause;
         [SerializeField] private MTime time;
@@ -21,7 +20,7 @@
 
         public PlayerController PlayerController => playerController;
         public InputController InputController => inputController;
-        public Health PlayerHealth => playerHealth;
+        public Health.Health PlayerHealth => playerHealth;
         public PlayerDeath PlayerDeath => playerDeath;
         public Pause Pause => pause;
         public MTime Time => time;

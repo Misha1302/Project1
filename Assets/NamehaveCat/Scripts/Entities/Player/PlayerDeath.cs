@@ -5,6 +5,8 @@ namespace NamehaveCat.Scripts.Entities.Player
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.MImplementations;
+    using NamehaveCat.Scripts.UI;
     using TMPro;
     using UnityEngine;
 
@@ -44,7 +46,7 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Die()
         {
-            GameManager.Instance.CoroutineManager.InvokeAfter(Death.Die, waitBeforeDie);
+            GameManager.Instance.CoroutineManager.InvokeAfter(MSceneManager.Reload, waitBeforeDie);
         }
 
         private void UiUpdate(Health health)

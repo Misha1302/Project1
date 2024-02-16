@@ -4,6 +4,7 @@
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.MImplementations;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     [RequireComponent(typeof(MRigidbody2D))]

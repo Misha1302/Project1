@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.Machinery.Checkpoint
 {
     using System.Collections.Generic;
     using NamehaveCat.Scripts.Extensions;

@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.UI
 {
     using System.Collections;
     using System.Globalization;

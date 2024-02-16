@@ -4,13 +4,8 @@ namespace NamehaveCat.Scripts.Different
 
     public class EnableOnlyInBuild : MonoBehaviour
     {
-        [SerializeField] private bool active = true;
-
-        private void Awake()
+        private void Start()
         {
-            if (!active)
-                return;
-
             gameObject.SetActive(!Application.isEditor);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.Machinery.Checkpoint
 {
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
