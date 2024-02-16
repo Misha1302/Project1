@@ -10,7 +10,7 @@
     public sealed class GroundChecker : MonoBehaviour
     {
         [SerializeField] private float coyoteTime;
-        private readonly Collider2D[] _results = new Collider2D[GameConstants.MaxCollidersCount];
+        private readonly Collider2D[] _results = new Collider2D[GameData.MaxCollidersCount];
 
         private float _isGroundedLimitTime = 0.1f;
         public bool CanJump => GameManager.Instance.Time.CurTime < _isGroundedLimitTime;

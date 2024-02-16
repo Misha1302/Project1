@@ -78,7 +78,7 @@ namespace NamehaveCat.Scripts.Entities.Player
 
             if (damageType == DamageType.Default)
             {
-                playerAnimator.SetBool(GameConstants.Death, true);
+                playerAnimator.SetBool(GameData.Death, true);
 
                 GameManager.Instance.PlayerController.Rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
             }

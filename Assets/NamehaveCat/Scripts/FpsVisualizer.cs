@@ -21,7 +21,7 @@ namespace NamehaveCat.Scripts
 
         private void Update()
         {
-            _fpsCollection.Add(1f / Time.deltaTime);
+            _fpsCollection.Add(1f / GameManager.Instance.Time.DeltaTime);
         }
 
         private IEnumerator PrintAverageFps()

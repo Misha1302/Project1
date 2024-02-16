@@ -16,12 +16,12 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Update()
         {
-            Animator.SetBool(GameConstants.Jump, StateManager.IsFlying);
+            Animator.SetBool(GameData.Jump, StateManager.IsFlying);
         }
 
         private void AnimateWalk(Direction dir)
         {
-            Animator.SetBool(GameConstants.Walk, dir.Has(Direction.Left) ^ dir.Has(Direction.Right));
+            Animator.SetBool(GameData.Walk, dir.Has(Direction.Left) ^ dir.Has(Direction.Right));
         }
     }
 }

@@ -15,7 +15,7 @@
 
         public void Play()
         {
-            _animator.SetTrigger(GameConstants.Jump);
+            _animator.SetTrigger(GameData.Jump);
         }
     }
 }

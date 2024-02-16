@@ -2,7 +2,6 @@ using static NamehaveCat.Scripts.Different.Direction;
 
 namespace NamehaveCat.Scripts.Entities.Player
 {
-    using System;
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
@@ -15,7 +14,6 @@ namespace NamehaveCat.Scripts.Entities.Player
     {
         [SerializeField] private float force = 8000f / 3f; // 2666.6667
         [SerializeField] private float forceInFly = 1_000f;
-        [SerializeField] private float maxSpeed = 4f;
         [SerializeField] private GroundChecker groundChecker;
 
         private Collider2D _collider;
@@ -62,7 +60,6 @@ namespace NamehaveCat.Scripts.Entities.Player
         {
             Horizontal(dir);
             Vertical(dir);
-            LimitHorizontal();
         }
 
         private void Vertical(Direction dir)
@@ -82,21 +79,16 @@ namespace NamehaveCat.Scripts.Entities.Player
             {
                 if (dir.Has(Left)) // if left
                 {
-                    Rb2D.AddForce(Vector2.left * (Speed * Time.deltaTime));
+                    Rb2D.AddForce(Vector2.left * (Speed * GameManager.Instance.Time.DeltaTime));
                     _flipper.FlipX = true;
                 }
 
                 if (dir.Has(Right)) // if right
                 {
-                    Rb2D.AddForce(Vector2.right * (Speed * Time.deltaTime));
+                    Rb2D.AddForce(Vector2.right * (Speed * GameManager.Instance.Time.DeltaTime));
                     _flipper.FlipX = false;
                 }
             }
-        }
-
-        private void LimitHorizontal()
-        {
-            Rb2D.velocity = Rb2D.velocity.WithX(Math.Clamp(Rb2D.velocity.x, -maxSpeed, maxSpeed));
         }
     }
 }

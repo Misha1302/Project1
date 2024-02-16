@@ -8,6 +8,8 @@
     {
         private const float DegreesInOneRadian = (float)(180f / Math.PI);
 
+        public static readonly Vector3 NaN3 = new(Single.NaN, Single.NaN, Single.NaN);
+
         // toDegrees(asin(a / c))
         [Pure] public static float Degrees(this Vector3 a, Vector3 b) =>
             MathF.Asin(MathF.Abs(a.y - b.y) / Vector3.Distance(a, b)) * DegreesInOneRadian;

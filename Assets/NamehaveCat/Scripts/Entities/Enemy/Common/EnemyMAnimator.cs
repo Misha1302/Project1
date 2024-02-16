@@ -15,9 +15,9 @@
 
             enemy.onStateChanged.AddListener(_ =>
             {
-                Animator.SetBool(GameConstants.Attack, enemy.State == EnemyState.Attack);
-                Animator.SetBool(GameConstants.Walk, enemy.State == EnemyState.Walk);
-                Animator.SetBool(GameConstants.Unconscious, enemy.State == EnemyState.Waiting);
+                Animator.SetBool(GameData.Attack, enemy.State == EnemyState.Attack);
+                Animator.SetBool(GameData.Walk, enemy.State == EnemyState.Walk);
+                Animator.SetBool(GameData.Unconscious, enemy.State == EnemyState.Waiting);
             });
         }
     }

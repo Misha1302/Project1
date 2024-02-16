@@ -2,22 +2,18 @@ namespace NamehaveCat.Scripts.UI
 {
     using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
-    using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class Settings : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class SettingsPanelButton : MonoBehaviour
     {
-        [SerializeField] private Button restart;
-        [SerializeField] private Button settingsBtn;
         [SerializeField] private GameObject settingsPanel;
         [SerializeField] private RawImage settingsFrameImage;
 
         private void Start()
         {
-            settingsBtn.onClick.AddListener(PauseOrRelease);
-
-            restart.onClick.AddListener(MSceneManager.Reload);
+            GetComponent<Button>().onClick.AddListener(PauseOrRelease);
         }
 
         private void PauseOrRelease()
