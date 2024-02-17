@@ -9,7 +9,7 @@
     {
         [SerializeField] private float startValue = 100;
 
-        [HideInInspector] public UnityEvent<Health> onDamage;
+        public readonly UnityEvent<Health> onDamage = new();
 
         public DamageInfo DamageInfo { get; private set; }
 

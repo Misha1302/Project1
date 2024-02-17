@@ -1,7 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Machinery
 {
     using System.Collections;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;

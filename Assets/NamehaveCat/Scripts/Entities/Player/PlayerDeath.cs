@@ -2,7 +2,6 @@ namespace NamehaveCat.Scripts.Entities.Player
 {
     using System.Collections;
     using Cinemachine;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;

@@ -13,7 +13,7 @@ namespace NamehaveCat.Scripts.Machinery.Checkpoint
             checkpoint.activityChanged.AddListener(OnActivityChanged);
         }
 
-        private void OnActivityChanged(Checkpoint unused)
+        private void OnActivityChanged(Checkpoint _)
         {
             Animator.SetTrigger(checkpoint.WasActivated ? GameData.Activation : GameData.NonActivated);
         }

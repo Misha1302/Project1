@@ -1,6 +1,5 @@
 ﻿namespace NamehaveCat.Scripts.MImplementations
 {
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 

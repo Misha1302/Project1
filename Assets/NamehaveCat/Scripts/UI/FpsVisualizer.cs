@@ -2,7 +2,6 @@ namespace NamehaveCat.Scripts.UI
 {
     using System.Collections;
     using System.Globalization;
-    using NamehaveCat.Scripts.Different;
     using TMPro;
     using UnityEngine;
 

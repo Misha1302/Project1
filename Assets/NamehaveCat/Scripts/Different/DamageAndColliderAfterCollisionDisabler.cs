@@ -22,14 +22,14 @@ namespace NamehaveCat.Scripts.Different
 
         private void OnCol(Component tr)
         {
-            if (tr.TryGetComponent<PlayerTag>(out _) ||
-                tr.gameObject.layer == LayersManager.NotAGround ||
-                tr.gameObject.layer == LayersManager.IgnoreRaycast)
-                return;
+            if (Validate(tr) && !TooEarly())
+                DisableComponents();
+        }
 
-            if (GameManager.Instance.Time.CurTime - _time < delay)
-                return;
+        private bool TooEarly() => GameManager.Instance.Time.CurTime - _time < delay;
 
+        private void DisableComponents()
+        {
             foreach (var c in GetComponentsInChildren<DamageableBase>())
                 c.enabled = false;
             foreach (var c in GetComponentsInChildren<Collider2D>())
@@ -39,5 +39,11 @@ namespace NamehaveCat.Scripts.Different
 
             enabled = false;
         }
+
+        // ReSharper disable once Unity.InefficientPropertyAccess
+        private bool Validate(Component tr) =>
+            !tr.TryGetComponent<PlayerTag>(out _) &&
+            tr.gameObject.layer != LayersManager.NotAGround &&
+            tr.gameObject.layer != LayersManager.IgnoreRaycast;
     }
 }

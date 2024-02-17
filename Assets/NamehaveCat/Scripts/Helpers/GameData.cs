@@ -17,7 +17,8 @@
         public static readonly int NonActivated = Animator.StringToHash("NonActivated");
 
         public static readonly int MaxCollidersCount = 128;
+        public static readonly string DefaultCoroutineName = "Nameless";
 
-        public static Vector3 SpawnPosition { get; set; } = VectorsExtensions.NaN3;
+        public static Vector3 spawnPosition = VectorsExtensions.NaN3;
     }
 }

@@ -7,20 +7,22 @@ namespace NamehaveCat.Scripts.Entities.Enemy.Common
     using UnityEngine;
     using UnityEngine.Events;
 
+    // need to be remade all enemy, but will there be an enemy in the future?
     [RequireComponent(typeof(ObjectFlipper))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] [CanBeNull] private EnemyStateBase attack;
-        [SerializeField] [CanBeNull] private EnemyStateBase walk;
+        [SerializeField] private EnemyStateBase attack;
+        [SerializeField] private EnemyStateBase walk;
         [SerializeField] private EnemyHead head;
         [SerializeField] private float colliderRadius = 1f;
-        [SerializeField] [CanBeNull] private EnemyStateChangerBase stateChanger;
-        private readonly string _coroutineName = $"WaitAndResetCoroutine{Guid.NewGuid()}";
+        [SerializeField] private EnemyStateChangerBase stateChanger;
 
         public readonly UnityEvent<Enemy> onStateChanged = new();
-        [CanBeNull] private EnemyStateBase _stateBeh;
 
+        private string _coroutineName;
+        private EnemyStateBase _currentState;
+        private EnemyStateBase _plugState;
 
         public EnemyStateChangerBase StateChanger => stateChanger;
         public ObjectFlipper ObjectFlipper { get; private set; }
@@ -31,35 +33,41 @@ namespace NamehaveCat.Scripts.Entities.Enemy.Common
 
         private void Start()
         {
+            _coroutineName = $"WaitAndResetCoroutine{gameObject.GetInstanceID()}";
             Rb2D = GetComponent<Rigidbody2D>();
             ObjectFlipper = GetComponent<ObjectFlipper>();
 
-            if (attack != null) attack.Init(this);
-            if (walk != null) walk.Init(this);
-            if (head != null) head.Init(this);
+            _plugState = gameObject.AddComponent<EnemyStatePlug>();
+
+            _plugState.Init(this);
+            attack.Init(this);
+            walk.Init(this);
+            head.Init(this);
+
+            _currentState = _plugState;
 
             ChangeState(EnemyState.Walk);
         }
 
         private void FixedUpdate()
         {
-            if (_stateBeh != null) _stateBeh.Loop();
+            _currentState.Loop();
         }
 
         public void ChangeState(EnemyState state)
         {
-            if (_stateBeh != null) _stateBeh.Exit();
+            _currentState.Exit();
 
             State = state;
-            _stateBeh = state switch
+            _currentState = state switch
             {
                 EnemyState.Attack => attack,
                 EnemyState.Walk => walk,
-                EnemyState.Waiting => null,
+                EnemyState.Waiting => _plugState,
                 _ => Thrower.Throw<EnemyStateBase>(new InvalidOperationException())
             };
 
-            if (_stateBeh != null) _stateBeh.Enter();
+            _currentState.Enter();
             onStateChanged.Invoke(this);
         }
 

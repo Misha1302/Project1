@@ -1,7 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Enemy.Taran
 {
     using System;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Entities.Enemy.Common;
     using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;

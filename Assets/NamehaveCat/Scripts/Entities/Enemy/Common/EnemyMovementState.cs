@@ -55,6 +55,7 @@
 
         private void ChangeDirectionIfNeed()
         {
+            // ReSharper disable Unity.InefficientPropertyAccess
             Debug.DrawLine(transform.position, transform.position + ((Vector3)DirVec).normalized * 10, Color.blue);
 
             var hit = Physics2D.Raycast(transform.position, DirVec, enemy.ColliderRadius, LayersManager.ExceptEnemy);

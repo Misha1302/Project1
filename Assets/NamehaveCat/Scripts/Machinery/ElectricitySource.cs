@@ -4,6 +4,6 @@
 
     public abstract class ElectricitySource : MonoBehaviour
     {
-        public bool HasElectricity { get; protected set; } = false;
+        public bool HasElectricity { get; protected set; }
     }
 }

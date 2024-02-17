@@ -14,7 +14,7 @@
             GameManager.Instance.InputController.onPress.AddListener(LimitHorizontal);
         }
 
-        private void LimitHorizontal(Direction unused)
+        private void LimitHorizontal(Direction _)
         {
             var rb2D = GameManager.Instance.PlayerController.Rb2D;
             rb2D.velocity = rb2D.velocity.WithX(Math.Clamp(rb2D.velocity.x, -maxSpeed, maxSpeed));

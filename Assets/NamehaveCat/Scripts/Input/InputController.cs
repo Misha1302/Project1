@@ -11,7 +11,7 @@
 
     public class InputController : MonoBehaviour
     {
-        [HideInInspector] public UnityEvent<Direction> onPress = new();
+        public readonly UnityEvent<Direction> onPress = new();
 
         [SerializeField] private Key[] keysLeft = { Key.A, Key.LeftArrow };
         [SerializeField] private Key[] keysRight = { Key.D, Key.RightArrow };

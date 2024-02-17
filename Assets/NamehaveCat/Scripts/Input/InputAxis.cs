@@ -9,6 +9,8 @@
 
     public class InputAxis : MonoBehaviour
     {
+        // ReSharper disable MemberCanBePrivate.Global
+
         public readonly UnityEvent onEnd = new();
         public readonly UnityEvent onPressed = new();
         public readonly UnityEvent onStart = new();

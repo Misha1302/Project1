@@ -1,6 +1,5 @@
 ﻿namespace NamehaveCat.Scripts.Health
 {
-    using NamehaveCat.Scripts.Different;
     using UnityEngine;
     using UnityEngine.UI;
 

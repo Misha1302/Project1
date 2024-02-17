@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: -3661787556914748984}
   - component: {fileID: 2436104656424310580}
   - component: {fileID: -5429221494352452711}
+  - component: {fileID: 5020402102599121545}
+  - component: {fileID: 8774308459709869975}
   m_Layer: 2
   m_Name: Snowball
   m_TagString: Untagged
@@ -195,11 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d3c6dba3886f64cba7e60604254a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage:
-    damageSerialized: 20
-    messageSerialized: "\u041F\u043E\u0439\u043C\u0430\u043B \u0441\u043D\u0435\u0436\u043E\u043A
-      \u0441\u043E \u043B\u044C\u0434\u043E\u043C"
-    damageTypeSerialized: 0
 --- !u!114 &2436104656424310580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,3 +221,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f6163e070a39441b53db596cb6616b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5020402102599121545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847600230764069278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981c36d36341471496d75ebd6afa61dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8774308459709869975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847600230764069278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a49482292545f7a0190871f60e0edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage:
+    damageSerialized: 20
+    messageSerialized: "\u041F\u043E\u0439\u043C\u0430\u043B \u0441\u043D\u0435\u0436\u043E\u043A
+      \u0441\u043E \u043B\u044C\u0434\u043E\u043C"
+    damageTypeSerialized: 0

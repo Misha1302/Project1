@@ -2,13 +2,13 @@
 {
     using System;
     using System.Collections;
+    using JetBrains.Annotations;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     public class CoroutineManager : MonoBehaviour
     {
-        private const string DefaultCoroutineName = "Nameless";
         private EmptyMonoBeh _alwaysEnabled;
         private CoroutineRepository _coroutineRepository;
 
@@ -22,9 +22,10 @@
             _coroutineRepository = new CoroutineRepository();
         }
 
-        public void StartCoroutine(IEnumerator coroutine, string coroutineName = DefaultCoroutineName)
+        public void StartCoroutine(IEnumerator coroutine, [CanBeNull] string coroutineName = null)
         {
-            _alwaysEnabled.StartCoroutine(AddStartStopRemoveCoroutine(coroutine, coroutineName));
+            _alwaysEnabled.StartCoroutine(
+                AddStartStopRemoveCoroutine(coroutine, coroutineName ?? GameData.DefaultCoroutineName));
         }
 
         public void StopCoroutines(string groupName)
@@ -36,7 +37,7 @@
             _coroutineRepository.RemoveAllCoroutines(groupName);
         }
 
-        public void InvokeAfter(Action action, float timeToWait, string coroutineName = DefaultCoroutineName)
+        public void InvokeAfter(Action action, float timeToWait, [CanBeNull] string coroutineName = null)
         {
             StartCoroutine(InvokeAfterCoroutine(action, timeToWait), coroutineName);
         }

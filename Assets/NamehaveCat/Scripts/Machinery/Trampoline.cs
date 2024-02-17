@@ -8,7 +8,7 @@ namespace NamehaveCat.Scripts.Machinery
     {
         [SerializeField] private float speed = 11.75f;
 
-        [HideInInspector] public UnityEvent<Trampoline> onCollision = new();
+        public readonly UnityEvent<Trampoline> onCollision = new();
 
         private void OnCollisionEnter2D(Collision2D other) => OnCol(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => OnCol(other.transform);

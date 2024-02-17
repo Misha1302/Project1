@@ -8,8 +8,9 @@ namespace NamehaveCat.Scripts.Different
     public class Pause : MonoBehaviour
     {
         [SerializeField] private GameObject[] objectsToActive;
-        [HideInInspector] public UnityEvent onPause = new();
-        [HideInInspector] public UnityEvent onRelease = new();
+
+        public readonly UnityEvent onPause = new();
+        public readonly UnityEvent onRelease = new();
 
         private GameObject[] _objects;
         public bool IsPause { get; private set; }

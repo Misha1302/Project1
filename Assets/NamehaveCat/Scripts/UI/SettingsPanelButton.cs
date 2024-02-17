@@ -1,6 +1,5 @@
 namespace NamehaveCat.Scripts.UI
 {
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.UI;

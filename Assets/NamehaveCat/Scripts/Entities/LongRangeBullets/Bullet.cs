@@ -1,28 +1,25 @@
 namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
-    using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
+    using UnityEngine.Events;
 
-    public class Bullet : DamageableBase
+    public class Bullet : MonoBehaviour
     {
-        [SerializeField] private DamageInfo damage;
+        public readonly UnityEvent<Component> onCollision = new();
 
         private void OnCollisionEnter2D(Collision2D other) => TryDamage(other.transform);
         private void OnTriggerEnter2D(Collider2D other) => TryDamage(other.transform);
 
         private void TryDamage(Component other)
         {
-            var health = other.GetComponentInParent<Health>();
-            if (health != null)
-                health.Damage(damage);
-
-            if (other.TryGetComponent<IgnoreCollisionTag>(out _))
+            if (NeedToBeIgnored(other))
                 return;
 
-            if (TryGetComponent<BulletMAnimator>(out var anim))
-                anim.DestroyBullet();
-            else Destroy(gameObject);
+            onCollision.Invoke(other);
         }
+
+        private bool NeedToBeIgnored(Component other) =>
+            other.TryGetComponent<IgnoreCollisionTag>(out _);
     }
 }

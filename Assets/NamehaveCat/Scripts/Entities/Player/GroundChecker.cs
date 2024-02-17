@@ -1,7 +1,7 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Player
 {
     using System;
-    using NamehaveCat.Scripts.Different;
+    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
@@ -10,6 +10,7 @@
     public sealed class GroundChecker : MonoBehaviour
     {
         [SerializeField] private float coyoteTime;
+
         private readonly Collider2D[] _results = new Collider2D[GameData.MaxCollidersCount];
 
         private float _isGroundedLimitTime = 0.1f;
@@ -19,7 +20,7 @@
         private void Start()
         {
             if (GetComponent<BoxCollider2D>().size != Vector2.one)
-                Thrower.Throw(new InvalidOperationException($"Size of box collider must be {Vector2.zero}"));
+                Thrower.Throw(new InvalidOperationException($"Size of box collider must be {Vector2.one}"));
         }
 
         private void Update()
@@ -37,23 +38,8 @@
             Gizmos.DrawCube(transform.position, transform.lossyScale);
         }
 
-        private bool GetIsGrounded()
-        {
-            var colliders = GetColliders();
-
-            var isGrounded = false;
-
-            // ReSharper disable once ForCanBeConvertedToForeach
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            for (var index = 0; index < colliders.Count; index++)
-                if (!colliders[index].TryGetComponent<PlayerTag>(out _))
-                {
-                    isGrounded = true;
-                    break;
-                }
-
-            return isGrounded;
-        }
+        private bool GetIsGrounded() =>
+            GetColliders().Any(t => !t.TryGetComponent<PlayerTag>(out _));
 
         private ArraySegment<Collider2D> GetColliders()
         {

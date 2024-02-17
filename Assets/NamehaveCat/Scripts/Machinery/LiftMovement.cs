@@ -1,6 +1,5 @@
 namespace NamehaveCat.Scripts.Machinery
 {
-    using NamehaveCat.Scripts.Different;
     using UnityEngine;
 
     [RequireComponent(typeof(StickyPlatform))]

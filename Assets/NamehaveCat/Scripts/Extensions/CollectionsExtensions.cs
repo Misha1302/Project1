@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using System.Linq;
 
     public static class CollectionsExtensions
@@ -12,6 +13,15 @@
             foreach (var item in enumerable)
                 if (!except.Contains(item))
                     action(item);
+        }
+
+        [Pure] public static bool Any<T>(this IList<T> array, Predicate<T> predicate)
+        {
+            for (var i = array.Count - 1; i >= 0; i--)
+                if (predicate(array[i]))
+                    return true;
+
+            return false;
         }
     }
 }

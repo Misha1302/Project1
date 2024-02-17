@@ -1,7 +1,6 @@
 namespace NamehaveCat.Scripts.Entities
 {
     using System.Collections;
-    using NamehaveCat.Scripts.Different;
     using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.MImplementations;
     using NamehaveCat.Scripts.Tags;

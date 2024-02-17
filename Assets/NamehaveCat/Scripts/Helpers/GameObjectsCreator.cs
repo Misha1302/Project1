@@ -4,6 +4,8 @@
 
     public static class GameObjectsCreator
     {
+        // ReSharper disable once MemberCanBePrivate.Global
+
         public static GameObject New(string name) => new(name);
 
         public static T New<T>(string name) where T : Component =>
