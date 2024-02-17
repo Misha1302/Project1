@@ -15,9 +15,9 @@
                     action(item);
         }
 
-        [Pure] public static bool Any<T>(this IList<T> array, Predicate<T> predicate)
+        [Pure] public static bool Any<T>(this IList<T> array, Predicate<T> predicate, int len)
         {
-            for (var i = array.Count - 1; i >= 0; i--)
+            for (var i = 0; i < len; i++)
                 if (predicate(array[i]))
                     return true;
 

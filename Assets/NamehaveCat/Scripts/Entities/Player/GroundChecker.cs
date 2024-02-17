@@ -38,15 +38,16 @@
             Gizmos.DrawCube(transform.position, transform.lossyScale);
         }
 
-        private bool GetIsGrounded() =>
-            GetColliders().Any(t => !t.TryGetComponent<PlayerTag>(out _));
-
-        private ArraySegment<Collider2D> GetColliders()
+        private bool GetIsGrounded()
         {
-            // ReSharper disable once Unity.InefficientPropertyAccess
-            var len = Physics2D.OverlapBoxNonAlloc(transform.position, transform.lossyScale, 0, _results,
-                LayersManager.ExceptNotAGround);
-            return new ArraySegment<Collider2D>(_results, 0, len);
+            var len = WriteColliders();
+            return _results.Any(t => !t.TryGetComponent<PlayerTag>(out _), len);
         }
+
+
+        private int WriteColliders() =>
+            // ReSharper disable once Unity.InefficientPropertyAccess
+            Physics2D.OverlapBoxNonAlloc(transform.position, transform.lossyScale, 0, _results,
+                LayersManager.ExceptNotAGround);
     }
 }
