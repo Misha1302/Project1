@@ -20,7 +20,7 @@
         [Pure] public static float Distance(this Component a, Component b) =>
             Vector3.Distance(a.transform.position, b.transform.position);
 
-        [Pure] public static Vector3 MoveTo(this Component current, Component destination, float step) =>
+        public static Vector3 MoveTo(this Component current, Component destination, float step) =>
             current.transform.position = //current.transform.position.WithX(current.transform.position.x + -step); 
                 Vector3.MoveTowards(current.transform.position, destination.transform.position, Math.Abs(step));
 

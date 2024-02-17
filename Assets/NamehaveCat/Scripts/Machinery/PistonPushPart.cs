@@ -1,16 +1,15 @@
 ﻿namespace NamehaveCat.Scripts.Machinery
 {
     using System.Collections;
-    using NamehaveCat.Scripts.Extensions;
     using NamehaveCat.Scripts.MImplementations;
-    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
     [RequireComponent(typeof(MRigidbody2D))]
     public class PistonPushPart : ElectricitySource
     {
-        [SerializeField] private float duration;
-        [SerializeField] private Transform destinationPoint;
+        [SerializeField] private float speed;
+        [SerializeField] private Transform firstPoint;
+        [SerializeField] private Transform secondPoint;
 
         private MRigidbody2D _rigidbody2D;
 
@@ -19,28 +18,41 @@
             _rigidbody2D = GetComponent<MRigidbody2D>();
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void Update()
         {
-            if (!HasElectricity && other.TryGetComponent<PistonBlockPartTag>(out _))
+            // TODO: check for inverted piston (right to left)
+            if (!HasElectricity && transform.position.x > secondPoint.position.x)
                 GameManager.Instance.CoroutineManager.StartCoroutine(Push());
         }
 
         private IEnumerator Push()
         {
+            var c = _rigidbody2D.mRbConstraints2D;
+            var startTime = GameManager.Instance.Time.CurTime;
+
             HasElectricity = true;
+            _rigidbody2D.mRbConstraints2D = MRbConstraints2D.All;
 
-            var step = transform.Distance(destinationPoint) / duration / (1 / Time.fixedDeltaTime);
-
-            var waitForFixedUpdate = new WaitForFixedUpdate();
-
-            while (transform.Distance(destinationPoint) >= 0.01f)
+            while (GetT() < 1)
             {
-                _rigidbody2D.Teleport(transform.MoveTo(destinationPoint, step));
+                _rigidbody2D.Teleport(
+                    transform.position = Vector3.Lerp(
+                        secondPoint.position,
+                        firstPoint.position,
+                        GetT()
+                    )
+                );
 
-                yield return waitForFixedUpdate;
+                yield return null;
             }
 
+            _rigidbody2D.mRbConstraints2D = c;
             HasElectricity = false;
+
+            yield break;
+
+
+            float GetT() => (GameManager.Instance.Time.CurTime - startTime) * speed;
         }
     }
 }
