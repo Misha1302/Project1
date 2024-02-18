@@ -22,9 +22,15 @@ namespace NamehaveCat.Scripts.Different
 
         private void OnCol(Component tr)
         {
-            if (Validator.ValidateEnemyCollision(tr) && !TooEarly())
+            if (Validate(tr) && !TooEarly())
                 DisableComponents();
         }
+
+        // ReSharper disable once Unity.InefficientPropertyAccess
+        private static bool Validate(Component tr) =>
+            !tr.TryGetComponent<PlayerTag>(out _) &&
+            tr.gameObject.layer != LayersManager.NotAGround &&
+            tr.gameObject.layer != LayersManager.IgnoreRaycast;
 
         private bool TooEarly() => GameManager.Instance.Time.CurTime - _time < delay;
 

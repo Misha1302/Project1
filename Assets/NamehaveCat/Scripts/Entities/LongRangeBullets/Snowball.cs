@@ -24,9 +24,9 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
             _rb2D.velocity = _direction;
         }
 
-        public void Set(LayerMask enemy, Vector3 position, Vector3 direction)
+        public void Set(LayerMask excludeLayers, Vector3 position, Vector3 direction)
         {
-            _rb2D.excludeLayers = enemy;
+            _rb2D.excludeLayers = excludeLayers;
             _rb2D.position = position;
             _rb2D.velocity = _direction = direction;
             SetRotation(_rb2D.position, _rb2D.velocity);
