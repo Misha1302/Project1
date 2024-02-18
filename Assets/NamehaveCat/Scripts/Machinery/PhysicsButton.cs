@@ -24,7 +24,6 @@ namespace NamehaveCat.Scripts.Machinery
 
                 HasElectricity = false;
                 for (var i = 0; i < len; i++)
-                    // ReSharper disable once AssignmentInConditionalExpression
                     if (_results[i].transform.TryGetComponent<Rigidbody2D>(out _))
                     {
                         HasElectricity = true;

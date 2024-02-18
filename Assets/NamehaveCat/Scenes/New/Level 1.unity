@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trampoline
       objectReference: {fileID: 0}
+    - target: {fileID: 9157479848377442960, guid: abe582465cd07dd4383d4c89766673d8, type: 3}
+      propertyPath: height
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

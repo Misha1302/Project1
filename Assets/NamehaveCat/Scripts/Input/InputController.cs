@@ -11,8 +11,6 @@
 
     public class InputController : MonoBehaviour
     {
-        public readonly UnityEvent<Direction> onPress = new();
-
         [SerializeField] private Key[] keysLeft = { Key.A, Key.LeftArrow };
         [SerializeField] private Key[] keysRight = { Key.D, Key.RightArrow };
         [SerializeField] private Key[] keysUp = { Key.Space, Key.UpArrow };
@@ -22,6 +20,7 @@
         [SerializeField] private MButton btnUp;
 
         private readonly Dictionary<Direction, InputAxis> _axes = new();
+        public readonly UnityEvent<Direction> onPress = new();
         private Direction _dir;
         public IReadOnlyDictionary<Direction, InputAxis> Axes => _axes;
 

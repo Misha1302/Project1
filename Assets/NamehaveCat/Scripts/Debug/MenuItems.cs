@@ -1,5 +1,5 @@
 ﻿#if UNITY_EDITOR
-namespace NamehaveCat.Scripts.Editor
+namespace NamehaveCat.Scripts.Debug
 {
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
