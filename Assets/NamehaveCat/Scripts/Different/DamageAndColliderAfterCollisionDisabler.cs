@@ -22,7 +22,7 @@ namespace NamehaveCat.Scripts.Different
 
         private void OnCol(Component tr)
         {
-            if (Validate(tr) && !TooEarly())
+            if (Validator.ValidateEnemyCollision(tr) && !TooEarly())
                 DisableComponents();
         }
 
@@ -39,11 +39,5 @@ namespace NamehaveCat.Scripts.Different
 
             enabled = false;
         }
-
-        // ReSharper disable once Unity.InefficientPropertyAccess
-        private bool Validate(Component tr) =>
-            !tr.TryGetComponent<PlayerTag>(out _) &&
-            tr.gameObject.layer != LayersManager.NotAGround &&
-            tr.gameObject.layer != LayersManager.IgnoreRaycast;
     }
 }
