@@ -10,6 +10,7 @@ namespace NamehaveCat.Scripts.Entities.Player
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(ObjectFlipper))]
     [RequireComponent(typeof(PlayerJumper))]
+    [RequireComponent(typeof(CollisionDetector))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float force = 8000f / 3f; // 2666.6667
@@ -22,6 +23,7 @@ namespace NamehaveCat.Scripts.Entities.Player
         public GroundChecker GroundChecker => groundChecker;
 
         public Rigidbody2D Rb2D { get; private set; }
+        public CollisionDetector CollisionDetector { get; private set; }
 
         private float Speed => groundChecker.IsGrounded ? force : forceInFly;
 
@@ -54,6 +56,7 @@ namespace NamehaveCat.Scripts.Entities.Player
             if (Rb2D == null) Rb2D = GetComponent<Rigidbody2D>();
             if (_playerJumper == null) _playerJumper = GetComponent<PlayerJumper>();
             if (_flipper == null) _flipper = GetComponent<ObjectFlipper>();
+            if (CollisionDetector == null) CollisionDetector = GetComponent<CollisionDetector>();
         }
 
         private void Move(Direction dir)
@@ -77,13 +80,13 @@ namespace NamehaveCat.Scripts.Entities.Player
             }
             else
             {
-                if (dir.Has(Left)) // if left
+                if (dir.Has(Left) && !CollisionDetector.HasObjectOnLeft()) // if left
                 {
                     Rb2D.AddForce(Vector2.left * (Speed * GameManager.Instance.Time.DeltaTime));
                     _flipper.FlipX = true;
                 }
 
-                if (dir.Has(Right)) // if right
+                if (dir.Has(Right) && !CollisionDetector.HasObjectOnRight()) // if right
                 {
                     Rb2D.AddForce(Vector2.right * (Speed * GameManager.Instance.Time.DeltaTime));
                     _flipper.FlipX = false;
