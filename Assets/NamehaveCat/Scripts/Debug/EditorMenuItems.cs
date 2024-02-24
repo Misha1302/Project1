@@ -9,10 +9,16 @@ namespace NamehaveCat.Scripts.Debug
     public static class EditorMenuItems
     {
         private const string PrefabName = "LevelBase";
+        private const string PrefabName2 = "Void";
 
         [MenuItem("Assets/Create/" + PrefabName)]
         [MenuItem("GameObject/" + PrefabName)]
         private static void SpawnPlayer() => SpawnPrefab(PrefabName);
+
+
+        [MenuItem("Assets/Create/" + PrefabName2)]
+        [MenuItem("GameObject/" + PrefabName2)]
+        private static void SpawnVoid() => SpawnPrefab(PrefabName2);
 
         private static void SpawnPrefab(string prefabName)
         {

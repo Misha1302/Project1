@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/NamehaveCat/Scenes/Menu.unity
     guid: 06c1007b2ee8e0e4db8ebc4d286966bd
   - enabled: 1
-    path: Assets/NamehaveCat/Scenes/Level 1.unity
-    guid: 23946cd1cc786bf459b504337e037019
+    path: Assets/NamehaveCat/Scenes/New/Level 1.unity
+    guid: e19fd63e7aaae2943b438734705f93c3
   - enabled: 1
     path: Assets/NamehaveCat/Scenes/EndOfGame.unity
     guid: f8d74ef6cbce6784baf5a09d63241242

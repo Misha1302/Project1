@@ -1,6 +1,7 @@
 namespace NamehaveCat.Scripts.UI.LevelSettings
 {
     using NamehaveCat.Scripts.Helpers;
+    using NamehaveCat.Scripts.Tags;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -29,6 +30,9 @@ namespace NamehaveCat.Scripts.UI.LevelSettings
             {
                 if (GameManager.Instance.Pause.IsPause)
                     GameManager.Instance.Pause.MRelease();
+
+                var globalSettings = FindObjectOfType<GlobalSettingsPanelTag>();
+                if (globalSettings) globalSettings.gameObject.SetActive(false);
             }
 
             settingsPanel.SetActive(!settingsPanel.activeSelf);

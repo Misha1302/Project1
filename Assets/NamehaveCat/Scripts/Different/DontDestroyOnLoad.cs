@@ -8,7 +8,7 @@ namespace NamehaveCat.Scripts.Different
     {
         private static readonly List<GameObject> _createdObjects = new();
 
-        private void Start()
+        private void OnEnable()
         {
             if (_createdObjects.Any(x => x.name == name))
             {
