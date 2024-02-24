@@ -1,6 +1,7 @@
 namespace NamehaveCat.Scripts.Entities
 {
     using NamehaveCat.Scripts.Extensions;
+    using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.Tags;
     using UnityEngine;
 
@@ -24,7 +25,9 @@ namespace NamehaveCat.Scripts.Entities
             if (!CanThrowIcicle(other))
                 return;
 
-            GameManager.Instance.CoroutineManager.InvokeAfter(ThrowIcicle, waitingTime);
+            GameManager.Instance.CoroutineManager.StartCoroutine(
+                CoroutineManager.InvokeAfterCoroutine(ThrowIcicle, waitingTime)
+            );
 
             enabled = false;
         }

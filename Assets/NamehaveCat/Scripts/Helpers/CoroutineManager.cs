@@ -28,7 +28,7 @@
                 AddStartStopRemoveCoroutine(coroutine, coroutineName ?? GameStaticData.DefaultCoroutineName));
         }
 
-        
+
         // ReSharper disable once UnusedMember.Global
         public void StopCoroutines(string groupName)
         {
@@ -39,15 +39,19 @@
             _coroutineRepository.RemoveAllCoroutines(groupName);
         }
 
-        public void InvokeAfter(Action action, float timeToWait, [CanBeNull] string coroutineName = null)
-        {
-            StartCoroutine(InvokeAfterCoroutine(action, timeToWait), coroutineName);
-        }
-
-        private static IEnumerator InvokeAfterCoroutine(Action action, float timeToWait)
+        public static IEnumerator InvokeAfterCoroutine(Action action, float timeToWait)
         {
             yield return new MWaitForSeconds(timeToWait);
             action();
+        }
+
+        public static IEnumerator RepeatCoroutine(Action action, float timeToWait)
+        {
+            while (true)
+            {
+                yield return new MWaitForSeconds(timeToWait);
+                action();
+            }
         }
 
         private IEnumerator AddStartStopRemoveCoroutine(IEnumerator coroutine, string coroutineName)

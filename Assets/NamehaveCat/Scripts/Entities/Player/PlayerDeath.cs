@@ -45,7 +45,9 @@ namespace NamehaveCat.Scripts.Entities.Player
 
         private void Die()
         {
-            GameManager.Instance.CoroutineManager.InvokeAfter(MSceneManager.Reload, waitBeforeDie);
+            GameManager.Instance.CoroutineManager.StartCoroutine(
+                CoroutineManager.InvokeAfterCoroutine(MSceneManager.Reload, waitBeforeDie)
+            );
         }
 
         private void UiUpdate(Health health)

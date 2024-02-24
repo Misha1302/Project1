@@ -24,16 +24,16 @@ namespace NamehaveCat.Scripts.Entities.LongRangeBullets
             _rb2D.velocity = _direction;
         }
 
-        public void Set(LayerMask excludeLayers, Vector3 position, Vector3 direction)
+        public void Set(Vector3 position, Vector3 direction)
         {
-            _rb2D.excludeLayers = excludeLayers;
             _rb2D.position = position;
             _rb2D.velocity = _direction = direction;
-            SetRotation(_rb2D.position, _rb2D.velocity);
+            SetRotation(_rb2D.position, _direction);
         }
 
         private void SetRotation(Vector2 pos, Vector2 vel)
         {
+            Debug.Assert(vel != Vector2.zero);
             var angle = pos.Degrees(pos + vel);
 
             // if (x, y < 0) or (x, y > 0)

@@ -1,5 +1,6 @@
 ﻿namespace NamehaveCat.Scripts.Entities.LongRangeBullets
 {
+    using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody2D))]
@@ -18,7 +19,9 @@
 
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
-            GameManager.Instance.CoroutineManager.InvokeAfter(() => Destroy(gameObject), 5);
+            GameManager.Instance.CoroutineManager.StartCoroutine(
+                CoroutineManager.InvokeAfterCoroutine(() => Destroy(gameObject), 5)
+            );
         }
     }
 }
