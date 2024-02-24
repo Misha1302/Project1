@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.UI.Menu
 {
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;

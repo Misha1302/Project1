@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.UI
+﻿namespace NamehaveCat.Scripts.UI.LevelSettings
 {
     using NamehaveCat.Scripts.MImplementations;
     using UnityEngine;

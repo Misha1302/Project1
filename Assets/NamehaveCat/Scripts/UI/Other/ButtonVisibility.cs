@@ -1,4 +1,4 @@
-namespace NamehaveCat.Scripts
+namespace NamehaveCat.Scripts.UI.Other
 {
     using System.Linq;
     using NamehaveCat.Scripts.Extensions;

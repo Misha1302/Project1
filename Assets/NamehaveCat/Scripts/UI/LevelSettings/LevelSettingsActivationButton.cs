@@ -1,11 +1,11 @@
-namespace NamehaveCat.Scripts.UI
+namespace NamehaveCat.Scripts.UI.LevelSettings
 {
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;
     using UnityEngine.UI;
 
     [RequireComponent(typeof(Button))]
-    public class SettingsPanelButton : MonoBehaviour
+    public class LevelSettingsActivationButton : MonoBehaviour
     {
         [SerializeField] private GameObject settingsPanel;
         [SerializeField] private RawImage settingsFrameImage;

@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.MImplementations
 {
     using NamehaveCat.Scripts.Helpers;
     using UnityEngine;

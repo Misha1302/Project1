@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts.UI
+﻿namespace NamehaveCat.Scripts.UI.Other
 {
     using System;
     using System.Collections.Generic;

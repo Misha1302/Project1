@@ -1,4 +1,4 @@
-﻿namespace NamehaveCat.Scripts
+﻿namespace NamehaveCat.Scripts.UI.GlobalSettings
 {
     using NamehaveCat.Scripts.Helpers;
     using TMPro;
