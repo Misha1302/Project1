@@ -86,6 +86,7 @@ namespace NamehaveCat.Scripts.Entities.Player
                     _flipper.FlipX = true;
                 }
 
+                // ReSharper disable once InvertIf
                 if (dir.Has(Right) && !CollisionDetector.HasObjectOnRight()) // if right
                 {
                     Rb2D.AddForce(Vector2.right * (Speed * GameManager.Instance.Time.DeltaTime));

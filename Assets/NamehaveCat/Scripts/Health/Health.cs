@@ -55,6 +55,7 @@
                 return false;
             }
 
+            // ReSharper disable once InvertIf
             if (!enabled)
             {
                 Debug.LogWarning("Health disabled!");

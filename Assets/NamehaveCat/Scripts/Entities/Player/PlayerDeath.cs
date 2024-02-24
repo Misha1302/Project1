@@ -5,7 +5,6 @@ namespace NamehaveCat.Scripts.Entities.Player
     using NamehaveCat.Scripts.Health;
     using NamehaveCat.Scripts.Helpers;
     using NamehaveCat.Scripts.MImplementations;
-    using NamehaveCat.Scripts.UI;
     using NamehaveCat.Scripts.UI.Other;
     using TMPro;
     using UnityEngine;

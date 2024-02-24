@@ -41,6 +41,7 @@
             _buffer = StandardBuffer;
         }
 
+        // ReSharper disable once UnusedMethodReturnValue.Global
         public bool TryJump()
         {
             if (GameManager.Instance.PlayerController.GroundChecker.CanJump)

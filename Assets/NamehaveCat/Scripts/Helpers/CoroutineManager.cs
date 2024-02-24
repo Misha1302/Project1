@@ -28,6 +28,8 @@
                 AddStartStopRemoveCoroutine(coroutine, coroutineName ?? GameStaticData.DefaultCoroutineName));
         }
 
+        
+        // ReSharper disable once UnusedMember.Global
         public void StopCoroutines(string groupName)
         {
             if (!_coroutineRepository.TryGetCoroutines(groupName, out var list))

@@ -45,6 +45,8 @@ namespace NamehaveCat.Scripts.Entities
 
                 yield return new MWaitForSeconds(0.1f);
             }
+
+            // ReSharper disable once IteratorNeverReturns
         }
     }
 }
