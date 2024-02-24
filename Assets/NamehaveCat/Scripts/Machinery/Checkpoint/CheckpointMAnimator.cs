@@ -15,7 +15,7 @@ namespace NamehaveCat.Scripts.Machinery.Checkpoint
 
         private void OnActivityChanged(Checkpoint _)
         {
-            Animator.SetTrigger(checkpoint.WasActivated ? GameData.Activation : GameData.NonActivated);
+            Animator.SetTrigger(checkpoint.WasActivated ? GameStaticData.Activation : GameStaticData.NonActivated);
         }
     }
 }

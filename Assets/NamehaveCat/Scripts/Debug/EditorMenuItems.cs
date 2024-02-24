@@ -6,7 +6,7 @@ namespace NamehaveCat.Scripts.Debug
     using UnityEditor;
     using UnityEngine;
 
-    public static class MenuItems
+    public static class EditorMenuItems
     {
         private const string PrefabName = "LevelBase";
 
@@ -26,6 +26,11 @@ namespace NamehaveCat.Scripts.Debug
 
             gmObj.transform.position = Vector3.zero;
         }
+
+
+        [MenuItem("Edit/Delete All Player Prefs Data")]
+        private static void DeleteAllData() =>
+            PlayerPrefs.DeleteAll();
     }
 }
 #endif

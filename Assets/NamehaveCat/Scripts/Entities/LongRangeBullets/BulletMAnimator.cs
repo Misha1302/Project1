@@ -10,7 +10,7 @@
         protected void Start()
         {
             GetComponent<Bullet>().onCollision.AddListener(
-                _ => Animator.SetBool(GameData.Destroy, true)
+                _ => Animator.SetBool(GameStaticData.Destroy, true)
             );
         }
     }

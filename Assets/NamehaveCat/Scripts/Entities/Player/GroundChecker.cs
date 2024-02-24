@@ -11,7 +11,7 @@
     {
         [SerializeField] private float coyoteTime;
 
-        private readonly Collider2D[] _results = new Collider2D[GameData.MaxCollidersCount];
+        private readonly Collider2D[] _results = new Collider2D[GameStaticData.MaxCollidersCount];
 
         private float _isGroundedLimitTime = 0.1f;
         public bool CanJump => GameManager.Instance.Time.CurTime < _isGroundedLimitTime;

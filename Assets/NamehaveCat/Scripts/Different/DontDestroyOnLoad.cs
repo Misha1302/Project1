@@ -16,7 +16,7 @@ namespace NamehaveCat.Scripts.Different
                 return;
             }
 
-            transform.parent = null;
+            transform.SetParent(null);
 
             _createdObjects.Add(gameObject);
             DontDestroyOnLoad(gameObject);

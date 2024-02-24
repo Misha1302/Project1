@@ -1,10 +1,9 @@
 ﻿namespace NamehaveCat.Scripts.Helpers
 {
-    using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 
     // ReSharper disable ConvertToConstant.Global
-    public static class GameData
+    public static class GameStaticData
     {
         public static readonly int Pressed = Animator.StringToHash("Pressed");
         public static readonly int Death = Animator.StringToHash("Death");
@@ -18,7 +17,5 @@
 
         public static readonly int MaxCollidersCount = 128;
         public static readonly string DefaultCoroutineName = "Nameless";
-
-        public static Vector3 spawnPosition = VectorsExtensions.NaN3;
     }
 }

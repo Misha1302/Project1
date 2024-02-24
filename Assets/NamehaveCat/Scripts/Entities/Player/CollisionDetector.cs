@@ -9,7 +9,7 @@
     {
         [SerializeField] private float rayLen = 0.7f;
 
-        private readonly RaycastHit2D[] _results = new RaycastHit2D[GameData.MaxCollidersCount];
+        private readonly RaycastHit2D[] _results = new RaycastHit2D[GameStaticData.MaxCollidersCount];
 
         public bool HasObjectOnRight() => HasObjectOnDir(Vector2.right);
 

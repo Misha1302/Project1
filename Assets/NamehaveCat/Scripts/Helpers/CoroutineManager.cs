@@ -25,7 +25,7 @@
         public void StartCoroutine(IEnumerator coroutine, [CanBeNull] string coroutineName = null)
         {
             _alwaysEnabled.StartCoroutine(
-                AddStartStopRemoveCoroutine(coroutine, coroutineName ?? GameData.DefaultCoroutineName));
+                AddStartStopRemoveCoroutine(coroutine, coroutineName ?? GameStaticData.DefaultCoroutineName));
         }
 
         public void StopCoroutines(string groupName)

@@ -9,7 +9,7 @@
     {
         private void Start()
         {
-            GetComponent<Trampoline>().onCollision.AddListener(_ => Animator.SetTrigger(GameData.Jump));
+            GetComponent<Trampoline>().onCollision.AddListener(_ => Animator.SetTrigger(GameStaticData.Jump));
         }
     }
 }

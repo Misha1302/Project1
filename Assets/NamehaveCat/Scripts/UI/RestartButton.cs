@@ -13,7 +13,7 @@
         {
             GetComponent<Button>().onClick.AddListener(() =>
             {
-                GameData.spawnPosition = VectorsExtensions.NaN3;
+                GameDynamicData.SpawnPosition.set(VectorsExtensions.NaN3);
                 MSceneManager.Reload();
             });
         }

@@ -1,6 +1,8 @@
 ﻿namespace NamehaveCat.Scripts.Extensions
 {
     using System;
+    using System.Globalization;
+    using System.Linq;
     using JetBrains.Annotations;
     using UnityEngine;
 
@@ -40,6 +42,14 @@
         {
             a.y = y;
             return a;
+        }
+
+        [Pure] public static Vector3 Parse(string s)
+        {
+            // ({0}, {1}, {2})
+            var arr = s.Replace("(", "").Replace(")", "").Split(", ")
+                .Select(x => float.Parse(x, CultureInfo.InvariantCulture)).ToArray();
+            return new Vector3(arr[0], arr[1], arr[2]);
         }
     }
 }

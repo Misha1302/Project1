@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 4031592800265767953}
   - component: {fileID: 4147109118756036481}
   - component: {fileID: 4208179099130732205}
+  - component: {fileID: 5177153268157520103}
   m_Layer: 0
   m_Name: '[Music]'
   m_TagString: Untagged
@@ -86,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 7349698240712001804}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9613673, y: 3.4077666, z: -0.32686472}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c39e03b15a6411468f03ce0fc3c8e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
 --- !u!114 &4208179099130732205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,5 +211,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6edab1125a54ab79c29dc3e604761ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5177153268157520103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349698240712001804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2636bf2368954e50b227bb24d551af8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
