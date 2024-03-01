@@ -1,26 +1,28 @@
 ﻿namespace NamehaveCat.Scripts.Entities.Player
 {
-    using System;
     using NamehaveCat.Scripts.Extensions;
     using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SpeedLimiter : MonoBehaviour
+    [RequireComponent(typeof(CollisionDetector))]
+    public class MovementDirectionLimiter : MonoBehaviour
     {
-        [SerializeField] private float maxSpeed = 4f;
-
+        private CollisionDetector _collisionDetector;
         private Rigidbody2D _rb2D;
 
         private void Start()
         {
             _rb2D = GetComponent<Rigidbody2D>();
+            _collisionDetector = GetComponent<CollisionDetector>();
 
             GameManager.Instance.InputController.onPress.AddListener(_ => LimitHorizontal());
         }
 
         private void LimitHorizontal()
         {
-            _rb2D.velocity = _rb2D.velocity.WithX(Math.Clamp(_rb2D.velocity.x, -maxSpeed, maxSpeed));
+            if ((_rb2D.velocity.x < 0 && _collisionDetector.HasObjectOnLeft()) ||
+                (_rb2D.velocity.x > 0 && _collisionDetector.HasObjectOnRight()))
+                _rb2D.velocity = _rb2D.velocity.WithX(0);
         }
     }
 }
